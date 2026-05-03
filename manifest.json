@@ -1,0 +1,32 @@
+{
+  "name": "Nguyen & Associates Injury Law Firm",
+  "short_name": "Nguyen & Associates",
+  "description": "Houston personal injury lawyers — car, truck, workplace, wrongful death. No fee unless we win.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6F0",
+  "theme_color": "#00092A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "legal"],
+  "lang": "en-US"
+}

@@ -1,0 +1,37 @@
+# Nguyen & Associates Injury Law Firm
+# https://nalawtx.com/
+
+User-agent: *
+Allow: /
+
+# Sensitive internal paths (future-proofing)
+Disallow: /admin/
+Disallow: /staging/
+Disallow: /private/
+Disallow: /api/
+
+# AI Training crawlers — allow for GEO visibility.
+# If the firm wants to block AI training separately, revise these.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Spammy scrapers
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Disallow: /
+
+Sitemap: https://nalawtx.com/sitemap.xml

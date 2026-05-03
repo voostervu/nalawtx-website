@@ -1,0 +1,21 @@
+/* TEAM */
+Founder / Managing Partner: Vu Nguyen
+Attorney: Harrison M. Nguyen
+Attorney: Kenneth Nguyen
+Attorney: Lantz Clinton
+Attorney: Ellis Munoz
+Location: Houston, Texas, USA
+
+/* FIRM */
+Name: Nguyen & Associates Injury Law Firm, PLLC
+Address: 10050 Northwest Freeway, Suite 200, Houston, TX 77092
+Phone: (713) 842-9442
+Email: info@nalawtx.com
+Languages: English, Spanish, Vietnamese
+Founded: Houston, Texas
+
+/* SITE */
+Last update: 2026
+Standards: HTML5, CSS3, WCAG 2.1 AA
+Components: Vanilla JavaScript, no framework
+Typography: Fraunces (display), Manrope (body)
