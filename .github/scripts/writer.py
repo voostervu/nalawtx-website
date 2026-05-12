@@ -13,12 +13,12 @@ from anthropic import Anthropic
 
 
 # Model to use. Override via env var to A/B test new models without code changes.
-WRITER_MODEL = os.environ.get("WRITER_MODEL", "claude-sonnet-4-6-20250901")
+WRITER_MODEL = os.environ.get("WRITER_MODEL", "claude-sonnet-4-6")
 
 # Approximate per-million-token pricing for cost estimation. Update when needed.
 # (Phase 1.5 will pull live pricing from Anthropic's API metadata.)
 PRICING = {
-    "claude-sonnet-4-6-20250901": {"input": 3.00, "output": 15.00},
+    "claude-sonnet-4-6": {"input": 3.00, "output": 15.00},
     "claude-opus-4-7": {"input": 15.00, "output": 75.00},
     "claude-sonnet-4-20250514": {"input": 3.00, "output": 15.00},
 }
