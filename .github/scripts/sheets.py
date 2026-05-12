@@ -45,7 +45,7 @@ def _read_tab(tab_name: str) -> list[list[str]]:
     svc = _client()
     result = svc.values().get(
         spreadsheetId=SHEET_ID,
-        range=tab_name,
+        range=f"'{tab_name}'!A:Z",
     ).execute()
     return result.get("values", [])
 
@@ -55,7 +55,7 @@ def _update_cell(tab_name: str, row_idx: int, col_letter: str, value: str):
     svc = _client()
     svc.values().update(
         spreadsheetId=SHEET_ID,
-        range=f"{tab_name}!{col_letter}{row_idx}",
+        range=f"'{tab_name}'!{col_letter}{row_idx}",
         valueInputOption="USER_ENTERED",
         body={"values": [[value]]},
     ).execute()
@@ -66,7 +66,7 @@ def _append_row(tab_name: str, row: list):
     svc = _client()
     svc.values().append(
         spreadsheetId=SHEET_ID,
-        range=tab_name,
+        range=f"'{tab_name}'!A:Z",
         valueInputOption="USER_ENTERED",
         insertDataOption="INSERT_ROWS",
         body={"values": [row]},
