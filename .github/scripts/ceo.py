@@ -35,6 +35,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import sheets
 import utils
 from writer import write_post
+from editor import edit_post
 
 
 REPO_ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).parent.parent.parent))
@@ -83,7 +84,37 @@ def main() -> int:
             published_index=published_index,
         )
         print(f"[CEO]   Writer used {result['tokens_input']} input + {result['tokens_output']} output tokens")
-        print(f"[CEO]   Estimated cost: ${result['cost_usd']:.4f}")
+        print(f"[CEO]   Writer cost: ${result['cost_usd']:.4f}")
+
+        # Step 4.5 — invoke Editor agent to polish Writer's output
+        print("[CEO] Step 4.5: invoking Editor agent...")
+        editor_html = result["html"]
+        editor_tokens_in = 0
+        editor_tokens_out = 0
+        editor_cost = 0.0
+        try:
+            editor_result = edit_post(
+                writer_html=result["html"],
+                brand_voice_samples=brand_voice_samples,
+            )
+            editor_html = editor_result["html"]
+            editor_tokens_in = editor_result["tokens_input"]
+            editor_tokens_out = editor_result["tokens_output"]
+            editor_cost = editor_result["cost_usd"]
+            print(f"[CEO]   Editor used {editor_tokens_in} input + {editor_tokens_out} output tokens")
+            print(f"[CEO]   Editor cost: ${editor_cost:.4f}")
+        except Exception as editor_exc:
+            print(f"[CEO]   ⚠️  Editor failed: {editor_exc}", file=sys.stderr)
+            print(f"[CEO]   Falling back to Writer's unedited draft.", file=sys.stderr)
+
+        # Combine cost tracking
+        total_tokens_in = result["tokens_input"] + editor_tokens_in
+        total_tokens_out = result["tokens_output"] + editor_tokens_out
+        total_cost = result["cost_usd"] + editor_cost
+        print(f"[CEO]   Combined cost: ${total_cost:.4f}")
+
+        # Use the Editor's HTML going forward (or Writer's if Editor failed)
+        result["html"] = editor_html
 
         # Step 5 — derive slug + extract meta from generated HTML
         meta = utils.extract_meta(result["html"])
@@ -109,15 +140,16 @@ def main() -> int:
         )
         print(f"[CEO] Step 7: updated blog/index.html to include new post")
 
-        # Step 8 — log success
+        # Step 8 — log success (combined Writer + Editor stats)
         print("[CEO] Step 8: logging to Generation Log...")
         sheets.log_generation(
             topic=topic,
             status="Success",
-            tokens_input=result["tokens_input"],
-            tokens_output=result["tokens_output"],
-            cost_usd=result["cost_usd"],
-            notes=f"Model: {result['model']} | Slug: {slug}",
+            tokens_input=total_tokens_in,
+            tokens_output=total_tokens_out,
+            cost_usd=total_cost,
+            notes=f"Writer: {result['model']} (${result['cost_usd']:.4f}) | Editor: ${editor_cost:.4f} | Slug: {slug}",
+        )
         )
 
         # Step 9 — update topic row
