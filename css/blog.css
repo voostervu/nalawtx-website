@@ -1,48 +1,45 @@
-/* Blog article body styling — scoped to <article class="section"> on blog posts only */
+/* Blog article body styling — high specificity + !important to override main.css */
 
-.phead h1 {
-  margin-bottom: 1.25rem;
+body .phead h1 {
+  margin-bottom: 1.25rem !important;
 }
-.phead__lede {
-  margin-top: 0.75rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.15rem;
-  line-height: 1.6;
+body .phead .phead__lede {
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1.6 !important;
 }
 
-article.section .wrap p {
-  margin: 0 0 1.4rem 0;
-  line-height: 1.75;
-  font-size: 1.05rem;
+body article.section .wrap p {
+  margin: 0 0 1.4rem 0 !important;
+  line-height: 1.75 !important;
+  font-size: 1.05rem !important;
 }
-article.section .wrap h2 {
-  margin: 2.75rem 0 1.25rem 0;
-  font-size: 1.6rem;
-  line-height: 1.3;
+body article.section .wrap h2 {
+  margin: 2.75rem 0 1.25rem 0 !important;
+  font-size: 1.6rem !important;
+  line-height: 1.3 !important;
 }
-article.section .wrap h3 {
-  margin: 2rem 0 0.75rem 0;
-  font-size: 1.25rem;
-  line-height: 1.35;
+body article.section .wrap h3 {
+  margin: 2rem 0 0.75rem 0 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.35 !important;
 }
-article.section .wrap ul,
-article.section .wrap ol {
-  margin: 0 0 1.5rem 0;
-  padding-left: 1.5rem;
+body article.section .wrap ul,
+body article.section .wrap ol {
+  margin: 0 0 1.5rem 0 !important;
+  padding-left: 1.5rem !important;
 }
-article.section .wrap li {
-  margin-bottom: 0.6rem;
-  line-height: 1.7;
+body article.section .wrap li {
+  margin-bottom: 0.6rem !important;
+  line-height: 1.7 !important;
 }
-article.section .wrap blockquote {
-  margin: 2rem 0;
-  padding: 1.25rem 1.75rem;
-  border-left: 3px solid var(--gold-deep, #b8860b);
-  background: var(--cream-2, #faf7f0);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-article.section .wrap strong {
-  font-weight: 600;
+body article.section .wrap blockquote {
+  margin: 2rem 0 !important;
+  padding: 1.25rem 1.75rem !important;
+  border-left: 3px solid var(--gold-deep, #b8860b) !important;
+  background: var(--cream-2, #faf7f0) !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
 }
