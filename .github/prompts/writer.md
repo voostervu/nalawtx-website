@@ -100,6 +100,7 @@ You will receive these inputs from the CEO agent:
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Manrope:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,30..100,0..1;1,9..144,300..700,30..100,0..1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/blog.css">
 <meta property="og:title" content="[POST TITLE]">
 <meta property="og:description" content="[OG description, can differ from meta description]">
 <meta property="og:image" content="https://nalawtx.com/assets/og/[slug].png">
