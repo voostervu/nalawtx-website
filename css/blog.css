@@ -1,40 +1,30 @@
-/* Blog article body styling — high specificity + !important to override main.css */
+/* Blog article spacing — uses #main ID for maximum specificity */
 
-body .phead h1 {
-  margin-bottom: 1.25rem !important;
-}
-body .phead .phead__lede {
-  margin-top: 0.75rem !important;
-  margin-bottom: 1.5rem !important;
-  font-size: 1.15rem !important;
-  line-height: 1.6 !important;
-}
-
-body article.section .wrap p {
+#main article.section .wrap p {
   margin: 0 0 1.4rem 0 !important;
   line-height: 1.75 !important;
   font-size: 1.05rem !important;
 }
-body article.section .wrap h2 {
+#main article.section .wrap h2 {
   margin: 2.75rem 0 1.25rem 0 !important;
   font-size: 1.6rem !important;
   line-height: 1.3 !important;
 }
-body article.section .wrap h3 {
+#main article.section .wrap h3 {
   margin: 2rem 0 0.75rem 0 !important;
   font-size: 1.25rem !important;
   line-height: 1.35 !important;
 }
-body article.section .wrap ul,
-body article.section .wrap ol {
+#main article.section .wrap ul,
+#main article.section .wrap ol {
   margin: 0 0 1.5rem 0 !important;
   padding-left: 1.5rem !important;
 }
-body article.section .wrap li {
+#main article.section .wrap li {
   margin-bottom: 0.6rem !important;
   line-height: 1.7 !important;
 }
-body article.section .wrap blockquote {
+#main article.section .wrap blockquote {
   margin: 2rem 0 !important;
   padding: 1.25rem 1.75rem !important;
   border-left: 3px solid var(--gold-deep, #b8860b) !important;
@@ -42,4 +32,16 @@ body article.section .wrap blockquote {
   font-style: italic !important;
   font-size: 1.05rem !important;
   line-height: 1.7 !important;
+}
+#main article.section .wrap strong {
+  font-weight: 600 !important;
+}
+.phead h1 {
+  margin-bottom: 1.25rem !important;
+}
+.phead .phead__lede {
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1.6 !important;
 }
