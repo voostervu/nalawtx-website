@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 """
-CEO Orchestrator — Phase 1.
+CEO Orchestrator — Phase 2 (Writer + Editor).
 
 The supervisor agent. This is the entry point GitHub Actions calls.
 
-Phase 1 pipeline (minimal viable):
+Phase 2 pipeline:
     1. Get next Queued topic from Google Sheet
     2. If none, log and exit gracefully
     3. Mark topic as "Generating"
     4. Read brand voice samples + published index for Writer context
     5. Call Writer agent
-    6. Save HTML to blog/{slug}.html
-    7. Regenerate blog/index.html to include the new post
-    8. Log generation event (tokens, cost)
-    9. Update topic status to "Drafted" with the file path
+    6. Call Editor agent (polishes voice, removes AI-isms). Falls back to
+       Writer's output if Editor fails.
+    7. Save HTML to blog/{slug}.html
+    8. Regenerate blog/index.html to include the new post
+    9. Log generation event (combined tokens, cost for Writer + Editor)
+   10. Update topic status to "Drafted" with the file path
 
 The GitHub Actions workflow handles git operations (branch, commit, PR)
 AFTER this script exits successfully. This script only writes files.
-
-Phases 2+ will layer Editor, Compliance, Researcher, etc. inside this
-orchestrator by adding additional calls between steps 5 and 7.
 """
 
 import os
@@ -42,7 +41,7 @@ REPO_ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).parent.parent
 
 
 def main() -> int:
-    print(f"[CEO] Starting Phase 1 pipeline at {datetime.now().isoformat()}")
+    print(f"[CEO] Starting Phase 2 pipeline at {datetime.now().isoformat()}")
     print(f"[CEO] Repo root: {REPO_ROOT}")
 
     # Step 1 — get next topic
@@ -149,7 +148,6 @@ def main() -> int:
             tokens_output=total_tokens_out,
             cost_usd=total_cost,
             notes=f"Writer: {result['model']} (${result['cost_usd']:.4f}) | Editor: ${editor_cost:.4f} | Slug: {slug}",
-        )
         )
 
         # Step 9 — update topic row
