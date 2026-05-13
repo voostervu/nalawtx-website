@@ -27,24 +27,11 @@ jobs:
       pull-requests: write  # open a PR
 
     steps:
-      - name: Skip if not a bi-weekly week
+      - name: Set cadence flag
         id: cadence
         run: |
-          # ISO week number — generate on even-numbered weeks only (every other week).
-          # If you want weekly, change to: echo "should_run=true" >> $GITHUB_OUTPUT
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "should_run=true" >> $GITHUB_OUTPUT
-            echo "Manual trigger — running."
-          else
-            WEEK=$(date +%V)
-            if [ $((10#$WEEK % 2)) -eq 0 ]; then
-              echo "should_run=true" >> $GITHUB_OUTPUT
-              echo "Week $WEEK is even — running."
-            else
-              echo "should_run=false" >> $GITHUB_OUTPUT
-              echo "Week $WEEK is odd — skipping this cycle."
-            fi
-          fi
+          echo "should_run=true" >> $GITHUB_OUTPUT
+          echo "Weekly cadence — running every Monday."
 
       - name: Checkout
         if: steps.cadence.outputs.should_run == 'true'
