@@ -1,160 +1,95 @@
-#!/usr/bin/env python3
-"""
-Canonical URL Fixer for nalawtx.com
+name: Fix Canonical URLs
 
-Updates canonical tags in all HTML files to use clean URLs (no .html extension)
-to match the new sitemap and Netlify redirect rules.
+on:
+  workflow_dispatch: {}
 
-Usage:
-    python fix-canonical-tags.py [path-to-repo-root]
+jobs:
+  fix-canonical-tags:
+    runs-on: ubuntu-latest
 
-If no path is given, runs against current directory.
+    permissions:
+      contents: write
 
-What it does:
-    1. Finds all .html files in the repo (excluding node_modules and .git)
-    2. For each file, finds <link rel="canonical" href="...">
-    3. Removes .html extension from the href value
-    4. Handles index.html → folder root special case
-    5. Saves changes and reports what was updated
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-This is safe to run multiple times — it only changes files where canonical
-tag has .html that needs removing.
-"""
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-import os
-import re
-import sys
-from pathlib import Path
+      - name: Run canonical tag fix
+        run: |
+          python3 << 'PYEOF'
+          import re
+          from pathlib import Path
 
+          CANONICAL_PATTERN = re.compile(
+              r'<link\s+([^>]*?)rel\s*=\s*["\']canonical["\']([^>]*?)>',
+              re.IGNORECASE,
+          )
+          HREF_PATTERN = re.compile(r'href\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
 
-# Pattern to find canonical link tags
-# Handles both <link rel="canonical" href="..."> and href="..." rel="canonical"
-CANONICAL_PATTERN = re.compile(
-    r'<link\s+([^>]*?)rel\s*=\s*["\']canonical["\']([^>]*?)>',
-    re.IGNORECASE,
-)
-HREF_PATTERN = re.compile(r'href\s*=\s*["\']([^"\']+)["\']', re.IGNORECASE)
+          def clean_url(url):
+              if url.endswith('/index.html'):
+                  return url[:-len('index.html')]
+              if url.endswith('.html'):
+                  return url[:-5]
+              return url
 
+          repo_root = Path('.').resolve()
+          skip_dirs = {'node_modules', '.git', 'dist', 'build', '_site'}
+          html_files = []
+          for path in repo_root.rglob('*.html'):
+              if any(part in skip_dirs for part in path.parts):
+                  continue
+              html_files.append(path)
 
-def clean_canonical_url(url: str) -> str:
-    """
-    Remove .html extension from a URL.
-    Special handling for index.html → folder root.
-    """
-    # Handle index.html → folder root
-    if url.endswith('/index.html'):
-        return url[:-len('index.html')]  # keeps trailing slash
-    
-    # Standard .html removal
-    if url.endswith('.html'):
-        return url[:-5]
-    
-    return url
+          print(f"Found {len(html_files)} HTML files")
 
+          changed = 0
+          for filepath in html_files:
+              try:
+                  content = filepath.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
 
-def fix_canonical_in_file(filepath: Path) -> tuple[bool, str | None, str | None]:
-    """
-    Update the canonical tag in a single file.
-    
-    Returns:
-        (was_changed, old_url, new_url)
-    """
-    try:
-        content = filepath.read_text(encoding='utf-8')
-    except UnicodeDecodeError:
-        print(f"  ⚠️  Skipping {filepath} (encoding issue)")
-        return (False, None, None)
-    
-    # Find the canonical link tag
-    canonical_match = CANONICAL_PATTERN.search(content)
-    if not canonical_match:
-        return (False, None, None)
-    
-    # Extract the full canonical tag and find its href
-    full_tag = canonical_match.group(0)
-    href_match = HREF_PATTERN.search(full_tag)
-    if not href_match:
-        return (False, None, None)
-    
-    old_url = href_match.group(1)
-    new_url = clean_canonical_url(old_url)
-    
-    # No change needed
-    if old_url == new_url:
-        return (False, old_url, new_url)
-    
-    # Build the replacement tag
-    new_tag = full_tag.replace(old_url, new_url)
-    new_content = content.replace(full_tag, new_tag, 1)
-    
-    # Write back
-    filepath.write_text(new_content, encoding='utf-8')
-    return (True, old_url, new_url)
+              match = CANONICAL_PATTERN.search(content)
+              if not match:
+                  continue
 
+              full_tag = match.group(0)
+              href_match = HREF_PATTERN.search(full_tag)
+              if not href_match:
+                  continue
 
-def main():
-    # Determine repo root
-    if len(sys.argv) > 1:
-        repo_root = Path(sys.argv[1]).resolve()
-    else:
-        repo_root = Path('.').resolve()
-    
-    if not repo_root.exists():
-        print(f"❌ Path does not exist: {repo_root}")
-        sys.exit(1)
-    
-    print(f"Scanning for .html files in: {repo_root}")
-    print()
-    
-    # Find all .html files, skipping common directories that shouldn't be touched
-    skip_dirs = {'node_modules', '.git', 'dist', 'build', '_site'}
-    html_files = []
-    
-    for path in repo_root.rglob('*.html'):
-        # Skip if any parent is in skip_dirs
-        if any(part in skip_dirs for part in path.parts):
-            continue
-        html_files.append(path)
-    
-    print(f"Found {len(html_files)} HTML files")
-    print()
-    
-    # Process each file
-    changed_count = 0
-    skipped_no_canonical = 0
-    already_clean = 0
-    
-    for filepath in html_files:
-        rel_path = filepath.relative_to(repo_root)
-        was_changed, old_url, new_url = fix_canonical_in_file(filepath)
-        
-        if was_changed:
-            changed_count += 1
-            print(f"  ✅ {rel_path}")
-            print(f"     {old_url}")
-            print(f"  →  {new_url}")
-        elif old_url is None:
-            skipped_no_canonical += 1
-        else:
-            already_clean += 1
-    
-    print()
-    print("=" * 60)
-    print(f"Summary:")
-    print(f"  ✅ Updated:                 {changed_count} files")
-    print(f"  ✓  Already clean:           {already_clean} files")
-    print(f"  ⚠️  No canonical tag found: {skipped_no_canonical} files")
-    print(f"  📁 Total scanned:           {len(html_files)} files")
-    print("=" * 60)
-    
-    if changed_count > 0:
-        print()
-        print("Next steps:")
-        print("  1. Review the changes (git diff)")
-        print("  2. Commit: git add . && git commit -m 'Fix canonical URLs to remove .html'")
-        print("  3. Push to GitHub — Netlify will auto-deploy")
-        print("  4. Submit updated sitemap.xml in Google Search Console")
+              old_url = href_match.group(1)
+              new_url = clean_url(old_url)
+              if old_url == new_url:
+                  continue
 
+              new_tag = full_tag.replace(old_url, new_url)
+              new_content = content.replace(full_tag, new_tag, 1)
+              filepath.write_text(new_content, encoding='utf-8')
+              print(f"Updated: {filepath.relative_to(repo_root)}")
+              print(f"  {old_url} -> {new_url}")
+              changed += 1
 
-if __name__ == "__main__":
-    main()
+          print(f"\nTotal updated: {changed} files")
+          PYEOF
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add .
+            git commit -m "Fix canonical URLs to remove .html extension"
+            git push origin main
+          fi
