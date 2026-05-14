@@ -1,0 +1,75 @@
+name: Blog Researcher
+
+on:
+  # Saturday afternoons at 6pm Central (00:00 UTC Sunday).
+  # Topics get queued before Monday's blog generation cycle.
+  schedule:
+    - cron: "0 0 * * 0"
+  # Allow manual triggers for testing.
+  workflow_dispatch: {}
+
+concurrency:
+  group: blog-researcher
+  cancel-in-progress: false
+
+jobs:
+  research-topics:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      issues: write   # for failure notifications
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/scripts/requirements.txt
+
+      - name: Run Researcher
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          BLOG_AGENT_SHEET_ID: ${{ secrets.BLOG_AGENT_SHEET_ID }}
+        run: |
+          python .github/scripts/researcher_runner.py
+
+      # Failure notification — same pattern as blog-agent.yml
+      - name: Notify on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          DATE_HUMAN=$(date +"%B %d, %Y at %H:%M UTC")
+          
+          gh issue create \
+            --title "🚨 Blog Researcher failed on $(date +%Y-%m-%d)" \
+            --body "The Researcher agent workflow failed on $DATE_HUMAN.
+
+          **Failed workflow run:** $RUN_URL
+
+          ### What this means
+          The Researcher agent attempted to populate new topics into the Blog Topics queue and failed. Your blog generation will still work for any topics already queued, but new auto-discovered topics won't appear until this is fixed.
+
+          ### Possible causes
+          - Anthropic API outage or rate limit
+          - Google Sheets API issue (auth, sheet renamed, permissions changed)
+          - Web search tool issue
+          - Researcher returned invalid JSON
+          - Code change broke something
+
+          ### Next steps
+          1. Click the **Failed workflow run** link above
+          2. Look for the failed step and read the error log
+          3. The Researcher runs every Saturday — a one-week miss is recoverable, you'll get next week's run
+          4. If urgent, manually trigger Run workflow on this same workflow file" \
+            --label "blog-agent,researcher,bug"
