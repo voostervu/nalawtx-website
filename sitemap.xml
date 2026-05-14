@@ -1,642 +1,670 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nalawtx.com/about.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/ellis-munoz.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/harrison-nguyen.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/kenneth-nguyen.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/lantz-clinton.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/attorneys/vu-nguyen.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/blog/do-i-need-a-lawyer-for-minor-car-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/blog/houston-traffic-deaths-2024-record.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/blog/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/blog/new-texas-laws-affecting-injury-claims.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/blog/what-insurance-adjuster-recorded-statement-trap.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/consultation.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nalawtx.com/consultation.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://nalawtx.com/es/consultation.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://nalawtx.com/vi/consultation.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nalawtx.com/consultation.html" />
-  </url>
-  <url>
-    <loc>https://nalawtx.com/contact.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/es/consultation.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/es/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/es/practice/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/faqs.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/first-24-hours-after-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/how-to-read-texas-crash-report.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/insurance-adjuster-tactics.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/texas-comparative-fault.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/texas-dram-shop-law.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/texas-non-subscriber-workers-comp.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/texas-statute-of-limitations.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/guides/uber-lyft-insurance-explained.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nalawtx.com/index.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://nalawtx.com/es/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://nalawtx.com/vi/index.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nalawtx.com/index.html" />
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/beechnut-beltway-8.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/about</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/contact</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/consultation</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/faqs</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/results</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/privacy</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/terms</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Attorneys -->
+  <url>
+    <loc>https://nalawtx.com/attorneys/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/attorneys/vu-nguyen</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/attorneys/harrison-nguyen</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/attorneys/kenneth-nguyen</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/attorneys/lantz-clinton</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/attorneys/ellis-munoz</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Practice Areas -->
+  <url>
+    <loc>https://nalawtx.com/practice/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/car-accident</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/truck-accident</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/motorcycle</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/rideshare</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/drunk-driver</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/pedestrian</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/wrongful-death</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/workplace-injury</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/construction</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/oilfield</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/refinery-explosion</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/maritime</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/premises-liability</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/slip-fall</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/dog-bite</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/nursing-home</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/brain-injury</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/spinal-cord</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/burn-injury</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/practice/product-liability</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Practice Subtopics -->
+  <url>
+    <loc>https://nalawtx.com/practice/subtopics/bicycle-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/bellaire-beltway-8.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/construction-fall</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/bissonnet-beltway-8.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/delivery-truck-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/capitol-milam-downtown.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/drunk-driver-crash</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/fm-1960-cutten-road.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/dump-truck-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/fm-1960-west-lake-houston-parkway.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/forklift-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/hardy-toll-sam-houston.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/garbage-truck-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/i-10-at-grand-parkway.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/head-on-collision</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/i-45-beltway-8.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/hit-and-run-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/intersections/westheimer-beltway-8.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/multi-vehicle-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/westheimer-south-gessner.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/rear-end-collision</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/intersections/wilcrest-westheimer.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/rollover-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/alief.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/t-bone-intersection-collision</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/bellaire.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/tanker-truck-accident</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/clear-lake.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/practice/subtopics/warehouse-injury</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- Locations -->
   <url>
-    <loc>https://nalawtx.com/locations/conroe.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/locations/cypress.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/locations/humble.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/locations/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/katy.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/alief</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/kingwood.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/bellaire</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/memorial.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/clear-lake</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/missouri-city.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/conroe</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/pasadena.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/cypress</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/pearland.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/humble</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/rosenberg.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/katy</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/sharpstown.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/kingwood</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/spring-branch.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/memorial</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/stafford.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/missouri-city</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/sugar-land.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/pasadena</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/the-heights.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/pearland</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/the-woodlands.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/rosenberg</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/locations/tomball.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/sharpstown</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/brain-injury.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/spring-branch</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/burn-injury.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/stafford</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/car-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/sugar-land</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/construction.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/the-heights</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/dog-bite.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/the-woodlands</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/drunk-driver.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/locations/tomball</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Intersections -->
+  <url>
+    <loc>https://nalawtx.com/intersections/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/maritime.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/motorcycle.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/nursing-home.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/oilfield.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/pedestrian.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/premises-liability.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/product-liability.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/refinery-explosion.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/rideshare.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/slip-fall.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/spinal-cord.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/subtopics/bicycle-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/beechnut-beltway-8</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/construction-fall.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/bellaire-beltway-8</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/delivery-truck-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/bissonnet-beltway-8</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/drunk-driver-crash.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/capitol-milam-downtown</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/dump-truck-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/fm-1960-cutten-road</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/forklift-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/fm-1960-west-lake-houston-parkway</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/garbage-truck-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/hardy-toll-sam-houston</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/head-on-collision.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/i-10-at-grand-parkway</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/hit-and-run-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/i-45-beltway-8</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/multi-vehicle-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/westheimer-beltway-8</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/rear-end-collision.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/westheimer-south-gessner</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/rollover-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/intersections/wilcrest-westheimer</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Guides -->
   <url>
-    <loc>https://nalawtx.com/practice/subtopics/t-bone-intersection-collision.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/subtopics/tanker-truck-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/subtopics/warehouse-injury.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/practice/truck-accident.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/guides/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/workplace-injury.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/guides/first-24-hours-after-accident</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/how-to-read-texas-crash-report</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/insurance-adjuster-tactics</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/texas-comparative-fault</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/texas-dram-shop-law</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/texas-non-subscriber-workers-comp</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/texas-statute-of-limitations</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/guides/uber-lyft-insurance-explained</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://nalawtx.com/blog/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/do-i-need-a-lawyer-for-minor-car-accident</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/houston-traffic-deaths-2024-record</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/new-texas-laws-affecting-injury-claims</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/what-insurance-adjuster-recorded-statement-trap</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/the-first-48-hours-after-a-texas-car-wreck-what-you-do-now</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/texass-51-fault-rule-how-it-can-reduce-or-eliminate-your</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/blog/texas-personal-injury-deadlines-the-clock-is-already-running</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Spanish -->
+  <url>
+    <loc>https://nalawtx.com/es/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/practice/wrongful-death.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/es/consultation</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/privacy.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/es/practice/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.85</priority>
   </url>
+
+  <!-- Vietnamese -->
   <url>
-    <loc>https://nalawtx.com/results.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/terms.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://nalawtx.com/vi/consultation.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/vi/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/vi/faqs.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/vi/consultation</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://nalawtx.com/vi/faqs</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/vi/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
+    <loc>https://nalawtx.com/vi/practice/</loc>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-  <url>
-    <loc>https://nalawtx.com/vi/practice/index.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
+
 </urlset>
