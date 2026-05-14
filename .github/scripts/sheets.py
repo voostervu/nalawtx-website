@@ -4,6 +4,11 @@ Google Sheets I/O for the blog agent.
 Reads the topic queue, writes status updates, logs generation events,
 and feeds brand voice + published index back to other agents.
 
+Phase 4 additions:
+    - get_topic_seed_ideas() — reads the Topic Seed Ideas tab for the Researcher
+    - get_all_blog_topics() — reads ALL Blog Topics (not just Queued) to avoid duplicates
+    - append_blog_topic() — adds a new topic row to Blog Topics
+
 Authentication: uses a Google Cloud service account JSON credential
 provided as the GOOGLE_CREDENTIALS_JSON environment variable.
 
@@ -27,6 +32,7 @@ TAB_LOG = "Generation Log"
 TAB_PUBLISHED = "Published Index"
 TAB_BRAND_VOICE = "Brand Voice Bank"
 TAB_STATUTES = "Statute Reference"
+TAB_SEED_IDEAS = "Topic Seed Ideas"  # Phase 4 addition
 
 
 def _client():
@@ -74,7 +80,7 @@ def _append_row(tab_name: str, row: list):
 
 
 # -----------------------------------------------------------------------------
-# Public API
+# Public API — Blog Topics tab
 # -----------------------------------------------------------------------------
 
 def get_next_queued_topic() -> Optional[dict]:
@@ -102,7 +108,6 @@ def get_next_queued_topic() -> Optional[dict]:
     priority_order = {"High": 0, "Medium": 1, "Low": 2, "": 3}
     candidates = []
     for idx, row in enumerate(rows[1:], start=2):  # spreadsheet row 2+
-        # Pad row to expected length
         padded = row + [""] * (9 - len(row))
         status = padded[0].strip()
         if status.lower() == "queued":
@@ -117,9 +122,50 @@ def get_next_queued_topic() -> Optional[dict]:
     if not candidates:
         return None
 
-    # Sort by priority, then by row index (FIFO within priority)
     candidates.sort(key=lambda c: (priority_order.get(c["priority"], 3), c["row_idx"]))
     return candidates[0]
+
+
+def get_all_blog_topics() -> list[dict]:
+    """Return ALL Blog Topics (any status) — used by Researcher to avoid duplicates."""
+    rows = _read_tab(TAB_TOPICS)
+    if not rows or len(rows) < 2:
+        return []
+
+    out = []
+    for idx, row in enumerate(rows[1:], start=2):
+        padded = row + [""] * (9 - len(row))
+        if padded[1].strip():  # has a topic
+            out.append({
+                "row_idx": idx,
+                "status": padded[0].strip(),
+                "topic": padded[1].strip(),
+                "target_keyword": padded[2].strip(),
+                "priority": padded[3].strip(),
+                "notes": padded[4].strip(),
+            })
+    return out
+
+
+def append_blog_topic(
+    status: str,
+    topic: str,
+    target_keyword: str,
+    priority: str = "Medium",
+    notes: str = "",
+):
+    """Append a new topic row to the Blog Topics tab."""
+    _append_row(TAB_TOPICS, [
+        status,
+        topic,
+        target_keyword,
+        priority,
+        notes,
+        "",  # Date Generated
+        "",  # Draft URL
+        "",  # Date Published
+        "",  # Published URL
+    ])
 
 
 def update_topic_status(
@@ -140,6 +186,10 @@ def update_topic_status(
     if published_url:
         _update_cell(TAB_TOPICS, row_idx, "I", published_url)
 
+
+# -----------------------------------------------------------------------------
+# Public API — Generation Log
+# -----------------------------------------------------------------------------
 
 def log_generation(
     topic: str,
@@ -171,15 +221,12 @@ def log_generation(
     ])
 
 
-def get_brand_voice_samples() -> list[str]:
-    """
-    Read approved brand voice samples for Editor/Writer agents to match.
+# -----------------------------------------------------------------------------
+# Public API — Brand Voice + Published Index + Statute Reference + Seed Ideas
+# -----------------------------------------------------------------------------
 
-    Expected 'Brand Voice Bank' tab columns (row 1 = headers):
-      A: Sample Text
-      B: Source (where it came from — consultation page, attorney bio, etc.)
-      C: Notes
-    """
+def get_brand_voice_samples() -> list[str]:
+    """Read approved brand voice samples for Editor/Writer agents to match."""
     rows = _read_tab(TAB_BRAND_VOICE)
     if not rows or len(rows) < 2:
         return []
@@ -187,17 +234,7 @@ def get_brand_voice_samples() -> list[str]:
 
 
 def get_published_index() -> list[dict]:
-    """
-    Read the index of published posts to avoid duplication / contradictions.
-
-    Expected 'Published Index' tab columns (row 1 = headers):
-      A: Title
-      B: Slug
-      C: Date Published
-      D: Target Keyword
-      E: Key Claims (summary)
-      F: Statutes Cited
-    """
+    """Read the index of published posts to avoid duplication / contradictions."""
     rows = _read_tab(TAB_PUBLISHED)
     if not rows or len(rows) < 2:
         return []
@@ -223,7 +260,7 @@ def append_to_published_index(
     key_claims: str = "",
     statutes_cited: str = "",
 ):
-    """Add a newly published post to the index (called after PR merge or manual publish)."""
+    """Add a newly published post to the index."""
     _append_row(TAB_PUBLISHED, [
         title,
         slug,
@@ -235,14 +272,7 @@ def append_to_published_index(
 
 
 def get_statute_references() -> list[dict]:
-    """
-    Read curated Texas statute reference list — ground truth for Citation agent.
-
-    Expected 'Statute Reference' tab columns (row 1 = headers):
-      A: Citation (e.g., "Texas CPRC § 16.003")
-      B: Description
-      C: Common Topic Tags (comma-separated)
-    """
+    """Read curated Texas statute reference list — ground truth for Citation agent."""
     rows = _read_tab(TAB_STATUTES)
     if not rows or len(rows) < 2:
         return []
@@ -254,5 +284,33 @@ def get_statute_references() -> list[dict]:
                 "citation": padded[0].strip(),
                 "description": padded[1].strip(),
                 "tags": padded[2].strip(),
+            })
+    return out
+
+
+def get_topic_seed_ideas() -> list[dict]:
+    """
+    Read curated evergreen blog topic seed list — used by the Researcher.
+
+    Expected 'Topic Seed Ideas' tab columns (row 1 = headers):
+      A: Topic Concept
+      B: Target Keyword
+      C: Practice Area
+      D: Priority   (High / Medium / Low)
+      E: Notes
+    """
+    rows = _read_tab(TAB_SEED_IDEAS)
+    if not rows or len(rows) < 2:
+        return []
+    out = []
+    for row in rows[1:]:
+        padded = row + [""] * (5 - len(row))
+        if padded[0].strip():
+            out.append({
+                "topic_concept": padded[0].strip(),
+                "target_keyword": padded[1].strip(),
+                "practice_area": padded[2].strip(),
+                "priority": padded[3].strip(),
+                "notes": padded[4].strip(),
             })
     return out
