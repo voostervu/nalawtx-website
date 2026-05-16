@@ -1,31 +1,22 @@
 #!/usr/bin/env python3
 """
-CEO Orchestrator — Phase 3 (Writer + Editor + Compliance/Citation).
+CEO orchestrator — runs the full blog generation pipeline.
 
-The supervisor agent. This is the entry point GitHub Actions calls.
+Pipeline:
+    Writer → Editor → Humanizer → Compliance → save HTML → update blog index
 
-Phase 3 pipeline:
-    1. Get next Queued topic from Google Sheet
-    2. If none, log and exit gracefully
-    3. Mark topic as "Generating"
-    4. Read brand voice samples, published index, statute references
-    5. Call Writer agent
-    6. Call Editor agent (polishes voice, removes AI-isms)
-    7. Call Compliance/Citation agent (audits for Bar 7.02/7.04 risks +
-       verifies citations against approved Statute Reference list)
-    8. Save HTML to blog/{slug}.html
-    9. Regenerate blog/index.html to include the new post
-   10. Log generation event (combined tokens, cost across all 3 agents)
-   11. Update topic status to "Drafted" with the file path
+Each step is fail-tolerant: if a later step crashes, we fall back to the previous
+step's output. Better to ship slightly-less-polished content than nothing.
 
-Editor and Compliance both have try/except fallback — if either fails,
-the pipeline continues with whatever the prior agent produced.
+Outputs to GITHUB_OUTPUT (for use by the workflow):
+    slug    - the URL-safe slug
+    topic   - the topic title (for commit message)
+    title   - same as topic, formatted for display
 """
 
 import os
 import sys
 import traceback
-from datetime import datetime
 from pathlib import Path
 
 # Make sibling scripts importable
@@ -36,180 +27,176 @@ import sheets
 import utils
 from writer import write_post
 from editor import edit_post
-from compliance import audit_post
+from humanizer import humanize
+from compliance import compliance_audit
 
 
-REPO_ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).parent.parent.parent))
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def set_github_output(key: str, value: str):
+    """Write a key=value pair to GITHUB_OUTPUT for the workflow to consume."""
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        with open(output_path, "a") as f:
+            # Escape multiline values
+            if "\n" in value:
+                f.write(f"{key}<<EOF\n{value}\nEOF\n")
+            else:
+                f.write(f"{key}={value}\n")
 
 
 def main() -> int:
-    print(f"[CEO] Starting Phase 3 pipeline at {datetime.now().isoformat()}")
-    print(f"[CEO] Repo root: {REPO_ROOT}")
+    print("[CEO] Starting blog generation pipeline")
 
-    # Step 1 — get next topic
-    print("[CEO] Step 1: fetching next Queued topic from Sheet...")
+    # Step 1 — get next topic from queue
+    print("[CEO] Step 1: fetching next queued topic from Sheet...")
     topic_row = sheets.get_next_queued_topic()
     if not topic_row:
-        print("[CEO] No Queued topics found. Nothing to do. Exiting gracefully.")
+        print("[CEO] No queued topics. Exiting cleanly.")
         return 0
 
     topic = topic_row["topic"]
     target_keyword = topic_row["target_keyword"]
-    notes = topic_row["notes"]
-    priority = topic_row["priority"]
     row_idx = topic_row["row_idx"]
+    print(f"[CEO]   Selected: {topic}")
 
-    print(f"[CEO] Picked topic (priority {priority or 'unset'}): {topic}")
-
-    # Step 2 — mark as generating
-    print("[CEO] Step 2: marking topic as 'Generating'...")
+    # Mark as Generating
     sheets.update_topic_status(row_idx, "Generating")
 
     try:
-        # Step 3 — gather context
-        print("[CEO] Step 3: loading brand voice samples, published index, statute references...")
-        brand_voice_samples = sheets.get_brand_voice_samples()
-        published_index = sheets.get_published_index()
-        statute_references = sheets.get_statute_references()
-        print(f"[CEO]   {len(brand_voice_samples)} brand voice samples loaded")
-        print(f"[CEO]   {len(published_index)} previously published posts in index")
-        print(f"[CEO]   {len(statute_references)} approved statute references loaded")
+        # Step 2 — load brand voice + published index for Writer
+        print("[CEO] Step 2: loading brand voice and published index...")
+        brand_voice = sheets.get_brand_voice_samples()
+        published = sheets.get_published_index()
+        statutes = sheets.get_statute_references()
+        print(f"[CEO]   {len(brand_voice)} voice samples, {len(published)} previously published, {len(statutes)} statutes")
 
-        # Step 4 — invoke Writer
-        print("[CEO] Step 4: invoking Writer agent...")
-        todays_date = datetime.now().strftime("%Y-%m-%d")
-        result = write_post(
+        # Step 3 — Writer
+        print("[CEO] Step 3: Writer is drafting...")
+        writer_result = write_post(
             topic=topic,
             target_keyword=target_keyword,
-            notes=notes,
-            todays_date=todays_date,
-            brand_voice_samples=brand_voice_samples,
-            published_index=published_index,
+            brand_voice_samples=brand_voice,
+            published_index=published,
         )
-        print(f"[CEO]   Writer used {result['tokens_input']} input + {result['tokens_output']} output tokens")
-        print(f"[CEO]   Writer cost: ${result['cost_usd']:.4f}")
+        current_html = writer_result["html"]
+        slug = writer_result["slug"]
+        title = writer_result["title"]
+        total_tokens_in = writer_result["tokens_input"]
+        total_tokens_out = writer_result["tokens_output"]
+        total_cost = writer_result["cost_usd"]
+        print(f"[CEO]   Writer: ${writer_result['cost_usd']:.4f}")
 
-        # Step 5 — invoke Editor to polish Writer's output
-        print("[CEO] Step 5: invoking Editor agent...")
-        editor_html = result["html"]
-        editor_tokens_in = 0
-        editor_tokens_out = 0
-        editor_cost = 0.0
+        # Step 4 — Editor
+        print("[CEO] Step 4: Editor is polishing...")
         try:
             editor_result = edit_post(
-                writer_html=result["html"],
-                brand_voice_samples=brand_voice_samples,
+                html_content=current_html,
+                brand_voice_samples=brand_voice,
             )
-            editor_html = editor_result["html"]
-            editor_tokens_in = editor_result["tokens_input"]
-            editor_tokens_out = editor_result["tokens_output"]
-            editor_cost = editor_result["cost_usd"]
-            print(f"[CEO]   Editor used {editor_tokens_in} input + {editor_tokens_out} output tokens")
-            print(f"[CEO]   Editor cost: ${editor_cost:.4f}")
-        except Exception as editor_exc:
-            print(f"[CEO]   ⚠️  Editor failed: {editor_exc}", file=sys.stderr)
-            print(f"[CEO]   Falling back to Writer's unedited draft.", file=sys.stderr)
+            current_html = editor_result["html"]
+            total_tokens_in += editor_result["tokens_input"]
+            total_tokens_out += editor_result["tokens_output"]
+            total_cost += editor_result["cost_usd"]
+            print(f"[CEO]   Editor: ${editor_result['cost_usd']:.4f}")
+        except Exception as exc:
+            print(f"[CEO]   ⚠️  Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
 
-        # Step 6 — invoke Compliance + Citation agent
-        print("[CEO] Step 6: invoking Compliance + Citation agent...")
-        final_html = editor_html
-        compliance_tokens_in = 0
-        compliance_tokens_out = 0
-        compliance_cost = 0.0
+        # Step 4.5 — Humanizer (NEW)
+        print("[CEO] Step 4.5: Humanizer is removing AI tells...")
         try:
-            compliance_result = audit_post(
-                edited_html=editor_html,
-                statute_references=statute_references,
+            humanizer_result = humanize(
+                html_content=current_html,
+                brand_voice_samples=brand_voice,
             )
-            final_html = compliance_result["html"]
-            compliance_tokens_in = compliance_result["tokens_input"]
-            compliance_tokens_out = compliance_result["tokens_output"]
-            compliance_cost = compliance_result["cost_usd"]
-            print(f"[CEO]   Compliance used {compliance_tokens_in} input + {compliance_tokens_out} output tokens")
-            print(f"[CEO]   Compliance cost: ${compliance_cost:.4f}")
-        except Exception as compliance_exc:
-            print(f"[CEO]   ⚠️  Compliance audit failed: {compliance_exc}", file=sys.stderr)
-            print(f"[CEO]   Falling back to Editor's output without audit.", file=sys.stderr)
+            current_html = humanizer_result["html"]
+            total_tokens_in += humanizer_result["tokens_input"]
+            total_tokens_out += humanizer_result["tokens_output"]
+            total_cost += humanizer_result["cost_usd"]
+            
+            det_stats = humanizer_result["deterministic_stats"]
+            print(f"[CEO]   Humanizer: ${humanizer_result['cost_usd']:.4f}")
+            print(f"[CEO]   Safety net caught: {det_stats['em_dashes_removed']} em dashes, "
+                  f"{det_stats['en_dashes_removed']} en dashes, "
+                  f"{det_stats['smart_quotes_replaced']} smart quotes")
+        except Exception as exc:
+            print(f"[CEO]   ⚠️  Humanizer failed: {exc}. Continuing with Editor output.", file=sys.stderr)
 
-        # Combine cost tracking
-        total_tokens_in = result["tokens_input"] + editor_tokens_in + compliance_tokens_in
-        total_tokens_out = result["tokens_output"] + editor_tokens_out + compliance_tokens_out
-        total_cost = result["cost_usd"] + editor_cost + compliance_cost
-        print(f"[CEO]   Combined cost: ${total_cost:.4f}")
+        # Step 5 — Compliance + Citation
+        print("[CEO] Step 5: Compliance is auditing...")
+        try:
+            compliance_result = compliance_audit(
+                html_content=current_html,
+                statute_references=statutes,
+            )
+            current_html = compliance_result["html"]
+            total_tokens_in += compliance_result["tokens_input"]
+            total_tokens_out += compliance_result["tokens_output"]
+            total_cost += compliance_result["cost_usd"]
+            print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
+            print(f"[CEO]   Audit status: {compliance_result.get('summary_status', 'unknown')}")
+        except Exception as exc:
+            print(f"[CEO]   ⚠️  Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
 
-        # Use the final (audited) HTML going forward
-        result["html"] = final_html
-
-        # Step 7 — derive slug + extract meta from final HTML
-        meta = utils.extract_meta(result["html"])
-        slug = utils.slugify(meta["h1"] or topic)
-        print(f"[CEO] Step 7: generated post slug = {slug}")
-
-        # Step 8 — write the HTML file
+        # Step 6 — save HTML to blog folder
+        print("[CEO] Step 6: writing post to blog folder...")
         blog_dir = REPO_ROOT / "blog"
         blog_dir.mkdir(exist_ok=True)
-        out_path = blog_dir / f"{slug}.html"
-        out_path.write_text(result["html"])
-        print(f"[CEO] Step 8: wrote {out_path.relative_to(REPO_ROOT)}")
+        post_path = blog_dir / f"{slug}.html"
+        post_path.write_text(current_html, encoding="utf-8")
+        print(f"[CEO]   Saved to: {post_path}")
 
-        # Step 9 — regenerate blog index
-        publish_date_human = utils.format_human_date(todays_date)
-        utils.update_blog_index(
-            repo_root=REPO_ROOT,
-            new_slug=slug,
-            h1=meta["h1"],
-            lede=meta["lede"],
-            eyebrow=meta["eyebrow"] or "Notes from the firm · 5 min read",
-            publish_date_human=publish_date_human,
-        )
-        print(f"[CEO] Step 9: updated blog/index.html to include new post")
+        # Step 7 — update blog/index.html
+        print("[CEO] Step 7: updating blog index...")
+        try:
+            utils.update_blog_index(blog_dir, title, slug)
+        except Exception as exc:
+            print(f"[CEO]   ⚠️  Blog index update failed: {exc}. Post saved but index not refreshed.", file=sys.stderr)
 
-        # Step 10 — log success (combined Writer + Editor + Compliance stats)
-        print("[CEO] Step 10: logging to Generation Log...")
+        # Step 8 — log to Sheet
+        print("[CEO] Step 8: logging to Generation Log...")
         sheets.log_generation(
             topic=topic,
             status="Success",
             tokens_input=total_tokens_in,
             tokens_output=total_tokens_out,
             cost_usd=total_cost,
-            notes=(
-                f"Writer: ${result['cost_usd']:.4f} | "
-                f"Editor: ${editor_cost:.4f} | "
-                f"Compliance: ${compliance_cost:.4f} | "
-                f"Slug: {slug}"
-            ),
+            notes=f"Slug: {slug} | Pipeline: Writer→Editor→Humanizer→Compliance",
         )
 
-        # Step 11 — update topic row
-        draft_url = f"https://github.com/voostervu/nalawtx-website/blob/blog-agent/{slug}/blog/{slug}.html"
-        sheets.update_topic_status(row_idx, "Drafted", draft_url=draft_url)
-        print(f"[CEO] Step 11: topic row marked Drafted")
+        # Step 9 — update Sheet status
+        published_url = f"https://nalawtx.com/blog/{slug}"
+        sheets.update_topic_status(row_idx, "Drafted", draft_url=published_url)
 
-        # Emit the slug for GitHub Actions to use in branch naming
-        github_output = os.environ.get("GITHUB_OUTPUT")
-        if github_output:
-            with open(github_output, "a") as f:
-                f.write(f"slug={slug}\n")
-                f.write(f"title={meta['h1']}\n")
-                f.write(f"topic={topic}\n")
+        # Step 10 — write outputs for workflow
+        set_github_output("slug", slug)
+        set_github_output("topic", topic)
+        set_github_output("title", title)
 
-        print(f"[CEO] ✅ Pipeline complete. Post draft at blog/{slug}.html")
+        print(f"[CEO] ✅ Pipeline complete. Total cost: ${total_cost:.4f}")
+        print(f"[CEO]    Tokens: {total_tokens_in} in, {total_tokens_out} out")
         return 0
 
     except Exception as exc:
         print(f"[CEO] ❌ Pipeline failed: {exc}", file=sys.stderr)
         traceback.print_exc()
 
-        # Roll back the topic status so it's retried next run
+        # Mark topic as Queued again so it'll be picked up next run
         try:
             sheets.update_topic_status(row_idx, "Queued")
+        except Exception:
+            pass
+
+        # Log the failure
+        try:
             sheets.log_generation(
                 topic=topic,
                 status="Failed",
                 notes=f"{type(exc).__name__}: {exc}"[:500],
             )
         except Exception:
-            print("[CEO] (Also failed to update Sheet status — manual cleanup may be needed)", file=sys.stderr)
+            pass
 
         return 1
 
