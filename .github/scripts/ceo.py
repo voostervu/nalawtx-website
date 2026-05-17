@@ -7,14 +7,10 @@ Pipeline:
 
 Each step is fail-tolerant: if a later step crashes, we fall back to the previous
 step's output. Better to ship slightly-less-polished content than nothing.
-
-Outputs to GITHUB_OUTPUT (for use by the workflow):
-    slug    - the URL-safe slug
-    topic   - the topic title (for commit message)
-    title   - same as topic, formatted for display
 """
 
 import os
+import re
 import sys
 import traceback
 from pathlib import Path
@@ -28,7 +24,7 @@ import utils
 from writer import write_post
 from editor import edit_post
 from humanizer import humanize
-from compliance import compliance_audit
+from compliance import audit_post
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -39,11 +35,20 @@ def set_github_output(key: str, value: str):
     output_path = os.environ.get("GITHUB_OUTPUT")
     if output_path:
         with open(output_path, "a") as f:
-            # Escape multiline values
             if "\n" in value:
                 f.write(f"{key}<<EOF\n{value}\nEOF\n")
             else:
                 f.write(f"{key}={value}\n")
+
+
+def extract_summary_status(html: str) -> str:
+    """Parse the audit comment to find 'Summary status: ...' line.
+    Returns 'PASS', 'FLAGGED', 'AUTO-FIXED', or 'UNKNOWN'.
+    """
+    match = re.search(r"Summary status:\s*(\w[\w-]*)", html, re.IGNORECASE)
+    if match:
+        return match.group(1).upper()
+    return "UNKNOWN"
 
 
 def main() -> int:
@@ -61,11 +66,10 @@ def main() -> int:
     row_idx = topic_row["row_idx"]
     print(f"[CEO]   Selected: {topic}")
 
-    # Mark as Generating
     sheets.update_topic_status(row_idx, "Generating")
 
     try:
-        # Step 2 — load brand voice + published index for Writer
+        # Step 2 — load brand voice + published index + statutes
         print("[CEO] Step 2: loading brand voice and published index...")
         brand_voice = sheets.get_brand_voice_samples()
         published = sheets.get_published_index()
@@ -103,7 +107,7 @@ def main() -> int:
         except Exception as exc:
             print(f"[CEO]   ⚠️  Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
 
-        # Step 4.5 — Humanizer (NEW)
+        # Step 4.5 — Humanizer
         print("[CEO] Step 4.5: Humanizer is removing AI tells...")
         try:
             humanizer_result = humanize(
@@ -125,21 +129,23 @@ def main() -> int:
 
         # Step 5 — Compliance + Citation
         print("[CEO] Step 5: Compliance is auditing...")
+        summary_status = "UNKNOWN"
         try:
-            compliance_result = compliance_audit(
-                html_content=current_html,
+            compliance_result = audit_post(
+                edited_html=current_html,
                 statute_references=statutes,
             )
             current_html = compliance_result["html"]
             total_tokens_in += compliance_result["tokens_input"]
             total_tokens_out += compliance_result["tokens_output"]
             total_cost += compliance_result["cost_usd"]
+            summary_status = extract_summary_status(current_html)
             print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
-            print(f"[CEO]   Audit status: {compliance_result.get('summary_status', 'unknown')}")
+            print(f"[CEO]   Audit status: {summary_status}")
         except Exception as exc:
             print(f"[CEO]   ⚠️  Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
 
-        # Step 6 — save HTML to blog folder
+        # Step 6 — save HTML
         print("[CEO] Step 6: writing post to blog folder...")
         blog_dir = REPO_ROOT / "blog"
         blog_dir.mkdir(exist_ok=True)
@@ -162,7 +168,7 @@ def main() -> int:
             tokens_input=total_tokens_in,
             tokens_output=total_tokens_out,
             cost_usd=total_cost,
-            notes=f"Slug: {slug} | Pipeline: Writer→Editor→Humanizer→Compliance",
+            notes=f"Slug: {slug} | Pipeline: Writer-Editor-Humanizer-Compliance | Status: {summary_status}",
         )
 
         # Step 9 — update Sheet status
@@ -174,21 +180,18 @@ def main() -> int:
         set_github_output("topic", topic)
         set_github_output("title", title)
 
-        print(f"[CEO] ✅ Pipeline complete. Total cost: ${total_cost:.4f}")
-        print(f"[CEO]    Tokens: {total_tokens_in} in, {total_tokens_out} out")
+        print(f"[CEO] Pipeline complete. Total cost: ${total_cost:.4f}")
         return 0
 
     except Exception as exc:
-        print(f"[CEO] ❌ Pipeline failed: {exc}", file=sys.stderr)
+        print(f"[CEO] Pipeline failed: {exc}", file=sys.stderr)
         traceback.print_exc()
 
-        # Mark topic as Queued again so it'll be picked up next run
         try:
             sheets.update_topic_status(row_idx, "Queued")
         except Exception:
             pass
 
-        # Log the failure
         try:
             sheets.log_generation(
                 topic=topic,
