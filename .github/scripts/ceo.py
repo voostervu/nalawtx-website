@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import traceback
+from datetime import datetime
 from pathlib import Path
 
 # Make sibling scripts importable
@@ -41,10 +42,44 @@ def set_github_output(key: str, value: str):
                 f.write(f"{key}={value}\n")
 
 
+def slugify(text: str, max_length: int = 70) -> str:
+    """Convert a string into a URL-safe slug."""
+    # Try utils module first if it has a slugify-style function
+    for fname in ("slugify", "make_slug", "to_slug"):
+        if hasattr(utils, fname):
+            return getattr(utils, fname)(text)
+    
+    # Fallback: inline slugification
+    slug = text.lower()
+    slug = re.sub(r"[^\w\s-]", "", slug)   # remove punctuation
+    slug = re.sub(r"[-\s]+", "-", slug)     # collapse whitespace/hyphens
+    slug = slug.strip("-")
+    return slug[:max_length].rstrip("-")
+
+
+def extract_title_from_html(html: str, fallback: str) -> str:
+    """Try to extract <title> or first <h1> content, fall back to topic."""
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
+    if title_match:
+        title = title_match.group(1).strip()
+        # Strip any " | Site Name" suffix
+        if " | " in title:
+            title = title.split(" | ")[0].strip()
+        if title:
+            return title
+    
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+    if h1_match:
+        # Strip any HTML tags inside the h1
+        title = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
+        if title:
+            return title
+    
+    return fallback
+
+
 def extract_summary_status(html: str) -> str:
-    """Parse the audit comment to find 'Summary status: ...' line.
-    Returns 'PASS', 'FLAGGED', 'AUTO-FIXED', or 'UNKNOWN'.
-    """
+    """Parse the audit comment to find 'Summary status: ...' line."""
     match = re.search(r"Summary status:\s*(\w[\w-]*)", html, re.IGNORECASE)
     if match:
         return match.group(1).upper()
@@ -63,7 +98,9 @@ def main() -> int:
 
     topic = topic_row["topic"]
     target_keyword = topic_row["target_keyword"]
+    notes = topic_row.get("notes", "")
     row_idx = topic_row["row_idx"]
+    todays_date = datetime.now().strftime("%B %d, %Y")
     print(f"[CEO]   Selected: {topic}")
 
     sheets.update_topic_status(row_idx, "Generating")
@@ -81,16 +118,22 @@ def main() -> int:
         writer_result = write_post(
             topic=topic,
             target_keyword=target_keyword,
+            notes=notes,
+            todays_date=todays_date,
             brand_voice_samples=brand_voice,
             published_index=published,
         )
         current_html = writer_result["html"]
-        slug = writer_result["slug"]
-        title = writer_result["title"]
         total_tokens_in = writer_result["tokens_input"]
         total_tokens_out = writer_result["tokens_output"]
         total_cost = writer_result["cost_usd"]
         print(f"[CEO]   Writer: ${writer_result['cost_usd']:.4f}")
+        
+        # Generate slug and title from the writer output
+        title = extract_title_from_html(current_html, fallback=topic)
+        slug = slugify(title)
+        print(f"[CEO]   Title: {title}")
+        print(f"[CEO]   Slug:  {slug}")
 
         # Step 4 — Editor
         print("[CEO] Step 4: Editor is polishing...")
@@ -105,9 +148,9 @@ def main() -> int:
             total_cost += editor_result["cost_usd"]
             print(f"[CEO]   Editor: ${editor_result['cost_usd']:.4f}")
         except Exception as exc:
-            print(f"[CEO]   ⚠️  Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
+            print(f"[CEO]   Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
 
-        # Step 4.5 — Humanizer
+        # Step 4.5 — Humanizer (Phase 2.5)
         print("[CEO] Step 4.5: Humanizer is removing AI tells...")
         try:
             humanizer_result = humanize(
@@ -125,7 +168,7 @@ def main() -> int:
                   f"{det_stats['en_dashes_removed']} en dashes, "
                   f"{det_stats['smart_quotes_replaced']} smart quotes")
         except Exception as exc:
-            print(f"[CEO]   ⚠️  Humanizer failed: {exc}. Continuing with Editor output.", file=sys.stderr)
+            print(f"[CEO]   Humanizer failed: {exc}. Continuing with Editor output.", file=sys.stderr)
 
         # Step 5 — Compliance + Citation
         print("[CEO] Step 5: Compliance is auditing...")
@@ -143,7 +186,7 @@ def main() -> int:
             print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
             print(f"[CEO]   Audit status: {summary_status}")
         except Exception as exc:
-            print(f"[CEO]   ⚠️  Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
+            print(f"[CEO]   Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
 
         # Step 6 — save HTML
         print("[CEO] Step 6: writing post to blog folder...")
@@ -158,7 +201,7 @@ def main() -> int:
         try:
             utils.update_blog_index(blog_dir, title, slug)
         except Exception as exc:
-            print(f"[CEO]   ⚠️  Blog index update failed: {exc}. Post saved but index not refreshed.", file=sys.stderr)
+            print(f"[CEO]   Blog index update failed: {exc}. Post saved but index not refreshed.", file=sys.stderr)
 
         # Step 8 — log to Sheet
         print("[CEO] Step 8: logging to Generation Log...")
