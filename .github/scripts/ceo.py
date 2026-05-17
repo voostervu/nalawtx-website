@@ -3,7 +3,7 @@
 CEO orchestrator — runs the full blog generation pipeline.
 
 Pipeline:
-    Writer → Editor → Humanizer → Compliance → save HTML → update blog index
+    Writer → Editor → Humanizer → Compliance → Sensitivity → save HTML
 
 Each step is fail-tolerant: if a later step crashes, we fall back to the previous
 step's output. Better to ship slightly-less-polished content than nothing.
@@ -26,13 +26,13 @@ from writer import write_post
 from editor import edit_post
 from humanizer import humanize
 from compliance import audit_post
+from sensitivity import check_sensitivity, embed_audit_comment
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def set_github_output(key: str, value: str):
-    """Write a key=value pair to GITHUB_OUTPUT for the workflow to consume."""
     output_path = os.environ.get("GITHUB_OUTPUT")
     if output_path:
         with open(output_path, "a") as f:
@@ -44,25 +44,21 @@ def set_github_output(key: str, value: str):
 
 def slugify(text: str, max_length: int = 70) -> str:
     """Convert a string into a URL-safe slug."""
-    # Try utils module first if it has a slugify-style function
     for fname in ("slugify", "make_slug", "to_slug"):
         if hasattr(utils, fname):
             return getattr(utils, fname)(text)
     
-    # Fallback: inline slugification
     slug = text.lower()
-    slug = re.sub(r"[^\w\s-]", "", slug)   # remove punctuation
-    slug = re.sub(r"[-\s]+", "-", slug)     # collapse whitespace/hyphens
+    slug = re.sub(r"[^\w\s-]", "", slug)
+    slug = re.sub(r"[-\s]+", "-", slug)
     slug = slug.strip("-")
     return slug[:max_length].rstrip("-")
 
 
 def extract_title_from_html(html: str, fallback: str) -> str:
-    """Try to extract <title> or first <h1> content, fall back to topic."""
     title_match = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
     if title_match:
         title = title_match.group(1).strip()
-        # Strip any " | Site Name" suffix
         if " | " in title:
             title = title.split(" | ")[0].strip()
         if title:
@@ -70,7 +66,6 @@ def extract_title_from_html(html: str, fallback: str) -> str:
     
     h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
     if h1_match:
-        # Strip any HTML tags inside the h1
         title = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
         if title:
             return title
@@ -79,7 +74,7 @@ def extract_title_from_html(html: str, fallback: str) -> str:
 
 
 def extract_summary_status(html: str) -> str:
-    """Parse the audit comment to find 'Summary status: ...' line."""
+    """Parse the compliance audit comment to find 'Summary status:'."""
     match = re.search(r"Summary status:\s*(\w[\w-]*)", html, re.IGNORECASE)
     if match:
         return match.group(1).upper()
@@ -89,7 +84,7 @@ def extract_summary_status(html: str) -> str:
 def main() -> int:
     print("[CEO] Starting blog generation pipeline")
 
-    # Step 1 — get next topic from queue
+    # Step 1 — get next topic
     print("[CEO] Step 1: fetching next queued topic from Sheet...")
     topic_row = sheets.get_next_queued_topic()
     if not topic_row:
@@ -106,7 +101,7 @@ def main() -> int:
     sheets.update_topic_status(row_idx, "Generating")
 
     try:
-        # Step 2 — load brand voice + published index + statutes
+        # Step 2 — load context
         print("[CEO] Step 2: loading brand voice and published index...")
         brand_voice = sheets.get_brand_voice_samples()
         published = sheets.get_published_index()
@@ -129,7 +124,6 @@ def main() -> int:
         total_cost = writer_result["cost_usd"]
         print(f"[CEO]   Writer: ${writer_result['cost_usd']:.4f}")
         
-        # Generate slug and title from the writer output
         title = extract_title_from_html(current_html, fallback=topic)
         slug = slugify(title)
         print(f"[CEO]   Title: {title}")
@@ -150,7 +144,7 @@ def main() -> int:
         except Exception as exc:
             print(f"[CEO]   Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
 
-        # Step 4.5 — Humanizer (Phase 2.5)
+        # Step 4.5 — Humanizer
         print("[CEO] Step 4.5: Humanizer is removing AI tells...")
         try:
             humanizer_result = humanize(
@@ -170,9 +164,9 @@ def main() -> int:
         except Exception as exc:
             print(f"[CEO]   Humanizer failed: {exc}. Continuing with Editor output.", file=sys.stderr)
 
-        # Step 5 — Compliance + Citation
+        # Step 5 — Compliance
         print("[CEO] Step 5: Compliance is auditing...")
-        summary_status = "UNKNOWN"
+        compliance_status = "UNKNOWN"
         try:
             compliance_result = audit_post(
                 edited_html=current_html,
@@ -182,11 +176,36 @@ def main() -> int:
             total_tokens_in += compliance_result["tokens_input"]
             total_tokens_out += compliance_result["tokens_output"]
             total_cost += compliance_result["cost_usd"]
-            summary_status = extract_summary_status(current_html)
+            compliance_status = extract_summary_status(current_html)
             print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
-            print(f"[CEO]   Audit status: {summary_status}")
+            print(f"[CEO]   Compliance status: {compliance_status}")
         except Exception as exc:
             print(f"[CEO]   Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
+
+        # Step 5.5 — Topical Sensitivity (Phase 5)
+        print("[CEO] Step 5.5: Topical Sensitivity is checking recent events...")
+        sensitivity_status = "SAFE"
+        try:
+            sensitivity_result = check_sensitivity(
+                post_topic=topic,
+                post_html=current_html,
+            )
+            sensitivity_status = sensitivity_result["status"]
+            total_tokens_in += sensitivity_result["tokens_input"]
+            total_tokens_out += sensitivity_result["tokens_output"]
+            total_cost += sensitivity_result["cost_usd"]
+            
+            # Embed the sensitivity audit comment in the HTML
+            current_html = embed_audit_comment(current_html, sensitivity_result["audit_comment"])
+            
+            print(f"[CEO]   Sensitivity: ${sensitivity_result['cost_usd']:.4f}")
+            print(f"[CEO]   Sensitivity status: {sensitivity_status}")
+            print(f"[CEO]   Reasoning: {sensitivity_result['reasoning'][:200]}")
+            if sensitivity_result["relevant_events"]:
+                print(f"[CEO]   Relevant events found: {len(sensitivity_result['relevant_events'])}")
+        except Exception as exc:
+            print(f"[CEO]   Sensitivity check failed: {exc}. Defaulting to SAFE.", file=sys.stderr)
+            sensitivity_status = "SAFE"
 
         # Step 6 — save HTML
         print("[CEO] Step 6: writing post to blog folder...")
@@ -211,7 +230,7 @@ def main() -> int:
             tokens_input=total_tokens_in,
             tokens_output=total_tokens_out,
             cost_usd=total_cost,
-            notes=f"Slug: {slug} | Pipeline: Writer-Editor-Humanizer-Compliance | Status: {summary_status}",
+            notes=f"Slug: {slug} | Compliance: {compliance_status} | Sensitivity: {sensitivity_status}",
         )
 
         # Step 9 — update Sheet status
@@ -222,6 +241,8 @@ def main() -> int:
         set_github_output("slug", slug)
         set_github_output("topic", topic)
         set_github_output("title", title)
+        set_github_output("compliance_status", compliance_status)
+        set_github_output("sensitivity_status", sensitivity_status)
 
         print(f"[CEO] Pipeline complete. Total cost: ${total_cost:.4f}")
         return 0
