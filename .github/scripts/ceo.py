@@ -9,6 +9,7 @@ Each step is fail-tolerant: if a later step crashes, we fall back to the previou
 step's output. Better to ship slightly-less-polished content than nothing.
 """
 
+import html
 import os
 import re
 import sys
@@ -42,40 +43,94 @@ def set_github_output(key: str, value: str):
                 f.write(f"{key}={value}\n")
 
 
-def slugify(text: str, max_length: int = 70) -> str:
-    """Convert a string into a URL-safe slug."""
+def slugify(text: str, max_length: int = 100) -> str:
+    """Convert a string into a URL-safe slug. Handles HTML entities."""
     for fname in ("slugify", "make_slug", "to_slug"):
         if hasattr(utils, fname):
             return getattr(utils, fname)(text)
     
-    slug = text.lower()
+    # Decode HTML entities first (&amp; → &)
+    slug = html.unescape(text)
+    slug = slug.lower()
+    
+    # Remove standalone "amp" leftovers
+    slug = re.sub(r"\bamp\b", "", slug, flags=re.IGNORECASE)
+    
     slug = re.sub(r"[^\w\s-]", "", slug)
     slug = re.sub(r"[-\s]+", "-", slug)
     slug = slug.strip("-")
-    return slug[:max_length].rstrip("-")
+    
+    if len(slug) > max_length:
+        slug = slug[:max_length].rsplit("-", 1)[0]
+    
+    return slug.rstrip("-")
 
 
-def extract_title_from_html(html: str, fallback: str) -> str:
-    title_match = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
+def extract_title_from_html(html_content: str, fallback: str) -> str:
+    """Try to extract <title> or first <h1> content, fall back to topic."""
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", html_content, re.IGNORECASE | re.DOTALL)
     if title_match:
         title = title_match.group(1).strip()
         if " | " in title:
             title = title.split(" | ")[0].strip()
         if title:
-            return title
+            return html.unescape(title)
     
-    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.IGNORECASE | re.DOTALL)
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html_content, re.IGNORECASE | re.DOTALL)
     if h1_match:
         title = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
         if title:
-            return title
+            return html.unescape(title)
     
     return fallback
 
 
-def extract_summary_status(html: str) -> str:
+def extract_h1_from_html(html_content: str, fallback: str) -> str:
+    """Extract H1 text content for blog card."""
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html_content, re.IGNORECASE | re.DOTALL)
+    if h1_match:
+        h1 = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
+        if h1:
+            return html.unescape(h1)
+    return fallback
+
+
+def extract_lede_from_html(html_content: str, fallback: str = "") -> str:
+    """Extract first substantive paragraph as the lede (excerpt for blog card)."""
+    # Find all paragraphs
+    paragraphs = re.findall(r"<p[^>]*>(.*?)</p>", html_content, re.IGNORECASE | re.DOTALL)
+    
+    for p in paragraphs:
+        # Strip inner HTML tags
+        text = re.sub(r"<[^>]+>", "", p).strip()
+        text = html.unescape(text)
+        # Skip very short paragraphs (likely UI elements)
+        if len(text) >= 50:
+            return text
+    
+    return fallback
+
+
+def extract_eyebrow_from_html(html_content: str, fallback: str = "Personal Injury") -> str:
+    """Extract the eyebrow/category text from the post (the small label above the H1)."""
+    # Look for common eyebrow patterns
+    patterns = [
+        r'<span[^>]*class="[^"]*t-eyebrow[^"]*"[^>]*>(.*?)</span>',
+        r'<p[^>]*class="[^"]*eyebrow[^"]*"[^>]*>(.*?)</p>',
+        r'<div[^>]*class="[^"]*eyebrow[^"]*"[^>]*>(.*?)</div>',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html_content, re.IGNORECASE | re.DOTALL)
+        if match:
+            text = re.sub(r"<[^>]+>", "", match.group(1)).strip()
+            if text:
+                return html.unescape(text)
+    return fallback
+
+
+def extract_summary_status(html_content: str) -> str:
     """Parse the compliance audit comment to find 'Summary status:'."""
-    match = re.search(r"Summary status:\s*(\w[\w-]*)", html, re.IGNORECASE)
+    match = re.search(r"Summary status:\s*(\w[\w-]*)", html_content, re.IGNORECASE)
     if match:
         return match.group(1).upper()
     return "UNKNOWN"
@@ -180,7 +235,7 @@ def main() -> int:
             print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
             print(f"[CEO]   Compliance status: {compliance_status}")
         except Exception as exc:
-            print(f"[CEO]   Compliance failed: {exc}. Continuing with humanized output.", file=sys.stderr)
+            print(f"[CEO]   Compliance failed: {exc}. Continuing.", file=sys.stderr)
 
         # Step 5.5 — Topical Sensitivity (Phase 5)
         print("[CEO] Step 5.5: Topical Sensitivity is checking recent events...")
@@ -195,14 +250,11 @@ def main() -> int:
             total_tokens_out += sensitivity_result["tokens_output"]
             total_cost += sensitivity_result["cost_usd"]
             
-            # Embed the sensitivity audit comment in the HTML
             current_html = embed_audit_comment(current_html, sensitivity_result["audit_comment"])
             
             print(f"[CEO]   Sensitivity: ${sensitivity_result['cost_usd']:.4f}")
             print(f"[CEO]   Sensitivity status: {sensitivity_status}")
             print(f"[CEO]   Reasoning: {sensitivity_result['reasoning'][:200]}")
-            if sensitivity_result["relevant_events"]:
-                print(f"[CEO]   Relevant events found: {len(sensitivity_result['relevant_events'])}")
         except Exception as exc:
             print(f"[CEO]   Sensitivity check failed: {exc}. Defaulting to SAFE.", file=sys.stderr)
             sensitivity_status = "SAFE"
@@ -215,12 +267,26 @@ def main() -> int:
         post_path.write_text(current_html, encoding="utf-8")
         print(f"[CEO]   Saved to: {post_path}")
 
-        # Step 7 — update blog/index.html
+        # Step 7 — update blog/index.html with correct signature
         print("[CEO] Step 7: updating blog index...")
         try:
-            utils.update_blog_index(blog_dir, title, slug)
+            h1 = extract_h1_from_html(current_html, fallback=title)
+            lede = extract_lede_from_html(current_html, fallback="")
+            eyebrow = extract_eyebrow_from_html(current_html, fallback="Personal Injury")
+            publish_date = datetime.now().strftime("%B %-d, %Y")
+            
+            utils.update_blog_index(
+                repo_root=REPO_ROOT,
+                new_slug=slug,
+                h1=h1,
+                lede=lede,
+                eyebrow=eyebrow,
+                publish_date_human=publish_date,
+            )
+            print(f"[CEO]   Blog index updated with H1: {h1[:60]}")
         except Exception as exc:
             print(f"[CEO]   Blog index update failed: {exc}. Post saved but index not refreshed.", file=sys.stderr)
+            traceback.print_exc()
 
         # Step 8 — log to Sheet
         print("[CEO] Step 8: logging to Generation Log...")
@@ -237,7 +303,7 @@ def main() -> int:
         published_url = f"https://nalawtx.com/blog/{slug}"
         sheets.update_topic_status(row_idx, "Drafted", draft_url=published_url)
 
-        # Step 10 — write outputs for workflow
+        # Step 10 — outputs for workflow
         set_github_output("slug", slug)
         set_github_output("topic", topic)
         set_github_output("title", title)
