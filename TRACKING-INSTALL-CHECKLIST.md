@@ -65,6 +65,7 @@ Use the `thank_you_view` event as the first candidate for a real Lead event.
 - `CALLRAIL-INSTALL-MAP.md`
 - `DEPLOYMENT-CHECKLIST.md`
 - `POST-DEPLOY-QA-RUNBOOK.md`
+- `LAUNCH-MASTER-PLAN.md`
 
 ## Recommended next live setup order
 1. add GTM container
