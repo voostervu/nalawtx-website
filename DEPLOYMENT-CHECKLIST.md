@@ -23,8 +23,10 @@ Have these ready before live install:
 - confirmation of destination intake phone number
 
 ## GTM install step
-- add GTM head snippet sitewide
-- add GTM noscript snippet immediately after opening `<body>` where appropriate
+- run `python3 scripts/install_gtm.py GTM-XXXXXXX` from repo root with the real container ID
+- use `GTM-LIVE-INSTALL-STEPS.md` as the operator runbook
+- confirm the GTM head snippet is sitewide
+- confirm the GTM noscript snippet appears immediately after opening `<body>` where appropriate
 - publish to a preview or draft environment first if possible
 
 ## GA4 setup step
