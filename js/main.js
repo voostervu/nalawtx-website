@@ -300,6 +300,7 @@
       })
       .catch(function () {
         track('form_submit_error', { form_name: formName(form), reason: 'network' });
+        track('generate_lead', leadPayload(form, data, 'mailto_fallback'));
         // Last-resort safety net so the lead reaches us even if the endpoint is down.
         fallbackMailto(data);
         renderSuccessfulSubmit(form, data, 'mailto_fallback');
