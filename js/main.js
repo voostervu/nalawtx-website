@@ -21,6 +21,7 @@
 
   const INTAKE_EMAIL = 'info@nalawtx.com';
   const ATTRIBUTION_KEY = 'nalaw_attribution';
+  const SUCCESS_KEY = 'nalaw_last_success';
   const ATTRIBUTION_PARAMS = [
     'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
     'gclid', 'fbclid', 'msclkid'
@@ -90,6 +91,50 @@
     return form.dataset.formName || form.id || 'intake';
   }
 
+  function currentPath() {
+    return window.location.pathname.replace(/\/index\.html$/, '/') || '/';
+  }
+
+  function buildSuccessUrl(form) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('submitted', '1');
+    url.searchParams.set('form', formName(form));
+    url.searchParams.set('thank_you', '1');
+    url.hash = 'thank-you';
+    return url.toString();
+  }
+
+  function rememberSuccess(form, transport) {
+    const payload = {
+      form_name: formName(form),
+      path: currentPath(),
+      thank_you_url: buildSuccessUrl(form),
+      transport: transport,
+      at: new Date().toISOString()
+    };
+    try {
+      sessionStorage.setItem(SUCCESS_KEY, JSON.stringify(payload));
+    } catch (_) {}
+    return payload;
+  }
+
+  function readSuccessMemory() {
+    try {
+      return JSON.parse(sessionStorage.getItem(SUCCESS_KEY) || 'null');
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function shouldRestoreSuccess(form) {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('submitted') !== '1') return false;
+    if (url.searchParams.get('form') !== formName(form)) return false;
+    const memory = readSuccessMemory();
+    if (!memory) return false;
+    return memory.form_name === formName(form) && memory.path === currentPath();
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     // Capture attribution as early as possible, on every page.
     captureAttribution();
@@ -113,13 +158,19 @@
 
     // Intake forms
     document.querySelectorAll('form[data-intake]').forEach(function (form) {
+      if (shouldRestoreSuccess(form)) {
+        showSuccessScreen(form, { restored: true });
+        return;
+      }
+
       let started = false;
       form.addEventListener('focusin', function () {
         if (started) return;
         started = true;
         track('form_start', {
           form_name: formName(form),
-          form_location: window.location.pathname
+          form_location: currentPath(),
+          page_type: document.body.dataset.pageType || ''
         });
       });
       form.addEventListener('submit', handleIntakeSubmit);
@@ -130,7 +181,10 @@
       a.addEventListener('click', function () {
         track('phone_click', {
           phone_number: a.href.replace('tel:', ''),
-          link_location: window.location.pathname
+          link_location: currentPath(),
+          link_text: (a.textContent || '').trim().slice(0, 80),
+          link_classes: a.className || '',
+          page_type: document.body.dataset.pageType || ''
         });
       });
     });
@@ -174,7 +228,7 @@
       const data = collect(form);
       track('generate_lead', leadPayload(form, data, 'mailto'));
       fallbackMailto(data);
-      showSuccessScreen(form);
+      renderSuccessfulSubmit(form, data, 'mailto');
       return;
     }
 
@@ -196,13 +250,13 @@
       .then(function (r) {
         if (!r.ok) throw new Error('Submission failed: ' + r.status);
         track('generate_lead', leadPayload(form, data, 'ajax'));
-        showSuccessScreen(form);
+        renderSuccessfulSubmit(form, data, 'ajax');
       })
       .catch(function () {
         track('form_submit_error', { form_name: formName(form), reason: 'network' });
         // Last-resort safety net so the lead reaches us even if the endpoint is down.
         fallbackMailto(data);
-        showSuccessScreen(form);
+        renderSuccessfulSubmit(form, data, 'mailto_fallback');
       })
       .finally(function () {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalText; }
@@ -219,10 +273,24 @@
   function leadPayload(form, data, transport) {
     return {
       form_name: formName(form),
-      form_location: window.location.pathname,
-      preferred_language: data.language || '',
+      form_location: currentPath(),
+      preferred_language: data.language || data.source_lang || '',
       source_form: data.source_form || '',
-      transport: transport
+      transport: transport,
+      page_type: document.body.dataset.pageType || ''
+    };
+  }
+
+  function thankYouPayload(form, data, transport, restored) {
+    return {
+      form_name: formName(form),
+      form_location: currentPath(),
+      preferred_language: data.language || data.source_lang || '',
+      source_form: data.source_form || '',
+      transport: transport,
+      restored: restored ? 'true' : 'false',
+      thank_you_url: buildSuccessUrl(form),
+      page_type: document.body.dataset.pageType || ''
     };
   }
 
@@ -258,16 +326,36 @@
     window.location.href = mailto;
   }
 
-  function showSuccessScreen(form) {
+  function renderSuccessfulSubmit(form, data, transport) {
+    rememberSuccess(form, transport);
+    const successUrl = buildSuccessUrl(form);
+    try {
+      window.history.replaceState({}, '', successUrl);
+    } catch (_) {}
+    track('thank_you_view', thankYouPayload(form, data, transport, false));
+    showSuccessScreen(form, { transport: transport });
+  }
+
+  function showSuccessScreen(form, options) {
+    const opts = options || {};
     const container = form.parentElement;
-    const name = (form.querySelector('[name="first_name"]') || {}).value || 'you';
+    const name = (form.querySelector('[name="first_name"]') || {}).value || 'there';
+    const isHero = formName(form) === 'hero';
+    const returnHref = isHero ? 'consultation.html' : 'index.html';
+    const returnLabel = isHero ? 'Continue to full case review' : 'Back to home';
+    const responseCopy = opts.restored
+      ? 'Your request was already sent. If you need us faster, call or text now and our team will jump on it.'
+      : 'Your request has been sent. Expect a call or text from our team within 15 minutes during business hours, or first thing tomorrow morning if you submitted overnight.';
 
     container.innerHTML =
-      '<div style="text-align: center; padding: var(--s-lg) 0;">' +
+      '<div id="thank-you" data-thank-you="true" style="text-align: center; padding: var(--s-lg) 0;">' +
         '<div style="font-family: var(--f-display); font-size: 2.25rem; font-weight: 360; letter-spacing: -0.02em; color: var(--navy); margin-bottom: var(--s-sm); line-height: 1.1;">Thanks, ' + escapeHtml(name) + '.</div>' +
-        '<p style="color: var(--navy-2); font-size: 1.05rem; max-width: 40ch; margin: 0 auto var(--s-md);">Your request has been sent. Expect a call or text from our team within 15 minutes during business hours — or first thing tomorrow morning if you submitted overnight.</p>' +
+        '<p style="color: var(--navy-2); font-size: 1.05rem; max-width: 40ch; margin: 0 auto var(--s-md);">' + escapeHtml(responseCopy) + '</p>' +
         '<p style="color: var(--muted); font-size: 0.88rem; margin-bottom: var(--s-md);">Need to reach us now? Call <a href="tel:+17138429442" style="color: var(--navy); border-bottom: 1px dotted var(--muted);">(713) 842-9442</a>.</p>' +
-        '<a href="index.html" class="btn btn--ghost">Back to home</a>' +
+        '<div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">' +
+          '<a href="tel:+17138429442" class="btn btn--primary">Call now</a>' +
+          '<a href="' + returnHref + '" class="btn btn--ghost">' + returnLabel + '</a>' +
+        '</div>' +
       '</div>';
 
     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
