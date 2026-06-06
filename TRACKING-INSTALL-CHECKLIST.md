@@ -59,6 +59,11 @@ Use the `thank_you_view` event as the first candidate for a real Lead event.
 - `phone_click`
 - `guide_download`
 
+## Repo maps created for live install
+- `GTM-GA4-IMPLEMENTATION-MAP.md`
+- `META-PIXEL-IMPLEMENTATION-MAP.md`
+- `CALLRAIL-INSTALL-MAP.md`
+
 ## Recommended next live setup order
 1. add GTM container
 2. verify `dataLayer` events in preview mode

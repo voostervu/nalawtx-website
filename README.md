@@ -108,7 +108,13 @@ The site already primes `window.dataLayer` and pushes these custom events whethe
 | `guide_download` | A PDF or download CTA is clicked | `asset_name`, `asset_url`, `asset_type`, `link_location` |
 | `form_submit_error` | Validation or network failure | `form_name`, `reason` |
 
-If a `gtag()` function is also present, the same events are forwarded to GA4. For GTM targeting, every intake form has a stable `id` and `data-form-name` attribute (`consultation-form`, `consultation-form-es`, `consultation-form-vi`, `hero-intake-form`). The `<body>` on key conversion pages also carries `data-page-type`, `data-page-lang`, and where useful `data-case-type` so GTM/Meta/CallRail rules can target without brittle CSS selectors. Clickable phone and SMS links are also annotated at runtime with `data-phone-role` and `data-callrail-target="primary"`. See `TRACKING-INSTALL-CHECKLIST.md` for the live wiring plan.
+If a `gtag()` function is also present, the same events are forwarded to GA4. For GTM targeting, every intake form has a stable `id` and `data-form-name` attribute (`consultation-form`, `consultation-form-es`, `consultation-form-vi`, `hero-intake-form`). The `<body>` on key conversion pages also carries `data-page-type`, `data-page-lang`, and where useful `data-case-type` so GTM/Meta/CallRail rules can target without brittle CSS selectors. Clickable phone and SMS links are also annotated at runtime with `data-phone-role` and `data-callrail-target="primary"`.
+
+For the live wiring plan, use:
+- `TRACKING-INSTALL-CHECKLIST.md`
+- `GTM-GA4-IMPLEMENTATION-MAP.md`
+- `META-PIXEL-IMPLEMENTATION-MAP.md`
+- `CALLRAIL-INSTALL-MAP.md`
 
 ### 8. **Open Graph image**
 Create a `1200×630px` social-share image and save as `/assets/og-image.jpg`. This is what shows up when your site is shared on Facebook, LinkedIn, iMessage, etc.
