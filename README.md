@@ -115,6 +115,8 @@ For the live wiring plan, use:
 - `GTM-GA4-IMPLEMENTATION-MAP.md`
 - `META-PIXEL-IMPLEMENTATION-MAP.md`
 - `CALLRAIL-INSTALL-MAP.md`
+- `DEPLOYMENT-CHECKLIST.md`
+- `POST-DEPLOY-QA-RUNBOOK.md`
 
 ### 8. **Open Graph image**
 Create a `1200×630px` social-share image and save as `/assets/og-image.jpg`. This is what shows up when your site is shared on Facebook, LinkedIn, iMessage, etc.

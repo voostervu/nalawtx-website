@@ -63,6 +63,8 @@ Use the `thank_you_view` event as the first candidate for a real Lead event.
 - `GTM-GA4-IMPLEMENTATION-MAP.md`
 - `META-PIXEL-IMPLEMENTATION-MAP.md`
 - `CALLRAIL-INSTALL-MAP.md`
+- `DEPLOYMENT-CHECKLIST.md`
+- `POST-DEPLOY-QA-RUNBOOK.md`
 
 ## Recommended next live setup order
 1. add GTM container
