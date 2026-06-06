@@ -6,6 +6,10 @@ This repo is now prepared for GTM, GA4, Meta Pixel, and CallRail without hardcod
 ## Current hooks already in the site
 - `window.dataLayer` is primed on every page load
 - intake forms have stable IDs and `data-form-name` attributes
+- consultation intake now collects light qualification fields:
+  - `case_type`
+  - `incident_timing`
+  - `contact_method`
 - conversion pages include `data-page-type` and `data-page-lang` on `<body>`
 - consultation pages also include `data-case-type`
 - phone and SMS links are annotated at runtime with:
@@ -70,7 +74,8 @@ Use the `thank_you_view` event as the first candidate for a real Lead event.
 ## Recommended next live setup order
 1. add GTM container
 2. verify `dataLayer` events in preview mode
-3. connect GA4 and map conversions
-4. install Meta Pixel through GTM
-5. install CallRail and confirm number swap / attribution
-6. import only strong conversions into Google Ads
+3. confirm `case_type`, `incident_timing`, and `contact_method` pass through the form payload
+4. connect GA4 and map conversions
+5. install Meta Pixel through GTM
+6. install CallRail and confirm number swap / attribution
+7. import only strong conversions into Google Ads

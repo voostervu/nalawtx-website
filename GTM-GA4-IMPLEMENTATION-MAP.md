@@ -19,6 +19,10 @@ Available on key pages through `<body>` dataset values:
 - `#consultation-form-vi`
 - `#hero-intake-form`
 - `data-form-name`
+- qualification fields on consultation forms now include:
+  - `case_type`
+  - `incident_timing`
+  - `contact_method`
 
 ### runtime click annotations
 Phone and SMS links are annotated with:
@@ -57,6 +61,9 @@ Create:
 - `dlv_preferred_language`
 - `dlv_source_form`
 - `dlv_transport`
+- `dlv_case_type`
+- `dlv_incident_timing`
+- `dlv_contact_method`
 - `dlv_page_type`
 - `dlv_page_lang`
 - `dlv_phone_number`
@@ -181,6 +188,9 @@ Parameters:
 - `preferred_language`
 - `source_form`
 - `transport`
+- `case_type`
+- `incident_timing`
+- `contact_method`
 - `page_type`
 
 ### tag 5: thank_you_view
@@ -195,6 +205,9 @@ Parameters:
 - `preferred_language`
 - `source_form`
 - `transport`
+- `case_type`
+- `incident_timing`
+- `contact_method`
 - `thank_you_url`
 - `page_type`
 

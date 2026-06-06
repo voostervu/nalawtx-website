@@ -96,13 +96,48 @@
       </div>
 
       <div class="field">
+        <label for="contact_method">Best way to reach you first</label>
+        <select id="contact_method" name="contact_method">
+          <option>Call me</option>
+          <option>Text me</option>
+          <option>Either is fine</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="case_type">What type of case is this? *</label>
+        <select id="case_type" name="case_type" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Car accident</option>
+          <option>18-wheeler or truck accident</option>
+          <option>Commercial vehicle accident</option>
+          <option>Workplace injury</option>
+          <option>Wrongful death</option>
+          <option>Slip and fall</option>
+          <option>Other injury case</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="incident_timing">When did it happen? *</label>
+        <select id="incident_timing" name="incident_timing" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Within the last 24 hours</option>
+          <option>Within the last 7 days</option>
+          <option>Within the last 30 days</option>
+          <option>More than 30 days ago</option>
+          <option>Not sure</option>
+        </select>
+      </div>
+
+      <div class="field">
         <label for="email">Email <span style="color: var(--muted); font-weight: 400; font-size: 0.88rem;">(optional — we'll send a confirmation)</span></label>
         <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
       </div>
 
       <div class="field">
         <label for="details">What happened? *</label>
-        <textarea id="details" name="details" required placeholder="A sentence or two is fine. We'll ask the rest when we call you back." rows="3"></textarea>
+        <textarea id="details" name="details" required placeholder="A sentence or two is fine. Tell us where it happened, what injuries you have, and whether the other driver had insurance if you know." rows="4"></textarea>
       </div>
 
       <div class="field">

@@ -323,6 +323,9 @@
       preferred_language: data.language || data.source_lang || '',
       source_form: data.source_form || '',
       transport: transport,
+      case_type: data.case_type || document.body.dataset.caseType || '',
+      incident_timing: data.incident_timing || '',
+      contact_method: data.contact_method || '',
       page_type: document.body.dataset.pageType || ''
     };
   }
@@ -334,6 +337,9 @@
       preferred_language: data.language || data.source_lang || '',
       source_form: data.source_form || '',
       transport: transport,
+      case_type: data.case_type || document.body.dataset.caseType || '',
+      incident_timing: data.incident_timing || '',
+      contact_method: data.contact_method || '',
       restored: restored ? 'true' : 'false',
       thank_you_url: buildSuccessUrl(form),
       page_type: document.body.dataset.pageType || ''
@@ -347,7 +353,10 @@
       '',
       'Name: ' + (data.first_name || ''),
       'Phone: ' + (data.phone || ''),
+      'Best contact method: ' + (data.contact_method || 'Either is fine'),
       'Email: ' + (data.email || ''),
+      'Case type: ' + (data.case_type || ''),
+      'When it happened: ' + (data.incident_timing || ''),
       'Preferred language: ' + (data.language || 'English'),
       '',
       '--- What happened ---',
@@ -390,9 +399,15 @@
     const isHero = formName(form) === 'hero';
     const returnHref = isHero ? 'consultation.html' : 'index.html';
     const returnLabel = isHero ? 'Continue to full case review' : 'Back to home';
+    const preferredContact = (form.querySelector('[name="contact_method"]') || {}).value || 'Either is fine';
+    const responseMode = /text/i.test(preferredContact)
+      ? 'text'
+      : /call/i.test(preferredContact)
+        ? 'call'
+        : 'call or text';
     const responseCopy = opts.restored
       ? 'Your request was already sent. If you need us faster, call or text now and our team will jump on it.'
-      : 'Your request has been sent. Expect a call or text from our team within 15 minutes during business hours, or first thing tomorrow morning if you submitted overnight.';
+      : 'Your request has been sent. Expect a ' + responseMode + ' from our team within 15 minutes during business hours, or first thing tomorrow morning if you submitted overnight.';
 
     container.innerHTML =
       '<div id="thank-you" data-thank-you="true" style="text-align: center; padding: var(--s-lg) 0;">' +
