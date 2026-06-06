@@ -100,13 +100,15 @@ The site already primes `window.dataLayer` and pushes these custom events whethe
 
 | Event | Fired when | Useful params |
 |---|---|---|
-| `phone_click` | Any `tel:` link is clicked | `phone_number`, `link_location` |
+| `phone_click` | Any `tel:` link is clicked | `phone_number`, `phone_role`, `callrail_target`, `link_location` |
+| `sms_click` | Any `sms:` link is clicked | `phone_number`, `phone_role`, `link_location` |
 | `form_start` | First focus inside an intake form | `form_name`, `form_location` |
 | `generate_lead` | Form submission succeeds (AJAX or mailto fallback) | `form_name`, `preferred_language`, `source_form`, `transport` |
 | `thank_you_view` | The thank-you state is shown after a successful form submit | `form_name`, `thank_you_url`, `transport`, `page_type` |
+| `guide_download` | A PDF or download CTA is clicked | `asset_name`, `asset_url`, `asset_type`, `link_location` |
 | `form_submit_error` | Validation or network failure | `form_name`, `reason` |
 
-If a `gtag()` function is also present, the same events are forwarded to GA4. For GTM targeting, every intake form has a stable `id` and `data-form-name` attribute (`consultation-form`, `consultation-form-es`, `consultation-form-vi`, `hero-intake-form`). The `<body>` on key conversion pages also carries `data-page-type`, `data-page-lang`, and where useful `data-case-type` so GTM/Meta/CallRail rules can target without brittle CSS selectors.
+If a `gtag()` function is also present, the same events are forwarded to GA4. For GTM targeting, every intake form has a stable `id` and `data-form-name` attribute (`consultation-form`, `consultation-form-es`, `consultation-form-vi`, `hero-intake-form`). The `<body>` on key conversion pages also carries `data-page-type`, `data-page-lang`, and where useful `data-case-type` so GTM/Meta/CallRail rules can target without brittle CSS selectors. Clickable phone and SMS links are also annotated at runtime with `data-phone-role` and `data-callrail-target="primary"`. See `TRACKING-INSTALL-CHECKLIST.md` for the live wiring plan.
 
 ### 8. **Open Graph image**
 Create a `1200×630px` social-share image and save as `/assets/og-image.jpg`. This is what shows up when your site is shared on Facebook, LinkedIn, iMessage, etc.

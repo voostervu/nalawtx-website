@@ -135,6 +135,43 @@
     return memory.form_name === formName(form) && memory.path === currentPath();
   }
 
+  function detectPhoneRole(link) {
+    if (link.closest('[data-thank-you="true"]')) return 'thank_you';
+    if (link.classList.contains('lp-hdr__phone')) return 'header';
+    if (link.classList.contains('call')) return 'sticky_call_bar';
+    if (link.classList.contains('text')) return 'sticky_text_bar';
+    if (link.closest('form[data-intake]')) return 'form_support';
+    if (link.closest('.hero__actions')) return 'hero_cta';
+    if (link.closest('footer')) return 'footer';
+    return 'general';
+  }
+
+  function annotatePhoneLinks() {
+    document.querySelectorAll('a[href^="tel:"], a[href^="sms:"]').forEach(function (link) {
+      if (!link.dataset.phoneRole) {
+        link.dataset.phoneRole = detectPhoneRole(link);
+      }
+      link.dataset.callrailTarget = 'primary';
+      link.dataset.pageType = document.body.dataset.pageType || '';
+      link.dataset.pageLang = document.body.dataset.pageLang || '';
+    });
+  }
+
+  function wireDownloadTracking() {
+    document.querySelectorAll('a[href$=".pdf"], a[download]').forEach(function (link) {
+      link.dataset.assetType = link.dataset.assetType || 'download';
+      link.addEventListener('click', function () {
+        track('guide_download', {
+          asset_name: link.getAttribute('download') || link.pathname.split('/').pop() || '',
+          asset_url: link.href,
+          asset_type: link.dataset.assetType || 'download',
+          link_location: currentPath(),
+          page_type: document.body.dataset.pageType || ''
+        });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     // Capture attribution as early as possible, on every page.
     captureAttribution();
@@ -156,10 +193,15 @@
       });
     }
 
+    annotatePhoneLinks();
+    wireDownloadTracking();
+
     // Intake forms
     document.querySelectorAll('form[data-intake]').forEach(function (form) {
       if (shouldRestoreSuccess(form)) {
+        track('thank_you_view', thankYouPayload(form, collect(form), 'restore', true));
         showSuccessScreen(form, { restored: true });
+        annotatePhoneLinks();
         return;
       }
 
@@ -176,15 +218,19 @@
       form.addEventListener('submit', handleIntakeSubmit);
     });
 
-    // Phone-click tracking
-    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    // Phone and SMS click tracking
+    document.querySelectorAll('a[href^="tel:"], a[href^="sms:"]').forEach(function (a) {
       a.addEventListener('click', function () {
-        track('phone_click', {
-          phone_number: a.href.replace('tel:', ''),
+        const protocol = a.href.indexOf('sms:') === 0 ? 'sms' : 'tel';
+        track(protocol === 'sms' ? 'sms_click' : 'phone_click', {
+          phone_number: a.href.replace(/^tel:|^sms:/, ''),
           link_location: currentPath(),
           link_text: (a.textContent || '').trim().slice(0, 80),
           link_classes: a.className || '',
-          page_type: document.body.dataset.pageType || ''
+          phone_role: a.dataset.phoneRole || detectPhoneRole(a),
+          callrail_target: a.dataset.callrailTarget || '',
+          page_type: document.body.dataset.pageType || '',
+          page_lang: document.body.dataset.pageLang || ''
         });
       });
     });
@@ -334,6 +380,7 @@
     } catch (_) {}
     track('thank_you_view', thankYouPayload(form, data, transport, false));
     showSuccessScreen(form, { transport: transport });
+    annotatePhoneLinks();
   }
 
   function showSuccessScreen(form, options) {
