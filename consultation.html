@@ -82,7 +82,9 @@
     <h2>Start my free case review</h2>
     <p class="lp-card__sub"><strong>Avg. response: under 15 min.</strong> We reach out by whichever channel you prefer.</p>
 
-    <form class="form" data-intake action="https://formspree.io/f/xqenarze" method="POST">
+    <form class="form" id="consultation-form" data-intake data-form-name="consultation" action="https://formspree.io/f/xqenarze" method="POST">
+      <input type="hidden" name="source_form" value="consultation">
+      <input type="hidden" name="source_lang" value="en">
       <div class="field">
         <label for="first">Your name *</label>
         <input id="first" name="first_name" required autocomplete="name" placeholder="First and last name">

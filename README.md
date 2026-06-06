@@ -81,10 +81,9 @@ Each bio has placeholders like `J.D. · [Law school — TO CONFIRM]`. Send me:
 - Notable trial experience or speaking engagements
 
 ### 5. **Intake form backend**
-The `consultation.html` form currently has `action="#"` — it doesn't submit anywhere. Wire it to:
-- **Option A:** Your CRM directly (Lawmatics, Clio Grow, Litify, MyCase) via their webhook.
-- **Option B:** A form service like Formspree, Basin, or Formsubmit that emails you each submission.
-- **Option C:** Zapier/Make with a webhook → fan out to email, Slack, and CRM simultaneously.
+All four intake forms (homepage hero, English/Spanish/Vietnamese consultation pages) now POST to **Formspree** (`https://formspree.io/f/xqenarze`) via AJAX. Submissions include a `source_form` field plus auto-captured attribution (UTMs, gclid/fbclid, landing page, referrer, submit timestamp). If the Formspree request fails for any reason, the handler falls back to a `mailto:` to `info@nalawtx.com` so the lead is not lost.
+
+To swap backends later, change the `action="..."` on each `<form data-intake>` to your CRM webhook (Lawmatics, Clio Grow, Litify, MyCase, Zapier/Make, etc.). No JS change required — the handler uses whatever URL is on the form.
 
 I recommend **CallRail** for phone tracking (swap `(713) 842-9442` with a tracking number in the header and footer, and set CallRail to forward to your real line — you'll then see ad source for every call).
 
@@ -96,6 +95,17 @@ Get keys from `google.com/recaptcha`. Add the site key to `consultation.html` ju
 
 ### 7. **Google Analytics 4 / Google Tag Manager**
 Paste your GTM or GA4 snippet in the `<head>` of every page (or, better, replace the individual snippets with GTM and manage from there).
+
+The site already primes `window.dataLayer` and pushes these custom events whether or not GTM/GA4 is installed — once you add the snippet, the events flow with no code change:
+
+| Event | Fired when | Useful params |
+|---|---|---|
+| `phone_click` | Any `tel:` link is clicked | `phone_number`, `link_location` |
+| `form_start` | First focus inside an intake form | `form_name`, `form_location` |
+| `generate_lead` | Form submission succeeds (AJAX or mailto fallback) | `form_name`, `preferred_language`, `source_form`, `transport` |
+| `form_submit_error` | Validation or network failure | `form_name`, `reason` |
+
+If a `gtag()` function is also present, the same events are forwarded to GA4. For GTM targeting, every intake form has a stable `id` and `data-form-name` attribute (`consultation-form`, `consultation-form-es`, `consultation-form-vi`, `hero-intake-form`).
 
 ### 8. **Open Graph image**
 Create a `1200×630px` social-share image and save as `/assets/og-image.jpg`. This is what shows up when your site is shared on Facebook, LinkedIn, iMessage, etc.
