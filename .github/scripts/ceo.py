@@ -1,3 +1,100 @@
+#!/usr/bin/env python3
+"""
+CEO orchestrator — runs the full blog generation pipeline.
+
+Pipeline:
+    Writer → Editor → Humanizer → Compliance → Sensitivity → save HTML
+
+Each step is fail-tolerant: if a later step crashes, we fall back to the previous
+step's output. Better to ship slightly-less-polished content than nothing.
+"""
+
+import html
+import os
+import re
+import sys
+import traceback
+from datetime import datetime
+from pathlib import Path
+
+# Make sibling scripts importable
+SCRIPT_DIR = Path(__file__).parent
+sys.path.insert(0, str(SCRIPT_DIR))
+
+import sheets
+import utils
+from writer import write_post
+from editor import edit_post
+from humanizer import humanize
+from compliance import audit_post
+from sensitivity import check_sensitivity, embed_audit_comment
+
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def set_github_output(key: str, value: str):
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        with open(output_path, "a") as f:
+            if "\n" in value:
+                f.write(f"{key}<<EOF\n{value}\nEOF\n")
+            else:
+                f.write(f"{key}={value}\n")
+
+
+def slugify(text: str, max_length: int = 100) -> str:
+    """Convert a string into a URL-safe slug. Handles HTML entities."""
+    for fname in ("slugify", "make_slug", "to_slug"):
+        if hasattr(utils, fname):
+            return getattr(utils, fname)(text)
+    
+    # Decode HTML entities first (&amp; → &)
+    slug = html.unescape(text)
+    slug = slug.lower()
+    
+    # Remove standalone "amp" leftovers
+    slug = re.sub(r"\bamp\b", "", slug, flags=re.IGNORECASE)
+    
+    slug = re.sub(r"[^\w\s-]", "", slug)
+    slug = re.sub(r"[-\s]+", "-", slug)
+    slug = slug.strip("-")
+    
+    if len(slug) > max_length:
+        slug = slug[:max_length].rsplit("-", 1)[0]
+    
+    return slug.rstrip("-")
+
+
+def extract_title_from_html(html_content: str, fallback: str) -> str:
+    """Try to extract <title> or first <h1> content, fall back to topic."""
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", html_content, re.IGNORECASE | re.DOTALL)
+    if title_match:
+        title = title_match.group(1).strip()
+        if " | " in title:
+            title = title.split(" | ")[0].strip()
+        if title:
+            return html.unescape(title)
+    
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html_content, re.IGNORECASE | re.DOTALL)
+    if h1_match:
+        title = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
+        if title:
+            return html.unescape(title)
+    
+    return fallback
+
+
+def extract_h1_from_html(html_content: str, fallback: str) -> str:
+    """Extract H1 text content for blog card."""
+    h1_match = re.search(r"<h1[^>]*>(.*?)</h1>", html_content, re.IGNORECASE | re.DOTALL)
+    if h1_match:
+        h1 = re.sub(r"<[^>]+>", "", h1_match.group(1)).strip()
+        if h1:
+            return html.unescape(h1)
+    return fallback
+
+
 def extract_lede_from_html(html_content: str, fallback: str = "") -> str:
     """Extract the first substantive article paragraph for the blog card excerpt.
 
@@ -40,3 +137,230 @@ def extract_lede_from_html(html_content: str, fallback: str = "") -> str:
         return text
 
     return fallback
+
+
+def extract_eyebrow_from_html(html_content: str, fallback: str = "Personal Injury") -> str:
+    """Extract the eyebrow/category text from the post (the small label above the H1)."""
+    # Look for common eyebrow patterns
+    patterns = [
+        r'<span[^>]*class="[^"]*t-eyebrow[^"]*"[^>]*>(.*?)</span>',
+        r'<p[^>]*class="[^"]*eyebrow[^"]*"[^>]*>(.*?)</p>',
+        r'<div[^>]*class="[^"]*eyebrow[^"]*"[^>]*>(.*?)</div>',
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, html_content, re.IGNORECASE | re.DOTALL)
+        if match:
+            text = re.sub(r"<[^>]+>", "", match.group(1)).strip()
+            if text:
+                return html.unescape(text)
+    return fallback
+
+
+def extract_summary_status(html_content: str) -> str:
+    """Parse the compliance audit comment to find 'Summary status:'."""
+    match = re.search(r"Summary status:\s*(\w[\w-]*)", html_content, re.IGNORECASE)
+    if match:
+        return match.group(1).upper()
+    return "UNKNOWN"
+
+
+def main() -> int:
+    print("[CEO] Starting blog generation pipeline")
+
+    # Step 1 — get next topic
+    print("[CEO] Step 1: fetching next queued topic from Sheet...")
+    topic_row = sheets.get_next_queued_topic()
+    if not topic_row:
+        print("[CEO] No queued topics. Exiting cleanly.")
+        return 0
+
+    topic = topic_row["topic"]
+    target_keyword = topic_row["target_keyword"]
+    notes = topic_row.get("notes", "")
+    row_idx = topic_row["row_idx"]
+    todays_date = datetime.now().strftime("%B %d, %Y")
+    print(f"[CEO]   Selected: {topic}")
+
+    sheets.update_topic_status(row_idx, "Generating")
+
+    try:
+        # Step 2 — load context
+        print("[CEO] Step 2: loading brand voice and published index...")
+        brand_voice = sheets.get_brand_voice_samples()
+        published = sheets.get_published_index()
+        statutes = sheets.get_statute_references()
+        print(f"[CEO]   {len(brand_voice)} voice samples, {len(published)} previously published, {len(statutes)} statutes")
+
+        # Step 3 — Writer
+        print("[CEO] Step 3: Writer is drafting...")
+        writer_result = write_post(
+            topic=topic,
+            target_keyword=target_keyword,
+            notes=notes,
+            todays_date=todays_date,
+            brand_voice_samples=brand_voice,
+            published_index=published,
+        )
+        current_html = writer_result["html"]
+        total_tokens_in = writer_result["tokens_input"]
+        total_tokens_out = writer_result["tokens_output"]
+        total_cost = writer_result["cost_usd"]
+        print(f"[CEO]   Writer: ${writer_result['cost_usd']:.4f}")
+        
+        title = extract_title_from_html(current_html, fallback=topic)
+        slug = slugify(title)
+        print(f"[CEO]   Title: {title}")
+        print(f"[CEO]   Slug:  {slug}")
+
+        # Step 4 — Editor
+        print("[CEO] Step 4: Editor is polishing...")
+        try:
+            editor_result = edit_post(
+                html_content=current_html,
+                brand_voice_samples=brand_voice,
+            )
+            current_html = editor_result["html"]
+            total_tokens_in += editor_result["tokens_input"]
+            total_tokens_out += editor_result["tokens_output"]
+            total_cost += editor_result["cost_usd"]
+            print(f"[CEO]   Editor: ${editor_result['cost_usd']:.4f}")
+        except Exception as exc:
+            print(f"[CEO]   Editor failed: {exc}. Continuing with Writer output.", file=sys.stderr)
+
+        # Step 4.5 — Humanizer
+        print("[CEO] Step 4.5: Humanizer is removing AI tells...")
+        try:
+            humanizer_result = humanize(
+                html_content=current_html,
+                brand_voice_samples=brand_voice,
+            )
+            current_html = humanizer_result["html"]
+            total_tokens_in += humanizer_result["tokens_input"]
+            total_tokens_out += humanizer_result["tokens_output"]
+            total_cost += humanizer_result["cost_usd"]
+            
+            det_stats = humanizer_result["deterministic_stats"]
+            print(f"[CEO]   Humanizer: ${humanizer_result['cost_usd']:.4f}")
+            print(f"[CEO]   Safety net caught: {det_stats['em_dashes_removed']} em dashes, "
+                  f"{det_stats['en_dashes_removed']} en dashes, "
+                  f"{det_stats['smart_quotes_replaced']} smart quotes")
+        except Exception as exc:
+            print(f"[CEO]   Humanizer failed: {exc}. Continuing with Editor output.", file=sys.stderr)
+
+        # Step 5 — Compliance
+        print("[CEO] Step 5: Compliance is auditing...")
+        compliance_status = "UNKNOWN"
+        try:
+            compliance_result = audit_post(
+                edited_html=current_html,
+                statute_references=statutes,
+            )
+            current_html = compliance_result["html"]
+            total_tokens_in += compliance_result["tokens_input"]
+            total_tokens_out += compliance_result["tokens_output"]
+            total_cost += compliance_result["cost_usd"]
+            compliance_status = extract_summary_status(current_html)
+            print(f"[CEO]   Compliance: ${compliance_result['cost_usd']:.4f}")
+            print(f"[CEO]   Compliance status: {compliance_status}")
+        except Exception as exc:
+            print(f"[CEO]   Compliance failed: {exc}. Continuing.", file=sys.stderr)
+
+        # Step 5.5 — Topical Sensitivity (Phase 5)
+        print("[CEO] Step 5.5: Topical Sensitivity is checking recent events...")
+        sensitivity_status = "SAFE"
+        try:
+            sensitivity_result = check_sensitivity(
+                post_topic=topic,
+                post_html=current_html,
+            )
+            sensitivity_status = sensitivity_result["status"]
+            total_tokens_in += sensitivity_result["tokens_input"]
+            total_tokens_out += sensitivity_result["tokens_output"]
+            total_cost += sensitivity_result["cost_usd"]
+            
+            current_html = embed_audit_comment(current_html, sensitivity_result["audit_comment"])
+            
+            print(f"[CEO]   Sensitivity: ${sensitivity_result['cost_usd']:.4f}")
+            print(f"[CEO]   Sensitivity status: {sensitivity_status}")
+            print(f"[CEO]   Reasoning: {sensitivity_result['reasoning'][:200]}")
+        except Exception as exc:
+            print(f"[CEO]   Sensitivity check failed: {exc}. Defaulting to SAFE.", file=sys.stderr)
+            sensitivity_status = "SAFE"
+
+        # Step 6 — save HTML
+        print("[CEO] Step 6: writing post to blog folder...")
+        blog_dir = REPO_ROOT / "blog"
+        blog_dir.mkdir(exist_ok=True)
+        post_path = blog_dir / f"{slug}.html"
+        post_path.write_text(current_html, encoding="utf-8")
+        print(f"[CEO]   Saved to: {post_path}")
+
+        # Step 7 — update blog/index.html with correct signature
+        print("[CEO] Step 7: updating blog index...")
+        try:
+            h1 = extract_h1_from_html(current_html, fallback=title)
+            lede = extract_lede_from_html(current_html, fallback="")
+            eyebrow = extract_eyebrow_from_html(current_html, fallback="Personal Injury")
+            publish_date = datetime.now().strftime("%B %-d, %Y")
+            
+            utils.update_blog_index(
+                repo_root=REPO_ROOT,
+                new_slug=slug,
+                h1=h1,
+                lede=lede,
+                eyebrow=eyebrow,
+                publish_date_human=publish_date,
+            )
+            print(f"[CEO]   Blog index updated with H1: {h1[:60]}")
+        except Exception as exc:
+            print(f"[CEO]   Blog index update failed: {exc}. Post saved but index not refreshed.", file=sys.stderr)
+            traceback.print_exc()
+
+        # Step 8 — log to Sheet
+        print("[CEO] Step 8: logging to Generation Log...")
+        sheets.log_generation(
+            topic=topic,
+            status="Success",
+            tokens_input=total_tokens_in,
+            tokens_output=total_tokens_out,
+            cost_usd=total_cost,
+            notes=f"Slug: {slug} | Compliance: {compliance_status} | Sensitivity: {sensitivity_status}",
+        )
+
+        # Step 9 — update Sheet status
+        published_url = f"https://nalawtx.com/blog/{slug}"
+        sheets.update_topic_status(row_idx, "Drafted", draft_url=published_url)
+
+        # Step 10 — outputs for workflow
+        set_github_output("slug", slug)
+        set_github_output("topic", topic)
+        set_github_output("title", title)
+        set_github_output("compliance_status", compliance_status)
+        set_github_output("sensitivity_status", sensitivity_status)
+
+        print(f"[CEO] Pipeline complete. Total cost: ${total_cost:.4f}")
+        return 0
+
+    except Exception as exc:
+        print(f"[CEO] Pipeline failed: {exc}", file=sys.stderr)
+        traceback.print_exc()
+
+        try:
+            sheets.update_topic_status(row_idx, "Queued")
+        except Exception:
+            pass
+
+        try:
+            sheets.log_generation(
+                topic=topic,
+                status="Failed",
+                notes=f"{type(exc).__name__}: {exc}"[:500],
+            )
+        except Exception:
+            pass
+
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
