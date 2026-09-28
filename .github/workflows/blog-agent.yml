@@ -77,34 +77,40 @@ jobs:
           HTML_FILE="blog/${{ steps.ceo.outputs.slug }}.html"
           COMPLIANCE_STATUS="${{ steps.ceo.outputs.compliance_status }}"
           SENSITIVITY_STATUS="${{ steps.ceo.outputs.sensitivity_status }}"
+          WARNINGS=""
 
+          # Hard stops: the only cases that block publishing.
           if [ ! -f "$HTML_FILE" ]; then
             echo "auto_merge=false" >> $GITHUB_OUTPUT
             echo "reason=HTML file not found" >> $GITHUB_OUTPUT
+            echo "warnings=HTML file not found" >> $GITHUB_OUTPUT
             exit 0
           fi
-
-          if [ "$SENSITIVITY_STATUS" = "HOLD" ]; then
-            echo "auto_merge=false" >> $GITHUB_OUTPUT
-            echo "reason=Sensitivity HOLD - human review required" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          if grep -q "REVIEW:" "$HTML_FILE"; then
-            REVIEW_COUNT=$(grep -c "REVIEW:" "$HTML_FILE")
-            echo "auto_merge=false" >> $GITHUB_OUTPUT
-            echo "reason=Compliance marked $REVIEW_COUNT item(s) for inline review" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
           if [ "$COMPLIANCE_STATUS" = "UNKNOWN" ]; then
             echo "auto_merge=false" >> $GITHUB_OUTPUT
-            echo "reason=Compliance audit did not complete" >> $GITHUB_OUTPUT
+            echo "reason=Compliance audit did not run - post is unaudited" >> $GITHUB_OUTPUT
+            echo "warnings=Compliance audit did not run" >> $GITHUB_OUTPUT
             exit 0
           fi
 
+          # Everything else publishes, but is reported.
+          if [ "$SENSITIVITY_STATUS" = "HOLD" ] || [ "$SENSITIVITY_STATUS" = "CAUTION" ]; then
+            WARNINGS="$WARNINGS Sensitivity $SENSITIVITY_STATUS (see audit comment at top of post)."
+          fi
+          if grep -q "REVIEW:" "$HTML_FILE"; then
+            N=$(grep -c "REVIEW:" "$HTML_FILE")
+            WARNINGS="$WARNINGS Compliance marked $N passage(s) with REVIEW."
+          fi
+          if [ "$COMPLIANCE_STATUS" = "FLAGGED" ] && ! grep -q "REVIEW:" "$HTML_FILE"; then
+            WARNINGS="$WARNINGS Compliance summary FLAGGED (no inline markers)."
+          fi
+
+          # Save the flagged lines for the warning issue
+          grep "REVIEW:" "$HTML_FILE" | sed 's/^[[:space:]]*//' | head -20 > /tmp/review_lines.txt || true
+
           echo "auto_merge=true" >> $GITHUB_OUTPUT
-          echo "reason=Audited clean (Compliance: $COMPLIANCE_STATUS, Sensitivity: $SENSITIVITY_STATUS, 0 inline flags)" >> $GITHUB_OUTPUT
+          echo "reason=Published (Compliance: $COMPLIANCE_STATUS, Sensitivity: $SENSITIVITY_STATUS)" >> $GITHUB_OUTPUT
+          echo "warnings=$WARNINGS" >> $GITHUB_OUTPUT
 
       - name: Open pull request
         if: steps.commit.outputs.committed == 'true'
@@ -149,27 +155,38 @@ jobs:
           gh pr merge "$PR_NUMBER" --squash --delete-branch
           echo "Auto-merged PR #$PR_NUMBER"
 
-      - name: Warn when not auto-merged
-        if: steps.commit.outputs.committed == 'true' && steps.check_merge.outputs.auto_merge != 'true'
+      - name: Warn about flagged or held post
+        if: steps.commit.outputs.committed == 'true' && (steps.check_merge.outputs.warnings != '' || steps.check_merge.outputs.auto_merge != 'true')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BODY=$(cat <<'EOF'
-          A new blog post was written but did NOT publish automatically. It needs your review.
-
-          **Post:** ${{ steps.ceo.outputs.title }}
-          **Why it was held:** ${{ steps.check_merge.outputs.reason }}
-          **Compliance:** ${{ steps.ceo.outputs.compliance_status }}
-          **Sensitivity:** ${{ steps.ceo.outputs.sensitivity_status }}
-
-          **Review and publish here:** ${{ steps.pr.outputs.pr_url }}
-
-          To publish: open the link, check the flagged items (search the HTML for `REVIEW:` or read the sensitivity audit comment at the top), then click Merge pull request. Close this issue once done.
-          EOF
-          )
-          gh issue create \
-            --title "Blog post needs review: ${{ steps.ceo.outputs.title }}" \
-            --body "$BODY"
+          if [ "${{ steps.check_merge.outputs.auto_merge }}" = "true" ]; then
+            TITLE="Published with warnings: ${{ steps.ceo.outputs.title }}"
+            HEAD="This post was PUBLISHED automatically, but the checks flagged it. Please review the live post."
+            LINK="**Live post:** https://nalawtx.com/blog/${{ steps.ceo.outputs.slug }}"
+          else
+            TITLE="NOT published, needs review: ${{ steps.ceo.outputs.title }}"
+            HEAD="This post was NOT published. Reason: ${{ steps.check_merge.outputs.reason }}"
+            LINK="**Review and merge here:** ${{ steps.pr.outputs.pr_url }}"
+          fi
+          {
+            echo "$HEAD"
+            echo ""
+            echo "$LINK"
+            echo ""
+            echo "**Warnings:** ${{ steps.check_merge.outputs.warnings }}"
+            echo "**Compliance:** ${{ steps.ceo.outputs.compliance_status }} | **Sensitivity:** ${{ steps.ceo.outputs.sensitivity_status }}"
+            if [ -s /tmp/review_lines.txt ]; then
+              echo ""
+              echo "### Flagged passages"
+              echo '```'
+              cat /tmp/review_lines.txt
+              echo '```'
+            fi
+            echo ""
+            echo "To fix a flagged passage: edit blog/${{ steps.ceo.outputs.slug }}.html on GitHub and commit. Close this issue when done."
+          } > /tmp/issue_body.md
+          gh issue create --title "$TITLE" --body-file /tmp/issue_body.md
 
       - name: Summarize
         if: steps.commit.outputs.committed == 'true'
