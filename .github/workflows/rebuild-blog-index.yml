@@ -1,0 +1,45 @@
+name: Rebuild Blog Index
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Preview only - do not commit"
+        type: boolean
+        default: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild index
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python .github/scripts/rebuild_blog_index.py --dry-run
+          else
+            python .github/scripts/rebuild_blog_index.py
+          fi
+
+      - name: Commit
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          git config user.name "blog-agent[bot]"
+          git config user.email "blog-agent@nalawtx.com"
+          git add blog/index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Rebuild blog index cards from post files"
+          git push
