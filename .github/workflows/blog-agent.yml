@@ -149,6 +149,28 @@ jobs:
           gh pr merge "$PR_NUMBER" --squash --delete-branch
           echo "Auto-merged PR #$PR_NUMBER"
 
+      - name: Warn when not auto-merged
+        if: steps.commit.outputs.committed == 'true' && steps.check_merge.outputs.auto_merge != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BODY=$(cat <<'EOF'
+          A new blog post was written but did NOT publish automatically. It needs your review.
+
+          **Post:** ${{ steps.ceo.outputs.title }}
+          **Why it was held:** ${{ steps.check_merge.outputs.reason }}
+          **Compliance:** ${{ steps.ceo.outputs.compliance_status }}
+          **Sensitivity:** ${{ steps.ceo.outputs.sensitivity_status }}
+
+          **Review and publish here:** ${{ steps.pr.outputs.pr_url }}
+
+          To publish: open the link, check the flagged items (search the HTML for `REVIEW:` or read the sensitivity audit comment at the top), then click Merge pull request. Close this issue once done.
+          EOF
+          )
+          gh issue create \
+            --title "Blog post needs review: ${{ steps.ceo.outputs.title }}" \
+            --body "$BODY"
+
       - name: Summarize
         if: steps.commit.outputs.committed == 'true'
         run: |
