@@ -6,10 +6,14 @@ For each blog/<slug>.html this makes sure that:
   - the Article schema "mainEntityOfPage" points to the same URL
   - an og:url tag exists and points to the same URL
   - the post is listed in sitemap.xml
+  - the post is listed in llms.txt (the file AI search engines read)
+  - internal audit notes (REVIEW markers and audit comments) are moved out of
+    the public page into .github/audits/<slug>.md
 
 Safe to run any number of times. Run with --dry-run to preview.
 """
 import datetime
+import html
 import pathlib
 import re
 import sys
@@ -18,13 +22,59 @@ SITE = "https://nalawtx.com"
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 BLOG = ROOT / "blog"
 SITEMAP = ROOT / "sitemap.xml"
+LLMS = ROOT / "llms.txt"
+AUDITS = ROOT / ".github" / "audits"
 DRY = "--dry-run" in sys.argv
+
+
+NOTE = re.compile(r"<!--((?:(?!-->).)*?(?:REVIEW|AUDIT \(Phase)(?:(?!-->).)*?)-->", re.S)
+
+
+def plain(fragment):
+    fragment = re.sub(r"<[^>]*$", "", fragment)
+    text = html.unescape(" ".join(re.sub(r"<[^>]+>", " ", fragment).split()))
+    return text.replace(" .", ".").replace(" ,", ",").replace(" ?", "?")
+
+
+def strip_notes(path, text):
+    """Move internal audit notes out of the page and into .github/audits/."""
+    inline, blocks = [], []
+    for m in NOTE.finditer(text):
+        body = m.group(1).strip()
+        if body == "/REVIEW":
+            continue
+        if "AUDIT (Phase" in body:
+            blocks.append(body)
+        else:
+            context = plain(NOTE.sub("", text[m.end():m.end() + 400]))[:140]
+            inline.append((body.replace("\u26a0\ufe0f", "").strip(), context))
+    if not inline and not blocks:
+        return text
+    new = re.sub(r"(?m)^[ \t]*" + NOTE.pattern + r"[ \t]*\n", "", text, flags=re.S)
+    new = NOTE.sub("", new)
+    new = re.sub(r"\A(<!doctype html>)\s*", lambda m: m.group(1) + "\n", new, flags=re.I)
+    out = [f"# Audit notes: blog/{path.name}", "", "Moved out of the published page automatically.", ""]
+    out.append("## Passages marked for review")
+    out.append("")
+    for note, context in inline:
+        out.append(f"- {note}")
+        if context:
+            out.append(f"  - Text that follows: {context}")
+    if not inline:
+        out.append("None.")
+    for block in blocks:
+        out += ["", "## Audit", "", "```", block, "```"]
+    print(f"moved {len(inline)} review note(s) and {len(blocks)} audit block(s): blog/{path.name}")
+    if not DRY:
+        AUDITS.mkdir(parents=True, exist_ok=True)
+        (AUDITS / f"{path.stem}.md").write_text("\n".join(out) + "\n", encoding="utf-8")
+    return new
 
 
 def fix_post(path):
     url = f"{SITE}/blog/{path.stem}"
     text = path.read_text(encoding="utf-8")
-    new = text
+    new = strip_notes(path, text)
 
     canonical = f'<link rel="canonical" href="{url}">'
     if re.search(r'<link\s+rel="canonical"[^>]*>', new, re.I):
@@ -60,7 +110,37 @@ def fix_post(path):
     m = re.search(r'"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})', new) or re.search(
         r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})', new
     )
-    return url, (m.group(1) if m else datetime.date.today().isoformat())
+    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", new, re.S)
+    desc = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', new, re.I)
+    return {
+        "url": url,
+        "date": m.group(1) if m else datetime.date.today().isoformat(),
+        "title": plain(h1.group(1)) if h1 else path.stem,
+        "desc": html.unescape(desc.group(1)).strip() if desc else "",
+    }
+
+
+def update_llms(posts):
+    """List every post in llms.txt, inside its Blog section."""
+    if not LLMS.exists():
+        return
+    lines = LLMS.read_text(encoding="utf-8").split("\n")
+    text = "\n".join(lines)
+    start = next((i for i, l in enumerate(lines) if l.startswith("## Blog")), None)
+    if start is None:
+        return
+    end = next((i for i in range(start + 1, len(lines)) if lines[i].startswith("## ")), len(lines))
+    last = max((i for i in range(start, end) if lines[i].startswith("- [")), default=start)
+    added = []
+    for p in posts:
+        if p["url"] + ")" in text or p["url"] + ".html)" in text:
+            continue
+        title = p["title"].replace("[", "(").replace("]", ")")
+        added.append(f"- [{title}]({p['url']})" + (f": {p['desc']}" if p["desc"] else ""))
+        print(f"added to llms.txt: {p['url']}")
+    if added and not DRY:
+        lines[last + 1:last + 1] = added
+        LLMS.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():
@@ -69,7 +149,8 @@ def main():
     sitemap = SITEMAP.read_text(encoding="utf-8")
     listed = set(re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", sitemap))
     entries = ""
-    for url, date in posts:
+    for p in posts:
+        url, date = p["url"], p["date"]
         if url in listed or url + ".html" in listed:
             continue
         print(f"added to sitemap: {url}")
@@ -87,6 +168,7 @@ def main():
         if not DRY:
             SITEMAP.write_text(sitemap, encoding="utf-8")
 
+    update_llms(posts)
     print(f"Checked {len(posts)} posts.")
 
 
