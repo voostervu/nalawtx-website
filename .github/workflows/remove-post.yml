@@ -1,0 +1,43 @@
+name: Remove a Blog Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "Post file name without .html (for example: my-post-title)"
+        required: true
+        type: string
+
+jobs:
+  remove:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Remove the post and every link to it
+        env:
+          SLUG: ${{ inputs.slug }}
+        run: python .github/scripts/remove_post.py "$SLUG"
+
+      - name: Commit
+        env:
+          SLUG: ${{ inputs.slug }}
+        run: |
+          git config user.name "blog-agent[bot]"
+          git config user.email "blog-agent@nalawtx.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Remove blog post: $SLUG"
+          git push
