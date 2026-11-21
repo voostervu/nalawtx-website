@@ -54,6 +54,16 @@ jobs:
           # Link the new post to its practice pages and related posts.
           python .github/scripts/add_internal_links.py || echo "::warning::add_internal_links.py failed - new post has no related links"
 
+      # Checks every claim about a new law or court ruling against live sources.
+      # HOLD means a claim is wrong or the post's main claim could not be confirmed.
+      - name: Fact-check new laws and rulings
+        if: steps.ceo.outputs.slug != ''
+        id: factcheck
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/factcheck.py "blog/${{ steps.ceo.outputs.slug }}.html"
+
       - name: Configure git
         if: steps.ceo.outputs.slug != ''
         run: |
@@ -89,6 +99,7 @@ jobs:
           HTML_FILE="blog/${{ steps.ceo.outputs.slug }}.html"
           COMPLIANCE_STATUS="${{ steps.ceo.outputs.compliance_status }}"
           SENSITIVITY_STATUS="${{ steps.ceo.outputs.sensitivity_status }}"
+          FACT_STATUS="${{ steps.factcheck.outputs.status }}"
           WARNINGS=""
           # Review notes are moved out of the public page into this file by fix_seo.py.
           AUDIT_FILE=".github/audits/${{ steps.ceo.outputs.slug }}.md"
@@ -123,6 +134,20 @@ jobs:
 
           # Save the flagged lines for the warning issue
           grep "$REVIEW_PAT" "$AUDIT_FILE" | sed 's/^[[:space:]]*//' | head -20 > /tmp/review_lines.txt || true
+
+          # Fact check: a wrong or unconfirmed new-law claim blocks publishing.
+          if [ "$FACT_STATUS" = "HOLD" ]; then
+            echo "auto_merge=false" >> $GITHUB_OUTPUT
+            echo "reason=Fact check could not confirm a new law or court ruling described in this post" >> $GITHUB_OUTPUT
+            echo "warnings=Fact check HOLD (see flagged passages).$WARNINGS" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          if [ "$FACT_STATUS" = "WARN" ]; then
+            WARNINGS="$WARNINGS Fact check could not confirm a side claim, or could not run."
+          fi
+          if [ -z "$FACT_STATUS" ]; then
+            WARNINGS="$WARNINGS Fact check did not run."
+          fi
 
           echo "auto_merge=true" >> $GITHUB_OUTPUT
           echo "reason=Published (Compliance: $COMPLIANCE_STATUS, Sensitivity: $SENSITIVITY_STATUS)" >> $GITHUB_OUTPUT
@@ -191,7 +216,7 @@ jobs:
             echo "$LINK"
             echo ""
             echo "**Warnings:** ${{ steps.check_merge.outputs.warnings }}"
-            echo "**Compliance:** ${{ steps.ceo.outputs.compliance_status }} | **Sensitivity:** ${{ steps.ceo.outputs.sensitivity_status }}"
+            echo "**Compliance:** ${{ steps.ceo.outputs.compliance_status }} | **Sensitivity:** ${{ steps.ceo.outputs.sensitivity_status }} | **Fact check:** ${{ steps.factcheck.outputs.status }}"
             if [ -s /tmp/review_lines.txt ]; then
               echo ""
               echo "### Flagged passages"
