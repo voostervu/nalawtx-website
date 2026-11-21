@@ -19,16 +19,19 @@ jobs:
           python-version: "3.12"
 
       - name: Fix canonical tags and sitemap
-        run: python .github/scripts/fix_seo.py
+        run: |
+          python .github/scripts/fix_seo.py
+          python .github/scripts/add_internal_links.py
 
       - name: Commit
         run: |
           git config user.name "blog-agent[bot]"
           git config user.email "blog-agent@nalawtx.com"
-          git add blog/ sitemap.xml
+          git add blog/ practice/ sitemap.xml llms.txt
+          [ -d .github/audits ] && git add .github/audits
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "Fix blog canonical tags and add posts to sitemap"
+          git commit -m "Blog upkeep: tags, sitemap, llms.txt, audit notes, internal links"
           git push
