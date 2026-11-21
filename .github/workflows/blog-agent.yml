@@ -49,6 +49,8 @@ jobs:
             exit 0
           fi
           python .github/scripts/ceo.py
+          # Point the new post's canonical tag at its real URL and list it in the sitemap.
+          python .github/scripts/fix_seo.py || echo "::warning::fix_seo.py failed - canonical tags or sitemap may need a manual run"
 
       - name: Configure git
         if: steps.ceo.outputs.slug != ''
@@ -62,7 +64,7 @@ jobs:
         run: |
           BRANCH="blog-agent/${{ steps.ceo.outputs.slug }}"
           git checkout -b "$BRANCH"
-          git add blog/
+          git add blog/ sitemap.xml
           if git diff --staged --quiet; then
             echo "No changes to commit."
             echo "committed=false" >> $GITHUB_OUTPUT
