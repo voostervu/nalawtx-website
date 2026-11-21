@@ -46,6 +46,8 @@ Give each claim one verdict:
 
 Mark a claim `"central": true` when the post's headline or main point depends on it. A post titled around a new law is centrally about that law.
 
+Judge substance, not labels. A loose label is not a contradiction when the underlying facts are right: calling a law "the 2026 law" when it passed in 2025 and its main requirements began in 2026 is CONFIRMED, and you note the imprecision in the evidence. A wrong date stated as a fact ("took effect January 1, 2026" when it took effect in 2025), a misdescribed holding, or a misdescribed effect of a law is still CONTRADICTED. A misspelled case name is CONFIRMED with the correct spelling in the evidence.
+
 Be strict. If the post says a law "passed" and your sources only show it passed one chamber, or show it was proposed, that is CONTRADICTED or UNCONFIRMED, never CONFIRMED.
 
 ---
