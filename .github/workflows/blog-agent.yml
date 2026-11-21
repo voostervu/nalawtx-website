@@ -51,6 +51,8 @@ jobs:
           python .github/scripts/ceo.py
           # Point the new post's canonical tag at its real URL and list it in the sitemap.
           python .github/scripts/fix_seo.py || echo "::warning::fix_seo.py failed - canonical tags or sitemap may need a manual run"
+          # Link the new post to its practice pages and related posts.
+          python .github/scripts/add_internal_links.py || echo "::warning::add_internal_links.py failed - new post has no related links"
 
       - name: Configure git
         if: steps.ceo.outputs.slug != ''
@@ -64,7 +66,8 @@ jobs:
         run: |
           BRANCH="blog-agent/${{ steps.ceo.outputs.slug }}"
           git checkout -b "$BRANCH"
-          git add blog/ sitemap.xml
+          git add blog/ practice/ sitemap.xml llms.txt
+          [ -d .github/audits ] && git add .github/audits
           if git diff --staged --quiet; then
             echo "No changes to commit."
             echo "committed=false" >> $GITHUB_OUTPUT
@@ -87,6 +90,10 @@ jobs:
           COMPLIANCE_STATUS="${{ steps.ceo.outputs.compliance_status }}"
           SENSITIVITY_STATUS="${{ steps.ceo.outputs.sensitivity_status }}"
           WARNINGS=""
+          # Review notes are moved out of the public page into this file by fix_seo.py.
+          AUDIT_FILE=".github/audits/${{ steps.ceo.outputs.slug }}.md"
+          [ -f "$AUDIT_FILE" ] || AUDIT_FILE="$HTML_FILE"
+          REVIEW_PAT='^- REVIEW:\|<!--.*REVIEW:'
 
           # Hard stops: the only cases that block publishing.
           if [ ! -f "$HTML_FILE" ]; then
@@ -104,18 +111,18 @@ jobs:
 
           # Everything else publishes, but is reported.
           if [ "$SENSITIVITY_STATUS" = "HOLD" ] || [ "$SENSITIVITY_STATUS" = "CAUTION" ]; then
-            WARNINGS="$WARNINGS Sensitivity $SENSITIVITY_STATUS (see audit comment at top of post)."
+            WARNINGS="$WARNINGS Sensitivity $SENSITIVITY_STATUS (see $AUDIT_FILE)."
           fi
-          if grep -q "REVIEW:" "$HTML_FILE"; then
-            N=$(grep -c "REVIEW:" "$HTML_FILE")
+          if grep -q "$REVIEW_PAT" "$AUDIT_FILE"; then
+            N=$(grep -c "$REVIEW_PAT" "$AUDIT_FILE")
             WARNINGS="$WARNINGS Compliance marked $N passage(s) with REVIEW."
           fi
-          if [ "$COMPLIANCE_STATUS" = "FLAGGED" ] && ! grep -q "REVIEW:" "$HTML_FILE"; then
+          if [ "$COMPLIANCE_STATUS" = "FLAGGED" ] && ! grep -q "$REVIEW_PAT" "$AUDIT_FILE"; then
             WARNINGS="$WARNINGS Compliance summary FLAGGED (no inline markers)."
           fi
 
           # Save the flagged lines for the warning issue
-          grep "REVIEW:" "$HTML_FILE" | sed 's/^[[:space:]]*//' | head -20 > /tmp/review_lines.txt || true
+          grep "$REVIEW_PAT" "$AUDIT_FILE" | sed 's/^[[:space:]]*//' | head -20 > /tmp/review_lines.txt || true
 
           echo "auto_merge=true" >> $GITHUB_OUTPUT
           echo "reason=Published (Compliance: $COMPLIANCE_STATUS, Sensitivity: $SENSITIVITY_STATUS)" >> $GITHUB_OUTPUT
@@ -140,12 +147,12 @@ jobs:
           ### Review checklist (if PR stays open)
           - [ ] Voice reads as human, not AI
           - [ ] No outcome guarantees or dollar promises
-          - [ ] Statute citations accurate (see audit comment in HTML)
+          - [ ] Statute citations accurate (see audit notes file)
           - [ ] Houston/Texas references real
           - [ ] Check sensitivity audit if status is HOLD or CAUTION
           - [ ] Internal links point to real pages
 
-          See HTML comments at top of file for full audit details.
+          Full audit details: `.github/audits/${{ steps.ceo.outputs.slug }}.md`
           EOF
           )
           PR_URL=$(gh pr create \
