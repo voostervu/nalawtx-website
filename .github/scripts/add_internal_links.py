@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""One-time site cleanup (Nov 2026). Safe to run more than once.
+"""Internal links between practice pages and blog posts. Safe to run any time.
 
 1. Adds a "From our blog" section to each practice page, linking related posts.
 2. Adds a "Keep reading" section to each blog post, linking its practice
    page(s) and related posts.
 3. Replaces page titles that were cut off with a literal "…".
+
+Runs after every new post. Posts listed in POSTS use the hand-picked practice
+pages; any newer post is matched to practice pages by the KEYWORDS below.
 """
 import html
 import pathlib
@@ -71,6 +74,30 @@ PRACTICE = {
     "workplace-injury": "Workplace Injuries",
     "wrongful-death": "Wrongful Death",
 }
+
+# For posts not listed in POSTS: first matching practice pages win (max 2).
+KEYWORDS = [
+    ("truck-accident", r"truck|18-wheeler|fmcsa|tractor-trailer"),
+    ("motorcycle", r"motorcycle|biker"),
+    ("rideshare", r"uber|lyft|rideshare|driverless|autonomous"),
+    ("pedestrian", r"pedestrian|bicycle|cyclist|crosswalk|scooter"),
+    ("drunk-driver", r"drunk|dwi|dram shop|intoxicated"),
+    ("nursing-home", r"nursing home|elder abuse|assisted living"),
+    ("dog-bite", r"dog bite|dog attack"),
+    ("slip-fall", r"slip|trip and fall"),
+    ("premises-liability", r"premises|negligent security|apartment|property owner"),
+    ("construction", r"construction|scaffold|crane"),
+    ("oilfield", r"oilfield|oil field|drilling|pipeline"),
+    ("refinery-explosion", r"refinery|explosion|chemical plant"),
+    ("maritime", r"maritime|jones act|offshore|longshore"),
+    ("workplace-injury", r"workplace|at work|non-?subscriber|workers' comp|employer"),
+    ("wrongful-death", r"wrongful death|fatal|survival claim"),
+    ("brain-injury", r"brain|concussion|tbi"),
+    ("spinal-cord", r"spinal|paralysis|herniated"),
+    ("burn-injury", r"burn"),
+    ("product-liability", r"defective|product liability|recall"),
+    ("car-accident", r"car|crash|wreck|collision|driver|driving|insurance|adjuster"),
+]
 
 TITLES = {
     "intersections/capitol-milam-downtown.html": "Crashes at Capitol & Milam | Houston Injury Attorney",
@@ -148,6 +175,24 @@ def post_title(slug):
     return title.replace(" .", ".").replace(" ,", ",").replace(" ?", "?")
 
 
+def guess_areas(slug, title):
+    text = f"{slug.replace('-', ' ')} {title}".lower()
+    areas = [a for a, pattern in KEYWORDS if re.search(rf"\b(?:{pattern})", text)]
+    return areas[:2] or ["car-accident"]
+
+
+def append_cards(path, cards):
+    """Add cards to a page's existing link section, skipping ones already there."""
+    text = path.read_text(encoding="utf-8")
+    start = text.index(MARK)
+    end = text.index("    </div>\n  </div>\n</section>", start)
+    new = [c for c in cards if re.search(r'href="[^"]*"', c).group(0) not in text[start:end]]
+    if not new:
+        return False
+    path.write_text(text[:end] + "".join(new) + text[end:], encoding="utf-8")
+    return True
+
+
 def insert(path, block):
     text = path.read_text(encoding="utf-8")
     if MARK in text or ANCHOR not in text:
@@ -157,8 +202,9 @@ def insert(path, block):
 
 
 def add_links():
-    posts = {s: p for s, p in POSTS.items() if (ROOT / "blog" / f"{s}.html").exists()}
-    titles = {s: post_title(s) for s in posts}
+    slugs = sorted(p.stem for p in (ROOT / "blog").glob("*.html") if p.name != "index.html")
+    titles = {s: post_title(s) for s in slugs}
+    posts = {s: POSTS.get(s) or guess_areas(s, titles[s]) for s in slugs}
     done = 0
 
     for area, name in PRACTICE.items():
@@ -167,7 +213,11 @@ def add_links():
         if not slugs:
             continue
         cards = [CARD.format(href=f"../blog/{s}.html", title=titles[s], sub="Read the article") for s in slugs]
-        done += insert(ROOT / "practice" / f"{area}.html", section("From our blog", "Answers to common questions.", cards))
+        page = ROOT / "practice" / f"{area}.html"
+        if MARK in page.read_text(encoding="utf-8"):
+            done += append_cards(page, cards)
+        else:
+            done += insert(page, section("From our blog", "Answers to common questions.", cards))
 
     for slug, areas in posts.items():
         cards = [
@@ -181,7 +231,7 @@ def add_links():
         cards += [CARD.format(href=f"{s}.html", title=titles[s], sub="Read the article") for s in related]
         done += insert(ROOT / "blog" / f"{slug}.html", section("Keep reading", "Related cases and articles.", cards))
 
-    print(f"Added link sections to {done} pages.")
+    print(f"Added or updated link sections on {done} pages.")
 
 
 def fix_titles():
