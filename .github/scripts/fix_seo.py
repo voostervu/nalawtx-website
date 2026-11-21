@@ -7,6 +7,8 @@ For each blog/<slug>.html this makes sure that:
   - an og:url tag exists and points to the same URL
   - the post is listed in sitemap.xml
   - the post is listed in llms.txt (the file AI search engines read)
+  - the post names an attorney as its author, in the schema and in a visible
+    byline linked to the attorney's bio
   - internal audit notes (REVIEW markers and audit comments) are moved out of
     the public page into .github/audits/<slug>.md
 
@@ -25,6 +27,48 @@ SITEMAP = ROOT / "sitemap.xml"
 LLMS = ROOT / "llms.txt"
 AUDITS = ROOT / ".github" / "audits"
 DRY = "--dry-run" in sys.argv
+
+# Attorney named as author on every post.
+AUTHOR_NAME = "Vu Nguyen"
+AUTHOR_TITLE = "Founder & Managing Partner"
+AUTHOR_SLUG = "vu-nguyen"
+AUTHOR_SCHEMA = (
+    '"author": {\n'
+    '    "@type": "Person",\n'
+    f'    "name": "{AUTHOR_NAME}",\n'
+    f'    "jobTitle": "{AUTHOR_TITLE}",\n'
+    f'    "url": "{SITE}/attorneys/{AUTHOR_SLUG}",\n'
+    '    "worksFor": {\n'
+    '      "@type": "LegalService",\n'
+    '      "name": "Nguyen & Associates Injury Law Firm",\n'
+    f'      "url": "{SITE}"\n'
+    "    }\n"
+    "  }"
+)
+BYLINE = (
+    '    <p class="post-byline" style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--muted);">'
+    f'By <a href="../attorneys/{AUTHOR_SLUG}.html" style="color: var(--body); border-bottom: 1px dotted currentColor;">'
+    f"{AUTHOR_NAME}</a>, {html.escape(AUTHOR_TITLE)}</p>\n"
+)
+
+
+def add_author(text):
+    """Name the attorney as author in the Article schema and in a visible byline."""
+    new = re.sub(
+        r'"author"\s*:\s*\{\s*"@type"\s*:\s*"Organization"[^{}]*\}',
+        lambda m: AUTHOR_SCHEMA,
+        text,
+        count=1,
+    )
+    if 'class="post-byline"' not in new:
+        new = re.sub(
+            r'([ \t]*<p class="phead__lede">.*?</p>\n)',
+            lambda m: m.group(1) + BYLINE,
+            new,
+            count=1,
+            flags=re.S,
+        )
+    return new
 
 
 NOTE = re.compile(r"<!--((?:(?!-->).)*?(?:REVIEW|AUDIT \(Phase)(?:(?!-->).)*?)-->", re.S)
@@ -74,7 +118,7 @@ def strip_notes(path, text):
 def fix_post(path):
     url = f"{SITE}/blog/{path.stem}"
     text = path.read_text(encoding="utf-8")
-    new = strip_notes(path, text)
+    new = add_author(strip_notes(path, text))
 
     canonical = f'<link rel="canonical" href="{url}">'
     if re.search(r'<link\s+rel="canonical"[^>]*>', new, re.I):
