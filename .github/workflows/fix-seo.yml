@@ -23,12 +23,14 @@ jobs:
           python .github/scripts/fix_seo.py
           python .github/scripts/add_internal_links.py
           python .github/scripts/site_schema.py
+          python .github/scripts/site_polish.py
+          python .github/scripts/build_llms_full.py
 
       - name: Commit
         run: |
           git config user.name "blog-agent[bot]"
           git config user.email "blog-agent@nalawtx.com"
-          git add -A -- '*.html' sitemap.xml llms.txt
+          git add -A -- '*.html' sitemap.xml llms.txt llms-full.txt
           [ -d .github/audits ] && git add .github/audits
           if git diff --staged --quiet; then
             echo "No changes to commit."

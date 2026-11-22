@@ -53,6 +53,9 @@ jobs:
           python .github/scripts/fix_seo.py || echo "::warning::fix_seo.py failed - canonical tags or sitemap may need a manual run"
           # Link the new post to its practice pages and related posts.
           python .github/scripts/add_internal_links.py || echo "::warning::add_internal_links.py failed - new post has no related links"
+          # Link statutes to the official text, tidy titles and schema, refresh the full-text file for AI engines.
+          python .github/scripts/site_polish.py || echo "::warning::site_polish.py failed"
+          python .github/scripts/build_llms_full.py || echo "::warning::build_llms_full.py failed"
 
       # Checks every claim about a new law or court ruling against live sources.
       # HOLD means a claim is wrong or the post's main claim could not be confirmed.
@@ -76,7 +79,7 @@ jobs:
         run: |
           BRANCH="blog-agent/${{ steps.ceo.outputs.slug }}"
           git checkout -b "$BRANCH"
-          git add blog/ practice/ sitemap.xml llms.txt
+          git add blog/ practice/ guides/ sitemap.xml llms.txt llms-full.txt
           [ -d .github/audits ] && git add .github/audits
           if git diff --staged --quiet; then
             echo "No changes to commit."
@@ -205,6 +208,14 @@ jobs:
           BLOG_AGENT_SHEET_ID: ${{ secrets.BLOG_AGENT_SHEET_ID }}
           TOPIC: ${{ steps.ceo.outputs.topic }}
         run: python .github/scripts/record_published.py "${{ steps.ceo.outputs.slug }}" "$TOPIC"
+
+      # Bing feeds ChatGPT and Copilot; this tells it about the new post right away.
+      - name: Notify Bing about the new post
+        if: steps.commit.outputs.committed == 'true' && steps.check_merge.outputs.auto_merge == 'true'
+        continue-on-error: true
+        run: |
+          sleep 120  # give Netlify time to publish the page
+          python .github/scripts/indexnow.py "https://nalawtx.com/blog/${{ steps.ceo.outputs.slug }}" "https://nalawtx.com/blog/"
 
       - name: Warn about flagged or held post
         if: steps.commit.outputs.committed == 'true' && (steps.check_merge.outputs.warnings != '' || steps.check_merge.outputs.auto_merge != 'true')
