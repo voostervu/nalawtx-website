@@ -1,0 +1,48 @@
+name: Translate Practice Pages (Spanish and Vietnamese)
+
+on:
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: "Practice page file names without .html, separated by spaces"
+        required: true
+        type: string
+        default: "car-accident truck-accident motorcycle pedestrian rideshare workplace-injury wrongful-death slip-fall drunk-driver construction"
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -q -r .github/scripts/requirements.txt
+
+      - name: Translate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLUGS: ${{ inputs.slugs }}
+        run: python .github/scripts/translate_page.py $SLUGS
+
+      - name: Commit
+        run: |
+          git config user.name "blog-agent[bot]"
+          git config user.email "blog-agent@nalawtx.com"
+          git add es/ vi/ practice/ sitemap.xml
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Add Spanish and Vietnamese practice pages"
+          git pull --rebase -q origin main
+          git push
