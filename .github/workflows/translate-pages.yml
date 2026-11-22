@@ -9,10 +9,9 @@ on:
         type: string
         default: "car-accident truck-accident motorcycle pedestrian rideshare workplace-injury wrongful-death slip-fall drunk-driver construction"
       section:
-        description: "Folder the pages are in: practice, blog or locations"
+        description: "Folder the pages are in (practice, blog, locations, attorneys, guides), or . for top-level pages"
         required: true
-        type: choice
-        options: [practice, blog, locations]
+        type: string
         default: practice
 
 jobs:
@@ -45,7 +44,7 @@ jobs:
         run: |
           git config user.name "blog-agent[bot]"
           git config user.email "blog-agent@nalawtx.com"
-          git add es/ vi/ practice/ blog/ locations/ sitemap.xml
+          git add -A -- "*.html" sitemap.xml
           if git diff --staged --quiet; then
             echo "No changes to commit."
             exit 0

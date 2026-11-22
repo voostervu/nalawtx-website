@@ -31,7 +31,18 @@ META = re.compile(
 )
 NO_NAME = {"LegalService", "Organization", "Person", "Attorney", "LocalBusiness", "WebSite", "City", "PostalAddress", "State"}
 MARKER = re.compile(r"\[\[\d+\]\]")
-SECTION = "practice"  # or "blog"; set from --section
+SECTION = "practice"  # folder the pages are in; "." for pages at the top of the site. Set from --section
+
+
+def page_url(lang, slug):
+    """Public address of a page: no .html, and a folder address for index pages."""
+    parts = [SITE] + ([] if lang == "en" else [lang]) + ([] if SECTION == "." else [SECTION])
+    base = "/".join(parts)
+    return base + "/" if slug == "index" else f"{base}/{slug}"
+
+
+def page_dir(lang):
+    return os.path.normpath(SECTION if lang == "en" else f"{lang}/{SECTION}")
 
 
 def tag_name(token):
@@ -166,29 +177,29 @@ def rewrite_links(token, lang, translated_paths):
         local = target + "index.html" if target.endswith("/") else target
         if f"{lang}/{local}" in translated_paths:
             target = f"{lang}/{target}"
-        rel = os.path.relpath(target.rstrip("/"), f"{lang}/{SECTION}") + ("/" if target.endswith("/") else "")
+        rel = os.path.relpath(target.rstrip("/"), page_dir(lang)) + ("/" if target.endswith("/") else "")
         return f'{attr}="{rel}{sep}{frag}"'
 
     return re.sub(r'\b(href|src)="([^"]*)"', fix, token)
 
 
 def hreflang_block(slug, langs):
-    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/{SECTION}/{slug}">']
-    lines += [f'<link rel="alternate" hreflang="{l}" href="{SITE}/{l}/{SECTION}/{slug}">' for l in langs]
-    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/{SECTION}/{slug}">')
+    lines = [f'<link rel="alternate" hreflang="en" href="{page_url("en", slug)}">']
+    lines += [f'<link rel="alternate" hreflang="{l}" href="{page_url(l, slug)}">' for l in langs]
+    lines.append(f'<link rel="alternate" hreflang="x-default" href="{page_url("en", slug)}">')
     return "\n".join(lines)
 
 
 def set_head(text, slug, page_lang, langs):
     """Canonical, og:url, hreflang and the EN / ES / VI switcher for one version of the page."""
-    own = f"{SITE}/{SECTION}/{slug}" if page_lang == "en" else f"{SITE}/{page_lang}/{SECTION}/{slug}"
+    own = page_url(page_lang, slug)
     text = re.sub(r'<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?', "", text)
     text = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{own}">\n{hreflang_block(slug, langs)}', text, count=1)
     text = re.sub(r'(<meta property="og:url" content=")[^"]*(")', rf"\g<1>{own}\g<2>", text)
     text = re.sub(r'<html lang="[^"]*"', f'<html lang="{page_lang}"', text, count=1)
-    here = SECTION if page_lang == "en" else f"{page_lang}/{SECTION}"
+    here = page_dir(page_lang)
     for code in ["en"] + list(LANGS):
-        there = SECTION if code == "en" else f"{code}/{SECTION}"
+        there = page_dir(code)
         exists = code == "en" or code in langs
         href = os.path.relpath(f"{there}/{slug}.html" if exists else (f"{code}/index.html"), here)
         active = ' class="active"' if code == page_lang else ""
@@ -243,7 +254,7 @@ def translate_page(slug, lang, translator, translated_paths):
             a[b] = html.unescape(new)  # schema is JSON, so no HTML entities
     for i, data in schema_blocks:
         text = json.dumps(data, indent=2, ensure_ascii=False)
-        text = text.replace(f"{SITE}/{SECTION}/{slug}", f"{SITE}/{lang}/{SECTION}/{slug}")
+        text = re.sub(re.escape(page_url("en", slug)) + r'(?=")', lambda m: page_url(lang, slug), text)
         text = re.sub(rf'"{re.escape(SITE)}/practice/"', f'"{SITE}/{lang}/practice/"', text)
         text = re.sub(rf'"item": "{re.escape(SITE)}/"', f'"item": "{SITE}/{lang}/"', text)
         tokens[i] = '<script type="application/ld+json">\n' + text + "\n</script>"
@@ -321,7 +332,7 @@ def main(translator=call_model):
         for p in (ROOT / lang).rglob("*.html"):
             translated_paths.add(p.relative_to(ROOT).as_posix())
         if lang in langs:
-            translated_paths.update(f"{lang}/{SECTION}/{s}.html" for s in slugs)
+            translated_paths.update(os.path.normpath(f"{lang}/{SECTION}/{s}.html") for s in slugs)
     new_urls = []
     for slug in slugs:
         for lang in langs:
@@ -332,7 +343,7 @@ def main(translator=call_model):
             out, total, kept = translate_page(slug, lang, translator, translated_paths)
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_text(out, encoding="utf-8")
-            new_urls.append(f"{SITE}/{lang}/{SECTION}/{slug}")
+            new_urls.append(page_url(lang, slug))
             print(f"[translate] {lang}/{SECTION}/{slug}.html: {total} text blocks, {kept} left in English")
         have = [l for l in LANGS if (ROOT / l / SECTION / f"{slug}.html").exists()]
         for page_lang in ["en"] + have:
