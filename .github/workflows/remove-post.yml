@@ -28,6 +28,16 @@ jobs:
           SLUG: ${{ inputs.slug }}
         run: python .github/scripts/remove_post.py "$SLUG"
 
+      - name: Remove the post from the Published Index sheet
+        continue-on-error: true
+        env:
+          SLUG: ${{ inputs.slug }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          BLOG_AGENT_SHEET_ID: ${{ secrets.BLOG_AGENT_SHEET_ID }}
+        run: |
+          pip install -q -r .github/scripts/requirements.txt
+          python .github/scripts/record_published.py "$SLUG" --remove
+
       - name: Commit
         env:
           SLUG: ${{ inputs.slug }}

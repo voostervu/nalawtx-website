@@ -2,10 +2,12 @@
 """Add a newly published post to the "Published Index" tab of the blog sheet.
 
 Usage: python .github/scripts/record_published.py <slug> [topic]
+       python .github/scripts/record_published.py <slug> --remove
 
 The Writer reads that tab to link to older posts and to avoid repeating or
 contradicting them. Skips the post if its slug is already listed.
-Run with --print to show the row without touching the sheet.
+Run with --print to show the row without touching the sheet, or --remove to
+take a post's row out of the tab (used when a post is taken down).
 """
 import html
 import pathlib
@@ -41,11 +43,20 @@ def describe(slug):
         cite = re.sub(r"^Tex(?:as|\.)\s+", "", cite, flags=re.I).rstrip(".")
         if cite.lower() not in [c.lower() for c in cites]:
             cites.append(cite)
+    # Key claims: the post's summary plus its section headings.
+    skip = ("related cases and articles", "got a question about your case", "keep reading")
+    heads = [plain(h).rstrip(".") for h in re.findall(r"<h2[^>]*>(.*?)</h2>", body, re.S)]
+    heads = [h for h in heads if h and not h.lower().startswith(skip)]
+    claims = html.unescape(desc.group(1)).strip() if desc else ""
+    if heads:
+        claims = (claims + " Covers: " + "; ".join(heads)).strip()
+    if len(claims) > 900:
+        claims = claims[:900].rsplit(";", 1)[0]
     return {
         "title": plain(h1.group(1)) if h1 else slug,
         "slug": slug,
         "date": date.group(1) if date else "",
-        "claims": html.unescape(desc.group(1)).strip() if desc else "",
+        "claims": claims,
         "statutes": "; ".join(cites[:12]),
     }
 
@@ -55,6 +66,12 @@ def main():
     if not args or not re.fullmatch(r"[a-z0-9][a-z0-9-]*", args[0]):
         sys.exit("Usage: record_published.py <slug> [topic]")
     slug, topic = args[0], (args[1] if len(args) > 1 else "")
+    if "--remove" in sys.argv:
+        import sheets
+
+        removed = sheets.remove_from_published_index(slug)
+        print(f"[published-index] {'removed' if removed else 'not listed'}: {slug}")
+        return
     if not (ROOT / "blog" / f"{slug}.html").exists():
         sys.exit(f"No such post: blog/{slug}.html")
     row = describe(slug)

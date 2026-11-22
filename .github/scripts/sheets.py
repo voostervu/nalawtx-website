@@ -271,6 +271,28 @@ def append_to_published_index(
     ])
 
 
+def remove_from_published_index(slug: str) -> bool:
+    """Take a post's row out of the index (used when a post is taken down)."""
+    rows = _read_tab(TAB_PUBLISHED)
+    if len(rows) < 2:
+        return False
+    kept = [r for r in rows[1:] if not (len(r) > 1 and r[1].strip() == slug)]
+    if len(kept) == len(rows) - 1:
+        return False
+    width = max(6, max((len(r) for r in rows), default=6))
+    padded = [r + [""] * (width - len(r)) for r in kept]
+    padded.append([""] * width)  # blank out the row left over at the bottom
+    last_col = chr(ord("A") + width - 1)
+    svc = _client()
+    svc.values().update(
+        spreadsheetId=SHEET_ID,
+        range=f"'{TAB_PUBLISHED}'!A2:{last_col}{len(padded) + 1}",
+        valueInputOption="USER_ENTERED",
+        body={"values": padded},
+    ).execute()
+    return True
+
+
 def get_statute_references() -> list[dict]:
     """Read curated Texas statute reference list — ground truth for Citation agent."""
     rows = _read_tab(TAB_STATUTES)
