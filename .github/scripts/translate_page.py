@@ -237,7 +237,7 @@ def translate_page(slug, lang, translator, translated_paths):
         elif kind == "meta":
             meta_map[a] = new
         else:
-            a[b] = new
+            a[b] = html.unescape(new)  # schema is JSON, so no HTML entities
     for i, data in schema_blocks:
         text = json.dumps(data, indent=2, ensure_ascii=False)
         text = text.replace(f"{SITE}/practice/{slug}", f"{SITE}/{lang}/practice/{slug}")
