@@ -196,6 +196,16 @@ jobs:
           gh pr merge "$PR_NUMBER" --squash --delete-branch
           echo "Auto-merged PR #$PR_NUMBER"
 
+      # Lets the Writer link to this post later and avoid repeating or contradicting it.
+      - name: Add post to the Published Index sheet
+        if: steps.commit.outputs.committed == 'true' && steps.check_merge.outputs.auto_merge == 'true'
+        continue-on-error: true
+        env:
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          BLOG_AGENT_SHEET_ID: ${{ secrets.BLOG_AGENT_SHEET_ID }}
+          TOPIC: ${{ steps.ceo.outputs.topic }}
+        run: python .github/scripts/record_published.py "${{ steps.ceo.outputs.slug }}" "$TOPIC"
+
       - name: Warn about flagged or held post
         if: steps.commit.outputs.committed == 'true' && (steps.check_merge.outputs.warnings != '' || steps.check_merge.outputs.auto_merge != 'true')
         env:
