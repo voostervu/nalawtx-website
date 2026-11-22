@@ -24,6 +24,11 @@ def main():
 
     post.unlink()
     print(f"deleted blog/{slug}.html")
+    for lang in ("es", "vi"):  # translated versions go with it
+        translated = ROOT / lang / "blog" / f"{slug}.html"
+        if translated.exists():
+            translated.unlink()
+            print(f"deleted {lang}/blog/{slug}.html")
     audit = ROOT / ".github" / "audits" / f"{slug}.md"
     if audit.exists():
         audit.unlink()

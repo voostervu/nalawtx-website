@@ -75,6 +75,14 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python .github/scripts/factcheck.py "blog/${{ steps.ceo.outputs.slug }}.html"
 
+      # Spanish and Vietnamese versions of the new post. Skipped when the fact check holds the post.
+      - name: Translate the new post
+        if: steps.ceo.outputs.slug != '' && steps.factcheck.outputs.status != 'HOLD'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/translate_page.py "${{ steps.ceo.outputs.slug }}" --section blog
+
       - name: Configure git
         if: steps.ceo.outputs.slug != ''
         run: |
@@ -88,6 +96,7 @@ jobs:
           BRANCH="blog-agent/${{ steps.ceo.outputs.slug }}"
           git checkout -b "$BRANCH"
           git add blog/ practice/ guides/ sitemap.xml llms.txt llms-full.txt
+          [ -d es ] && git add es/ vi/
           [ -d .github/audits ] && git add .github/audits
           if git diff --staged --quiet; then
             echo "No changes to commit."
