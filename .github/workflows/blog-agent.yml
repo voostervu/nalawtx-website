@@ -57,6 +57,14 @@ jobs:
           python .github/scripts/site_polish.py || echo "::warning::site_polish.py failed"
           python .github/scripts/build_llms_full.py || echo "::warning::build_llms_full.py failed"
 
+      # Adds a Quick answer box and an FAQ written only from the post's own text.
+      - name: Add quick answer and FAQ
+        if: steps.ceo.outputs.slug != ''
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/enrich_post.py "blog/${{ steps.ceo.outputs.slug }}.html"
+
       # Checks every claim about a new law or court ruling against live sources.
       # HOLD means a claim is wrong or the post's main claim could not be confirmed.
       - name: Fact-check new laws and rulings
