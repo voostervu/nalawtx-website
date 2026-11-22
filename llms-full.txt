@@ -1217,6 +1217,11 @@ Source: https://nalawtx.com/blog/do-i-need-a-lawyer-for-minor-car-accident
 
 Most personal injury law firms will tell you to call an attorney for any accident, no matter how small. That's not honest. Here's a real framework for deciding when a Houston car accident actually needs an attorney — and when you can handle it yourself.
 By Vu Nguyen, Founder & Managing Partner · Updated March 15, 2026
+For a truly minor Houston car accident — no injuries, clear liability, and insurance paying without dispute — you likely don't need a lawyer. But if anyone was hurt, fault is contested, or a commercial vehicle or uninsured driver was involved, talk to an attorney before speaking with any insurance company.
+- You can handle a property-damage-only claim yourself if liability is clear and no one was injured.
+- Once you sign an insurance release, the case is settled forever — even if injuries worsen later.
+- Commercial vehicles, drunk drivers, and uninsured motorists all create legal complexities that benefit from attorney help.
+- Free consultations cost nothing and can tell you quickly whether representation makes sense for your situation.
 
 ### When you probably don't need a lawyer
 If all of the following are true, you probably don't need to hire a lawyer:
@@ -1258,11 +1263,22 @@ No fee unless we win. English · Español · Tiếng Việt.
 - Long-form legal guides
 - Houston's worst intersections
 
+### Common questions
+If no one was injured beyond very minor soreness that resolved quickly, no one saw a doctor, property damage is modest, and the other driver's insurance accepted fault, you probably don't need a lawyer. A competent adult can handle a straightforward property-damage claim directly with the insurance company.
+Under Texas's 51% bar rule, your recovery is barred if you are found 51% or more at fault for the accident. If the other driver's insurance adjuster is disputing fault, you could be fighting this rule without legal experience, which is one of the key reasons the post recommends talking to an attorney before speaking with any insurer.
+The post strongly advises against accepting any settlement offer without first understanding it. Once you sign the release, the case is settled forever — if a soft-tissue injury develops into chronic pain months later, you cannot reopen the claim. At minimum, get a free consultation before signing anything.
+According to the post, a contingency-fee attorney — typically charging 33% of the recovery — identifies every available insurance policy, carefully maps fault to defend against the 51% bar, negotiates reductions on medical bills at resolution, and handles all insurance communications so you don't accidentally say something that hurts your case. On serious injury cases, that work often produces a net recovery higher than what an unrepresented victim would receive.
+
 ## The Trucker's Logbook That Could Win Your Case. and Why You Have Six Months to Get It
 Source: https://nalawtx.com/blog/fmcsa-hours-of-service-violations-your-texas-truck-accident
 
 If a fatigued 18-wheeler driver hit you in Texas, federal records prove how long that driver had been behind the wheel. But those records disappear after six months. Here's what hours-of-service violations mean for your claim, and exactly what needs to happen right now.
 By Vu Nguyen, Founder & Managing Partner · Updated November 2, 2026
+A trucker's electronic logbook (ELD) records every minute of driving time and can prove a driver violated federal hours-of-service rules before hitting you. But federal regulations only require carriers to keep that data for six months. If a commercial truck hit you in Texas, that six-month window is your most urgent deadline.
+- Federal law (49 C.F.R. Part 395) limits property-carrying truck drivers to 11 hours of driving after 10 consecutive hours off duty.
+- ELD data is automatically recorded and tamper-resistant, but carriers only must keep it for six months — after that it may be gone.
+- Violating hours-of-service rules can trigger 'negligence per se,' making the violation automatic evidence of negligence under Texas law.
+- Texas's two-year filing deadline (Tex. Civ. Prac. & Rem. Code § 16.003) is separate from the six-month evidence deadline — don't confuse them.
 Picture a loaded semi rolling south on I-45 toward Houston at 2 a.m. The driver has been on the road for 13 hours. Federal law says he should have stopped at 11. Nobody flagged it. His company needed the delivery on time. And then he drifted into your lane near the Beltway 8 interchange.
 The crash report will say "driver error." What it won't say, unless someone digs for it, is that the driver was operating illegally, in violation of federal hours-of-service rules that exist for one reason: to keep exhausted truckers off the road. That distinction matters enormously for your claim. It's the difference between a standard negligence case and one where the trucker's employer may have handed you proof of fault on a silver platter.
 
@@ -1328,11 +1344,22 @@ You don't need to understand the FMCSA's regulatory framework to protect yoursel
 Our 18-wheeler accident practice page covers the full scope of what these cases involve. If you want to talk through the specific facts of what happened to you, a free case review is the right first step.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Under FMCSA regulations, carriers are only required to retain ELD records for six months. After that window closes, the data may be gone. A formal preservation demand letter sent by an attorney can require the company to hold that data before it is purged.
+Negligence per se means that when a defendant violates a safety regulation designed to prevent the kind of harm you suffered, Texas courts can treat that violation as automatic evidence of negligence. If a trucker broke federal hours-of-service rules before hitting you, you may not have to separately argue that driving fatigued was unreasonable — the law already decided it was.
+Yes. Carriers are federally required to audit driver logs, monitor hours compliance, and refuse to dispatch an over-hours driver. When a company pressures drivers to push past legal limits, it can bear liability alongside the driver. Federal law also requires carriers to carry minimum liability insurance of $750,000 for most freight and $1,000,000 or more for hazardous materials.
+Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of your injury to file a personal injury lawsuit. However, critical evidence like ELD data disappears after six months, and dashcam footage can be overwritten within weeks. Waiting until the legal deadline can mean losing your strongest evidence long before you file.
+
 ## Houston Bicycle Accident Claims: What Texas Law Actually Does for Cyclists
 Source: https://nalawtx.com/blog/houston-bicycle-accident-claims-what-texas-law-actually
 
 Bicyclist fatalities in Texas rose 58% in just four years, and Harris County is one of the deadliest places in the state to ride. If a driver hit you, here's what your claim looks like under Texas law, why bias against cyclists is a real obstacle, and what to do before you talk to any insurance company.
 By Vu Nguyen, Founder & Managing Partner · Updated November 16, 2026
+Texas law treats your bicycle as a vehicle, giving you the right to seek compensation when a driver's negligence causes a crash. However, Texas's modified comparative fault rule means your recovery is reduced by your share of blame, and disappears entirely if you're found 51% or more at fault. Acting quickly to preserve evidence and avoiding recorded statements protect your claim.
+- Texas law classifies a bicycle as a vehicle, so drivers owe you the same duty of care they owe other road users.
+- If you're found 51% or more at fault under Texas's comparative fault rule, you recover nothing.
+- Houston's VRU ordinance requires drivers to give cyclists at least three feet of clearance — a violation is evidence of negligence.
+- Your own auto insurance's UM/UIM coverage may protect you after a hit-and-run, even when you were on a bicycle.
 You were riding your bike. A driver ran a red light, drifted into the shoulder, or opened a car door into your path. Now you're in the emergency room at Memorial Hermann or Ben Taub with broken bones, road rash, or worse. Your phone is already lighting up with a call from an insurance adjuster.
 What happens next matters a lot. Texas law gives injured cyclists real legal rights. But there's a gap between what the law says and what actually happens in a claim. That gap often comes down to one uncomfortable truth: a lot of insurance adjusters, defense lawyers, and even jurors start from the assumption that cyclists are partly to blame just for being on the road.
 This post explains how Texas law treats bicycle accident claims, what tools you have when a driver hits you, and why cyclist bias is a documented problem you need to understand before you say anything to an adjuster.
@@ -1408,11 +1435,22 @@ Serious injuries, brain injuries, spinal injuries, fractures that require surger
 At Nguyen & Associates, we represent injured cyclists in Houston and throughout Harris County. We work on contingency. You pay nothing unless your case resolves. Free case review here, or call us directly at (713) 842-9442.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of your bicycle accident to file a personal injury lawsuit. Missing that deadline means your claim is gone regardless of how strong it was. Traffic camera footage can be overwritten within days or weeks, so starting early gives you the best chance of preserving evidence.
+Texas law does not require adult cyclists to wear helmets, so not wearing one does not automatically bar your claim. However, insurance adjusters may use it as an argument to increase your share of fault under Texas's comparative fault system. The fight is over how much fault you bear, and that affects how much you can recover.
+Yes. Your own auto insurance policy's uninsured/underinsured motorist (UM/UIM) coverage may apply even though you were on a bicycle rather than in a car, because under Texas law that coverage generally follows you as a person. There are conditions and policy-specific limits, so it's important to speak with an attorney before contacting any insurance company. Some homeowner's or renter's insurance policies may also provide relevant coverage.
+No. You are not legally required to give a recorded statement to the other driver's insurance company. Adjusters use early recorded statements to look for anything that suggests you were uncertain about your own position or actions, which can be used later to push your fault percentage higher. The post recommends declining politely until you have spoken with an attorney.
+
 ## Houston Hit-and-Run Victims Can Still Get Compensated. Even When the Driver Is Never Found.
 Source: https://nalawtx.com/blog/houston-hit-and-run-victims-how-to-get-compensated
 
 The driver who hit you is gone. That's terrifying, and it's also a crime. But it doesn't mean you're stuck paying your own bills. Here's exactly how Houston hit-and-run victims recover compensation, and what you need to do fast to protect that path.
 By Vu Nguyen, Founder & Managing Partner · Updated July 13, 2026
+Even if the driver who hit you is never found, you may still recover compensation through your own uninsured motorist (UM) coverage, which Texas law requires insurers to offer. You can also use MedPay, health insurance, or the Texas Crime Victims' Compensation program. Acting quickly to file a police report and document evidence is essential.
+- A hit-and-run driver is treated legally the same as an uninsured driver, so your UM coverage may pay your medical bills, lost wages, and pain and suffering.
+- A police report is non-negotiable — your UM insurer will almost certainly require one to pay a hit-and-run claim.
+- Security footage at nearby businesses is often overwritten within 30 to 72 hours, so documenting the scene fast is critical.
+- Texas's general deadline to file a personal injury lawsuit is two years from the accident date under Texas Civil Practice & Remedies Code § 16.003.
 You're sitting on the side of I-610 or the Katy Freeway, shaking, watching the car that just hit you disappear into traffic. Maybe you caught a partial plate. Maybe you got nothing at all. Either way, you're wondering: if they never find this person, am I just stuck?
 The short answer is no. Texas law and your own auto insurance policy may cover you, even when the at-fault driver is completely anonymous. But there are things you have to do quickly, and there are traps that can cut off your options if you're not careful. This post walks through both.
 
@@ -1481,11 +1519,22 @@ Most personal injury attorneys in Texas work on contingency, meaning you pay not
 If you lost a family member in a Houston hit-and-run crash, the legal path is the same in structure: police report, UM claim, potential litigation. But the stakes are higher and the process is harder to handle alone. Texas recognizes wrongful death claims by surviving spouses, children, and parents under the Texas Civil Practice & Remedies Code. If the driver is later identified, a direct claim against them becomes possible. If they're not, the UM wrongful death claim is often the primary path. Please talk to an attorney before making any decisions.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Yes. Under Texas law, a driver who flees is treated the same as an uninsured driver, so your own uninsured motorist (UM) coverage can step in. UM coverage pays for medical bills, lost wages, and pain and suffering — the same damages you would pursue against the at-fault driver. You may also have access to MedPay, health insurance, or the Texas Crime Victims' Compensation program.
+Yes. Your UM insurer will almost certainly require a police report to pay a hit-and-run claim. If police do not respond to the scene, you can file a report at an HPD reporting station or through the Texas Department of Transportation crash reporting system. Getting a written record is essential.
+UM bodily injury coverage pays for medical expenses, lost income if your injuries kept you from working, future medical treatment if your recovery is ongoing, and pain and suffering. Texas also recognizes loss of consortium for spouses and wrongful death claims by surviving family members in fatal crashes. What you can recover is capped by your policy's UM coverage amount.
+The general deadline to file a personal injury lawsuit in Texas is two years from the date of the accident, under Texas Civil Practice & Remedies Code § 16.003. However, your insurance policy may also have its own separate notice and cooperation deadlines that are shorter. Missing those internal policy deadlines can give the insurer grounds to deny your claim before the legal statute of limitations even runs out.
+
 ## Houston Motorcycle Accident Claims: Why Bias Against Riders Makes Legal Representation Critical
 Source: https://nalawtx.com/blog/houston-motorcycle-accident-lawyer-why-rider-bias-changes
 
 Texas lost 581 motorcycle riders in 2024. Harris County led the state. If you were hurt on a Houston road, the at-fault driver's insurance company already has a theory about what happened. It starts with blaming you.
 By Vu Nguyen, Founder & Managing Partner · Updated July 6, 2026
+Motorcycle riders in Houston face insurance adjusters who often assume rider fault from the start, using Texas's modified comparative fault system to reduce or eliminate your claim. Bias against riders, combined with higher injury severity, makes legal representation especially important. If you were hurt, you have two years from the crash date to file a lawsuit under Texas law.
+- Texas uses modified comparative fault — if you're found 51% or more at fault, you recover nothing.
+- You are not required to give a recorded statement to the other driver's insurance company.
+- Lane-splitting is illegal in Texas, but it doesn't automatically make you at fault for a crash.
+- Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the crash to file suit.
 You're riding westbound on I-10 near the Katy Freeway interchange. A driver merges left without checking their blind spot. You hit the pavement. You survive, but you're looking at a broken collarbone, road rash across your left side, and a totaled bike.
 Within two days, the other driver's insurance adjuster calls. They're polite. They're sympathetic. And they're already building a file designed to reduce what you're owed, or wipe it out entirely. For motorcycle riders, that process starts earlier and cuts deeper than it does for people hurt in car crashes. Here's why, and what you can do about it.
 
@@ -1551,11 +1600,22 @@ If you're reading this from a hospital bed or a couch while you recover, here's 
 Motorcycle crash claims in Texas require someone in your corner who understands both the law and the bias you're up against. The other driver's insurer has handled these cases before. You're probably handling yours for the first time.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Yes, as long as you were less than 51% at fault under Texas's modified comparative fault system. Your compensation is reduced by your percentage of fault. If you were 20% at fault, you recover 80% of your damages. At 51% or more, you recover nothing.
+If you were 21 or older and legally exempt under Texas Transportation Code § 661.003, riding without a helmet can still be used to reduce damages specifically tied to head or brain injuries under the avoidable consequences doctrine. However, it cannot eliminate your entire claim. Injuries unrelated to helmet use, like a broken arm, are not affected by your helmet status.
+No. You are not required to give a recorded statement to the other driver's insurer. Adjusters are trained to ask open-ended questions that can be used to inflate your share of fault. Politely decline and consult an attorney before saying anything further.
+Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of your crash to file a personal injury lawsuit. Missing that deadline means losing your right to sue, regardless of how strong your case is. Evidence also disappears quickly, so acting sooner rather than later strengthens your position.
+
 ## Houston Nursing Home Abuse: What Texas Law Lets Families Recover
 Source: https://nalawtx.com/blog/houston-nursing-home-abuse-what-texas-law-lets-families
 
 Texas classifies many nursing home claims as medical malpractice, triggering expert report deadlines most families never see coming. This post breaks down the rules, the warning signs, and what your family can actually pursue.
 By Vu Nguyen, Founder & Managing Partner · Updated October 19, 2026
+Texas law gives families of nursing home abuse victims several ways to seek compensation, including medical expenses, pain and suffering, and wrongful death damages. However, many claims are classified as medical malpractice under Chapter 74, triggering a strict 120-day expert report deadline after filing suit. Missing that deadline can end your case permanently.
+- Many nursing home claims fall under Texas Chapter 74, requiring a qualified expert report within 120 days of filing suit.
+- Families can pursue medical expenses, pain and suffering, mental anguish, and wrongful death damages depending on the situation.
+- Regulatory investigations by HHSC or APS do not replace a civil lawsuit and cannot compensate your family.
+- Documenting injuries, preserving facility records, and consulting an attorney early protects your legal options.
 Your mother moved into a Houston-area nursing facility because she needed care you couldn't safely provide at home. Six months later, she has unexplained bruises, has lost 20 pounds, and flinches when a staff member walks into her room. You know something is wrong. What you may not know is that the legal path forward is more complicated, and more time-sensitive, than most families realize.
 Texas has specific laws governing nursing home and assisted living claims. Some of those laws protect residents. Others, if you miss them, can end your family's case before it starts. Understanding both sides matters before you take a single step.
 
@@ -1650,11 +1710,22 @@ At Nguyen & Associates, we represent families dealing with serious injury claims
 You placed your loved one in that facility because you trusted they would be safe. If that trust was broken, Texas law gives your family a path. The rules around that path are strict and unforgiving about deadlines, which is exactly why knowing them early matters.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Texas generally imposes a two-year statute of limitations on personal injury and health care liability claims. When a nursing home claim qualifies as a health care liability claim under Chapter 74, the clock can start differently depending on the facts, including discovery-rule nuances for fraudulent concealment. There is no safe assumption about when time runs out, so getting the deadline wrong is irreversible.
+Under Texas Civil Practice & Remedies Code Chapter 74, once a health care liability lawsuit is filed, you must serve a qualified expert report on every defendant within 120 days. The report must identify the applicable standard of care, explain how the facility breached it, and connect that breach to the resident's injuries. Missing the deadline by even one day can result in dismissal of the case and an award of attorney's fees to the defendant.
+For a living resident, recoverable damages can include past and future medical expenses, pain and suffering, mental anguish, disfigurement, and physical impairment. If a resident dies, families may bring both a survival claim on behalf of the estate and a wrongful death claim covering grief, loss of companionship, and loss of financial support. In cases involving gross negligence, malice, or fraud, Texas law also permits exemplary damages, though Texas Civil Practice & Remedies Code § 41.008 caps those amounts in most civil cases.
+Reporting to the Texas Health and Human Services Commission or Adult Protective Services can trigger inspections, citations, and investigations, but those regulatory actions are separate from a civil lawsuit. HHSC can fine a facility or require corrective action, but it cannot compensate your family. If you want financial compensation for what happened to your loved one, you must file a separate civil case, though regulatory findings can serve as powerful evidence in that case.
+
 ## Houston Rideshare Accidents: How Uber & Lyft Insurance Actually Works
 Source: https://nalawtx.com/blog/houston-rideshare-accidents-how-uber-amp-lyft-insurance
 
 The app status at the moment of your crash determines which insurance applies, and how much. Here's the breakdown, in plain English, plus when Texas law may let you sue Uber or Lyft directly.
 By Vu Nguyen, Founder & Managing Partner · Updated May 17, 2026
+Which insurance covers your Houston rideshare crash depends on the driver's app status at the exact moment of impact. Uber and Lyft each maintain three coverage phases, ranging from no involvement when the app is off to at least $1 million in liability when a trip is active. Getting the app records is essential to knowing which coverage applies to your claim.
+- The driver's app status at the moment of impact controls which insurance phase—and how much coverage—applies to your claim.
+- Phase 3 (ride accepted through drop-off) triggers Uber and Lyft's full $1 million commercial liability coverage.
+- Texas HB 1733 requires TNCs to background-check drivers, creating a potential direct-liability hook if they approved a disqualified driver.
+- Texas modified comparative fault (§ 33.001) reduces your recovery by your share of blame; over 50% at fault means no recovery.
 You're sitting in the back of a Lyft somewhere on I-610 when the driver runs a red light and T-bones another car. Or you're the one in the other car, minding your business on Westheimer, and an Uber driver plows into you. Either way, your first call is 911. Your second thought, once the adrenaline settles, is probably: whose insurance pays for this?
 That question trips up a lot of people, including some lawyers who don't handle rideshare cases regularly. The answer isn't "Uber's insurance" or "the driver's insurance." The answer is: it depends on exactly what the driver was doing in the app at the moment of impact. There are three distinct phases, each with different coverage. Miss which phase applies, and you could be talking to the wrong insurance company entirely.
 This post walks through how rideshare insurance actually stacks up in Texas, what changed when Texas HB 1733 was signed into law, and the specific circumstances where you may have a claim directly against Uber or Lyft, not just their driver.
@@ -1730,11 +1801,22 @@ If you've been hurt in a rideshare crash, as a passenger, as a driver in another
 Our firm handles rideshare and car accident cases across Harris County and the greater Houston area. If you have questions about what happened to you, a free case review is the right first step.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+It depends on what the driver was doing in the app at the moment of the crash. If no ride was accepted yet, contingent coverage from Uber or Lyft applies—at least $50,000 per person in bodily injury. If the driver had accepted a ride and the trip was active, Uber and Lyft's full commercial coverage of at least $1 million applies.
+It is difficult but not impossible. Because drivers are classified as independent contractors, Uber and Lyft generally avoid vicarious liability. However, Texas law recognizes negligent hiring and negligent retention claims, and Texas HB 1733 created an additional hook if the company approved a driver who should have been disqualified under the law's background-check standards.
+Phase 2 means the driver's app is on and they are waiting for a ride request but have not yet accepted one. During this phase, Uber or Lyft's contingent liability coverage—at least $50,000 per person, $100,000 per accident, and $25,000 in property damage—only kicks in if the driver's personal insurance denies the claim or doesn't cover the loss. This phase generates the most insurance disputes.
+Uber and Lyft maintain detailed, timestamped logs showing when the app was opened, when a ride was accepted, and when a trip ended. Those records are obtainable through a personal injury lawsuit via the discovery process. If you were a passenger, screenshot your own trip history in the app immediately after the crash.
+
 ## Houston set a traffic death record in 2024. What that means now.
 Source: https://nalawtx.com/blog/houston-traffic-deaths-2024-record
 
 The numbers landed in early 2025 and they were grim. Houston recorded 301 traffic fatalities in 2024 — the highest annual total in the city's history, surpassing the previous record of 295 set in 2021. Statewide, traffic deaths actually declined slightly. So what's happening in Houston?
 By Vu Nguyen, Founder & Managing Partner · Updated April 12, 2026
+Houston recorded 301 traffic fatalities in 2024, the highest in city history, with most deaths occurring at surface-street intersections on roads posted at 45 mph or higher. Pedestrian deaths have surged, and Texas's 51% comparative-fault rule means insurance companies will work hard to shift blame onto you if you're hurt.
+- Houston's 301 traffic deaths in 2024 broke the previous record of 295 set in 2021.
+- 119 pedestrians were killed — nearly one every three days — mostly in daylight on high-speed surface streets.
+- A pedestrian hit at 40 mph has roughly a 20% survival chance, compared to 90% at 20 mph.
+- Texas's 51% comparative-fault rule lets insurers aggressively argue you share blame — don't give recorded statements.
 
 ### Where the deaths happened
 Roughly 40% of Houston traffic crashes happen at intersections. The 2024 fatality data follows that pattern. Surface-street intersections — not freeways — were where most of the increase showed up. Speed limits in the 45–50 mph range, combined with frequent driveways, U-turn lanes, and pedestrian crossings, create what urban planners call a "stroad" — a hybrid road designed for highway speeds but used like a city street.
@@ -1764,11 +1846,22 @@ No fee unless we win. English · Español · Tiếng Việt.
 - Long-form legal guides
 - Houston's worst intersections
 
+### Common questions
+Houston recorded 301 traffic fatalities in 2024, the most in the city's history. Roughly 40% of crashes happen at intersections, particularly on surface streets with speed limits of 45–50 mph that mix highway speeds with pedestrian crossings, driveways, and turning movements — a design urban planners call a 'stroad.'
+Not necessarily. The majority of Houston's 119 pedestrian deaths in 2024 happened during daylight hours. Wide corridors with limited crosswalk infrastructure are dangerous regardless of time of day, especially on major arterials posted at 45 mph or higher.
+Get medical attention right away, even if you feel fine — adrenaline can mask injuries and gaps in treatment are a top argument insurers use to reduce claims. Document everything at the scene, avoid giving a recorded statement to the at-fault driver's insurer, and do not sign anything in the first days or weeks.
+Texas follows a 51% comparative-fault rule, meaning you can recover damages as long as you are not more than 50% at fault. Texas law generally favors injured pedestrians and cyclists in crosswalks, but insurance companies will aggressively try to push fault onto you to reduce or eliminate what they owe.
+
 ## Hurt in a Houston Construction Zone? Here's Who Can Be Held Liable Under Texas Law
 Source: https://nalawtx.com/blog/hurt-in-a-houston-construction-zone-who-can-be-liable
 
 Harris County recorded 1,900 work-zone crashes in 2024. If you were one of them, more than one party may owe you for your injuries. Figuring out who is the first step.
 By Vu Nguyen, Founder & Managing Partner · Updated July 20, 2026
+In a Houston construction zone crash, more than one party may owe you for your injuries — including the other driver, the construction contractor, TxDOT, or a property owner. Texas law lets you pursue each responsible party. The key is acting quickly, because critical evidence disappears fast and government claims require a notice filing within six months.
+- Harris County recorded 1,900 work-zone crashes in 2024, making it one of Texas's most dangerous counties for these collisions.
+- Multiple parties — drivers, contractors, TxDOT, and property owners — can each share legal responsibility for your injuries.
+- If a government entity like TxDOT is involved, you typically have only six months to file a formal written notice of claim.
+- Construction zone evidence such as dashcam footage and inspection logs can disappear within 30 to 60 days — act fast.
 You're driving on I-10 near Katy Freeway, the lanes narrow, the orange barrels crowd in, and then: impact. Maybe another driver rear-ended you. Maybe you hit a pothole that opened up overnight with no warning signs. Maybe a piece of construction equipment crossed into your lane. Whatever happened, you're hurt, your car is wrecked, and now someone is telling you the construction zone makes your situation "complicated."
 It is complicated. But complicated doesn't mean hopeless. Work-zone crashes in Texas often involve multiple responsible parties, and Texas law allows you to pursue each one. This post breaks down who those parties are, what you have to prove against each of them, and the deadlines that can cut off your rights if you miss them.
 
@@ -1844,11 +1937,22 @@ That last point matters. Most personal injury attorneys in Texas, including our 
 If you were hurt in a Houston construction zone crash, talk to someone who handles these cases before you talk to any insurance adjuster. The consultation at nalawtx.com is free, and it gives you a clear picture of what you're actually dealing with.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Sometimes, yes. Texas waived certain governmental immunity protections under the Texas Tort Claims Act (Texas Civil Practice & Remedies Code § 101.001 et seq.), which allows injury claims against state and local government entities in limited circumstances. If TxDOT designed an unsafe traffic control plan or a TxDOT employee's actions contributed to the crash, there may be a viable claim. However, you typically must file a formal written notice of claim with the government entity within six months of the incident.
+Liability can extend to the at-fault driver, the general contractor or construction company, TxDOT or another government entity, and even the property or project owner. Each party has separate legal duties — for example, contractors must properly place traffic control devices and comply with the Texas Manual on Uniform Traffic Control Devices (TMUTCD). Texas law allows you to pursue each responsible party, and a jury can assign a percentage of fault to each one.
+Texas generally gives you two years from the date of the accident to file a personal injury lawsuit under Texas Civil Practice & Remedies Code § 16.003. However, if a government entity like TxDOT, Harris County, or the City of Houston is a potential defendant, the Texas Tort Claims Act requires written notice of your claim within six months of the incident. Missing that six-month window can permanently bar your claim against the government entity, even if the two-year deadline hasn't passed.
+Key evidence includes the contractor's traffic control plan (TCP), daily project inspection logs, dashcam footage from nearby vehicles, construction site camera recordings, and the physical scene itself. Dashcam and site camera footage is often overwritten within 30 to 60 days, and once the next phase of construction begins, physical evidence like skid marks and device positions is gone permanently. Sending document preservation notices to the contractor and TxDOT as early as possible is critical.
+
 ## Injured as a Passenger in a Houston Car Wreck? Why You're Almost Never at Fault and How to Claim Against Multiple Drivers
 Source: https://nalawtx.com/blog/injured-as-a-passenger-in-a-houston-car-wreck-heres-how-to
 
 As a passenger, you didn't cause the crash. But getting compensated can still get complicated fast, especially when two drivers are pointing fingers at each other. Here's what Texas law says about your rights and exactly how to protect them.
 By Vu Nguyen, Founder & Managing Partner · Updated November 9, 2026
+As a passenger in a Houston car wreck, you are almost never at fault because you weren't driving. Texas law allows you to file claims against both drivers simultaneously, and you may have access to multiple insurance policies. You have two years from the crash date to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003.
+- As a passenger, you can file claims against both drivers' insurance policies at the same time without choosing one.
+- Texas requires drivers to carry minimum liability coverage, but those limits can be quickly exhausted by serious injuries.
+- You are not required to give a recorded statement to any insurance adjuster before speaking with an attorney.
+- The two-year filing deadline under Texas Civil Practice & Remedies Code § 16.003 goes faster than it seems — start early.
 You were just along for the ride. Maybe a friend was driving you home from a Texans game. Maybe you were in a rideshare crossing the I-10/Loop 610 interchange. Maybe you were a passenger on 290 when another car ran a red light and T-boned you. It doesn't matter how you got there. You were sitting in that seat, you got hurt, and now you're trying to figure out whose insurance pays for it.
 Here's the short answer: almost certainly not yours. As a passenger, you typically had no control over what happened. Texas law reflects that. But "not your fault" and "easy to collect" are two different things. When two drivers each blame the other, which happens constantly in Houston two-car collisions, you can find yourself stuck in the middle while your medical bills pile up. This post walks you through how passenger claims actually work in Texas, what to do right now, and what insurance adjusters won't tell you.
 
@@ -1928,11 +2032,22 @@ For a broader look at how car accident claims work in Texas, see our car acciden
 The crash wasn't your fault. Getting the compensation you're owed shouldn't require you to become an expert in Texas insurance law on your own. That's what we're here for.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured as a passenger in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+In nearly every scenario, passengers bear zero responsibility for a crash because they weren't driving. Under Texas's modified comparative fault rule in Texas Civil Practice & Remedies Code § 33.001, fault could theoretically be assigned if you grabbed the wheel or directly caused the collision, but those situations are rare. For most passengers, fault belongs entirely to one or both drivers.
+You may have access to several policies at once: the at-fault driver's liability insurance, the driver of your vehicle's liability insurance if they contributed to the crash, uninsured/underinsured motorist coverage from either policy, and your own health insurance. You don't have to wait for the drivers to settle their dispute before pursuing your claims. An attorney can negotiate across multiple policies simultaneously.
+Rideshare passengers have additional coverage layers to consider. Both Uber and Lyft carry commercial liability policies of up to $1 million per occurrence when a driver has an active fare, but the coverage depends on what phase of the trip the driver was in at the time of the crash. Screenshot your app confirmation and trip details immediately, as that documentation ties the driver to the platform and matters for coverage purposes.
+No, you are not required to give a recorded statement to any insurance adjuster before consulting an attorney. Adjusters may call quickly and sound helpful, but what you say in those early calls can be used to minimize your claim. You can confirm basic facts — that you were a passenger and were injured — and let them know you'll be in touch after speaking with counsel.
+
 ## Injured at Work in Texas? What Happens When Your Employer Skipped Workers' Comp
 Source: https://nalawtx.com/blog/injured-at-work-in-texas-how-non-subscriber-claims-work
 
 Texas is the only state where private employers can opt out of workers' compensation entirely. Hundreds of thousands of workers don't know their employer did exactly that. Here's what it means for you if you're hurt on the job.
 By Vu Nguyen, Founder & Managing Partner · Updated November 21, 2026
+If your employer in Texas never bought workers' compensation insurance, they are a 'non-subscriber,' and you keep your right to sue them directly for negligence. Texas law also strips non-subscribers of their most powerful defenses, such as blaming you or a coworker. This can put you in a stronger position than a standard workers' comp claim.
+- Texas is the only state where private employers can legally skip workers' compensation coverage.
+- Non-subscriber employers cannot use contributory negligence, assumption of risk, or the fellow servant rule as defenses.
+- You can pursue full damages in a lawsuit, including pain and suffering and lost earning capacity, not just a capped formula.
+- Texas law gives you two years to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003, but evidence disappears fast.
 You got hurt at work. Maybe a forklift clipped you in a warehouse off Beltway 8. Maybe you fell from scaffolding at a construction site in Katy. Maybe a piece of equipment failed and took off part of your hand.
 Your first assumption, the same one most people make, is that workers' compensation covers you. You'll file a claim, get your medical bills paid, collect some wage replacement while you heal, and eventually go back to work.
 Then you find out your employer is a non-subscriber. They never bought workers' comp insurance. And suddenly the path forward looks completely different from anything you expected.
@@ -2015,11 +2130,22 @@ Juries in Texas can and do hold employers accountable when the evidence shows th
 If you've been seriously hurt and your employer is a non-subscriber, you are not in a hopeless situation. You may actually be in a stronger position than an employee covered by workers' comp. But only if you act quickly and with proper legal guidance. Our practice areas page covers the types of workplace injury cases we handle across the Houston area.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Texas requires employers to notify workers in writing whether they carry workers' comp coverage, and that notice should be posted at your workplace. You can also search the Texas Department of Insurance's online database by employer name. Under Texas Labor Code § 406.004, non-subscribing employers must file an annual notice with the state, so the information is on record.
+Unlike a standard workers' comp claim, a non-subscriber lawsuit lets you pursue the full range of damages a negligence claim allows. That includes past and future medical expenses, lost income, reduced earning capacity, pain and suffering, and damages for how the injury has changed your daily life. Workers' comp, by contrast, pays a formula that generally excludes pain and suffering and full lost wages.
+Texas law gives you two years to file a personal injury lawsuit under Texas Civil Practice & Remedies Code § 16.003. However, some occupational accident policies that non-subscribers carry have internal reporting deadlines as short as 30 or 90 days. Acting quickly also helps preserve evidence like security footage, witness accounts, and equipment records before they disappear.
+Yes, in In re East Texas Medical Center Athens (No. 23-1039), decided April 25, 2025, the Texas Supreme Court held that a non-subscribing employer can designate responsible third parties under Chapter 33 of the Texas Civil Practice & Remedies Code, potentially shifting part of the blame to others like equipment makers or outside contractors. However, the Labor Code protections were not changed, meaning the employer still cannot use your own negligence, assumption of risk, or a coworker's negligence as a defense.
+
 ## Texas laws that shape your injury claim. A 2026 plain-language guide.
 Source: https://nalawtx.com/blog/new-texas-laws-affecting-injury-claims
 
 Texas personal injury law has a handful of rules that don't exist in the same form in other states — and that have outsized influence on what happens to your claim. If you're considering filing, these are the ones that matter most.
 By Vu Nguyen, Founder & Managing Partner · Updated March 28, 2026
+Texas injury claims are shaped by a two-year filing deadline, a modified comparative fault rule that cuts off recovery if you are 51% or more at fault, and several other state-specific rules. Missing any one of these—especially shorter deadlines for government claims—can end your case entirely. Learning how they work before talking to an insurer protects your rights.
+- You generally have two years to file, but government entity claims can require notice in as little as 90 days.
+- If you are found 51% or more at fault, you recover nothing under Texas's modified comparative fault rule.
+- Since 2015, seat belt non-use can be used as evidence to reduce your damages.
+- Texas employers can opt out of workers' comp; those non-subscribers lose key defenses, often increasing worker recoveries.
 
 ### The two-year statute of limitations
 Under Texas Civil Practice & Remedies Code §16.003, most personal-injury lawsuits must be filed within two years of the date of injury. Miss this deadline and the claim is typically gone forever. Insurance adjusters know this and routinely drag negotiations past the two-year mark when victims don't have counsel.
@@ -2056,11 +2182,22 @@ No fee unless we win. English · Español · Tiếng Việt.
 - Long-form legal guides
 - Houston's worst intersections
 
+### Common questions
+Under Texas Civil Practice & Remedies Code §16.003, most personal injury lawsuits must be filed within two years of the date of injury. If your injury involved a government entity like the City of Houston, you may need to give notice in as little as 90 days. Missing these deadlines typically means losing your claim forever.
+Texas follows a modified comparative negligence rule. If you are 50% or less at fault, you can still recover damages, but they are reduced by your percentage of fault. If you are found 51% or more at fault, you recover nothing at all.
+Yes. Under Texas Alcoholic Beverage Code Chapter 2, known as the Dram Shop Act, victims can sue an establishment that over-served a driver who was visibly intoxicated if that intoxication caused the harm. This matters because bar commercial liability policies are often far larger than a driver's minimum insurance coverage.
+Yes, it can matter. Since a 2015 Texas Supreme Court ruling in Nabors Well Services, Ltd. v. Romero, evidence of seat belt non-use is admissible and can be used to argue your damages should be reduced. If you were wearing a seat belt, documenting that fact through dashcam footage, witnesses, or EMS records as soon as possible is important.
+
 ## You Were Hit by a Car in Houston. But You Weren't in a Crosswalk. Can You Still Recover?
 Source: https://nalawtx.com/blog/pedestrian-accidents-outside-crosswalks-texas-fault-rules
 
 Texas's comparative fault rules don't automatically bar your claim just because you crossed mid-block. Here's what actually happens to your recovery, and how insurers use the "no crosswalk" argument to pay you less than you deserve.
 By Vu Nguyen, Founder & Managing Partner · Updated October 12, 2026
+Being hit outside a crosswalk does not automatically bar your recovery in Texas. Under the state's modified comparative fault rules, you can still recover damages as long as you are not found more than 50% at fault. The driver's speed, attention, and other factors all affect how fault is divided.
+- Texas law still requires drivers to exercise due care to avoid hitting pedestrians, even mid-block.
+- Under Texas Civil Practice & Remedies Code § 33.001, you recover nothing only if you are found more than 50% at fault.
+- Insurance adjusters' fault percentages are negotiating positions, not legal findings — you don't have to accept them.
+- Traffic camera footage can disappear in as little as 24 to 72 hours, so preserving evidence quickly is critical.
 A driver hit you. You're dealing with broken bones, hospital bills, and time off work. Then the insurance adjuster calls and says something like: "Our investigation shows you weren't in a marked crosswalk, so we believe you were at fault." They might say it politely. But the message is clear. They think you owe them a favor for answering the phone.
 That's not how Texas law works. Being outside a crosswalk when you were struck doesn't automatically make the accident your fault. It doesn't automatically reduce your recovery to zero. But it does create a legal wrinkle you need to understand. If you don't, the insurance company is counting on you to accept far less than you're owed.
 
@@ -2144,11 +2281,22 @@ Talk to an attorney before accepting anything. A consultation costs you nothing 
 Our team handles pedestrian accident cases throughout Houston and Harris County. The consultation is free, and we work on contingency, meaning we don't get paid unless your case resolves.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Yes, you can still pursue a claim. Texas uses modified comparative fault, meaning your recovery is reduced by your percentage of fault but is not automatically eliminated because you were outside a crosswalk. You are only barred from recovering if you are found more than 50% at fault under Texas Civil Practice & Remedies Code § 33.001.
+Texas's proportionate responsibility system reduces your damages by your share of fault. If you are found 51% or more responsible for the crash, you recover nothing. If your fault is 50% or below, you can still recover damages, though the amount is reduced by your fault percentage.
+Most pedestrian injury claims must be filed within two years of the accident under Texas Civil Practice & Remedies Code § 16.003. However, if the driver was a government employee operating a government vehicle, much shorter notice deadlines apply. If the injured person is a minor, the limitations period generally does not begin until they turn 18.
+You have no legal obligation to give a recorded statement to the other driver's insurer. Insurance adjusters are trained negotiators who can use your words to build a fault argument against you. It is advisable to politely decline and consult a personal injury attorney before providing any detailed account of the crash.
+
 ## The Recorded Statement Trap: What the Adjuster Isn't Telling You
 Source: https://nalawtx.com/blog/recorded-statement-insurance-adjuster-what-to-say
 
 The insurance adjuster calls within hours of your accident asking for a recorded statement. This post explains what's really happening on that call, and exactly what to say.
 By Vu Nguyen, Founder & Managing Partner · Updated May 17, 2026
+You are not legally required to give a recorded statement to the other driver's insurance company. You can politely decline until you speak with an attorney. If your own insurer calls, your policy's cooperation clause may require you to give a statement, so keep answers factual and brief.
+- The other driver's insurer has no legal right to your recorded statement — you can decline.
+- Your own insurer's cooperation clause may require a statement; keep it short and factual.
+- Recorded statements taken within 24–48 hours can be used against you before injuries fully appear.
+- Evidence like dashcam footage and surveillance video disappears fast — early legal help matters.
 Your car is still at the body shop. Your neck hurts. You haven't even seen a doctor yet. And your phone rings. a friendly voice introduces herself as a claims adjuster and says she just needs a "quick recorded statement" to get your claim moving.
 That call is not quick, and it's not neutral. What you say in the next ten minutes can follow your case for years. Here's what's actually happening and how to handle it.
 
@@ -2226,11 +2374,22 @@ Here's the short version:
 The adjuster's call sounds routine. Treat it like what it is: the first move in a negotiation where only one side is prepared.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+It depends on which insurer is calling. Texas law does not require you to cooperate with the at-fault driver's insurance company, so you can decline their request for a recorded statement. Your own insurer is different — most Texas auto policies include a cooperation clause that may require you to give a statement, or your insurer could have grounds to deny coverage.
+If the other driver's insurer is calling, you can say: 'I'm not prepared to give a recorded statement right now. I'm still getting medical attention and haven't spoken with an attorney. Please send any requests in writing.' You don't need to explain further or justify wanting an attorney. If they push back, calmly repeat that you're not in a position to do that right now.
+Yes. A recorded statement taken within 24 to 48 hours of a crash can hurt your claim in several ways. Your memory may still be unorganized, your injuries may not have fully appeared yet, and any imprecise or inconsistent answer can be used against you later. Under Texas's modified comparative fault rule, even a small concession about distraction can reduce your recovery.
+A recorded statement doesn't end your case. You should immediately request a copy of the recording or transcript, which you are entitled to. Then review it with an attorney so you understand what you said and where potential vulnerabilities exist. The earlier you get legal guidance after giving a statement, the more options you have.
+
 ## Slip and Fall at HEB, Kroger, or Walmart in Houston: What Texas Law Requires You to Prove
 Source: https://nalawtx.com/blog/slip-and-fall-at-heb-kroger-or-walmart-in-houston
 
 Texas premises liability law puts real burdens on injured shoppers. Big grocery chains know exactly how to use those burdens against you. Here's what you need to prove, where most claims break down, and what a 2024 Texas Supreme Court ruling changed.
 By Vu Nguyen, Founder & Managing Partner · Updated May 25, 2026
+To win a slip-and-fall claim at a Houston grocery store, you must prove the store created the hazard, knew about it, or should have found it through reasonable inspection. A 2024 Texas Supreme Court ruling made proving the store's knowledge harder. You also have two years from the date of your fall to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003.
+- You must prove the store created, knew about, or should have discovered the hazard — the hardest part of any claim.
+- The 2024 Albertsons v. Mohammadi ruling requires proof the store knew about this specific hazard, not just that spills happen generally.
+- Surveillance footage is often overwritten within days — a formal legal hold request must go out quickly.
+- Texas's two-year filing deadline under § 16.003 starts the day of your fall, not when you decide to act.
 You walked into an HEB on Westheimer or a Walmart off I-45 to grab groceries. You weren't doing anything wrong. Then the floor gave you no warning. a puddle of water, a smear of spilled salsa, a broken floor mat. and you were down before you could react. Maybe you hit your hip. Maybe your wrist took the fall. Maybe you're reading this from a hospital bed at Memorial Hermann or St. Luke's.
 The store's manager came over, filled out an incident report, and someone handed you a copy. You might have thought that was the beginning of accountability. It wasn't. It was the beginning of a legal process that large retailers are very well prepared for. Most injured shoppers are not.
 This post explains exactly what Texas premises liability law requires you to prove when you slip and fall at a grocery store. It's not simple, and recent court rulings have made it harder. Knowing what the law demands is the first step toward knowing whether you have a claim worth pursuing.
@@ -2305,11 +2464,22 @@ If you're trying to handle a serious grocery store injury claim on your own, you
 Our premises liability practice covers slip-and-fall injuries throughout Houston and across Texas. We work on contingency, meaning you pay nothing unless there's a recovery in your case.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+You must prove that the store created the hazardous condition, had actual knowledge of it, or should have discovered it through reasonable inspection. You also have to show the condition posed an unreasonable risk of harm, the store failed to fix or warn you about it, and that failure caused your injury. Element one — proving the store's knowledge — is where most Texas slip-and-fall claims succeed or fail.
+The court drew a harder line between actual knowledge and constructive knowledge of a hazard. A store's general awareness that produce sections get wet, for example, no longer satisfies the actual knowledge requirement. You now have to show the store knew about this specific hazard at this specific location before your fall, not just that spills happen in grocery stores.
+Under Texas Civil Practice & Remedies Code § 16.003, you have two years from the date of your injury to file a lawsuit. The clock starts the day of the fall, not the day you decide to pursue a claim. Evidence disappears and witnesses become unavailable well before that deadline, so acting quickly matters.
+Get medical attention the same day, even if your injuries seem minor, since conditions like herniated discs or hip fractures may not show full severity for days. Photograph the hazard, your surroundings, and any missing warning signs before leaving the store, and ask for a copy of the incident report. Do not give a recorded statement to the store's insurer, and talk to a Houston slip-and-fall lawyer before accepting anything.
+
 ## Suing the Government After a Houston Pothole Accident: The Notice Deadline That Kills Claims
 Source: https://nalawtx.com/blog/suing-the-government-after-a-pothole-accident-in-texas
 
 A bad pothole or crumbling road shoulder can send you to the hospital. But suing a Texas city or county for road defects is nothing like suing another driver. Miss one deadline and your entire claim is gone, no matter how serious your injuries.
 By Vu Nguyen, Founder & Managing Partner · Updated June 8, 2026
+Yes, you can sometimes sue a Texas city or county for a road defect like a pothole, but you must send formal written notice within six months of the crash under Texas Civil Practice & Remedies Code § 101.101. Miss that deadline and your claim is gone, no matter how serious your injuries. The government entity is not going to guide you through the process.
+- You have only six months to file written notice of your claim against a Texas governmental unit under the Texas Tort Claims Act.
+- Notice must go to the correct government entity — TxDOT, City of Houston, Harris County, or a toll authority — depending on which road it was.
+- The government must have known or should have known about the defect before your crash; a brand-new pothole is a much harder claim.
+- Even successful claims against a governmental unit are generally capped at $250,000 per person under the TTCA.
 You're driving down Westheimer or merging onto I-10 near Katy when a massive pothole blows your front tire. Your car lurches, you overcorrect, and suddenly you're in the median. Or worse, into another lane of traffic. The crash is real. The injuries are real. So is the emergency room bill from Memorial Hermann.
 The natural question: can I hold someone accountable for that road condition? The honest answer is yes, sometimes. But when a city, county, or state agency is responsible for that road, you're not dealing with a normal personal injury claim. You're dealing with the Texas Tort Claims Act, a law that gives government entities a powerful shield. The most dangerous part of that shield is a notice requirement that most injured Texans don't even know exists.
 
@@ -2379,11 +2549,22 @@ If you were hurt on a road in the Houston metro area, whether that's inside Loop
 If you have questions about a road defect crash or want to understand your options, schedule a free case review with our team. We serve clients in Houston, Harris County, and throughout Texas, in English, Español, and Tiếng Việt.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Under Texas Civil Practice & Remedies Code § 101.101, you must give the City of Houston written notice of your injury claim within six months of the incident. This notice deadline is separate from and earlier than the regular statute of limitations. Missing it typically ends your claim entirely, regardless of how strong your case might otherwise be.
+Your written notice generally needs to include the date and specific location of the incident, a description of your injury or property damage, and your name and contact information. The goal is to give the government entity enough detail to investigate the claim. A 311 complaint or social media post about the pothole is unlikely to meet this requirement.
+It depends on which road was involved. TxDOT maintains state highways and most interstates like I-10 and I-45. The City of Houston handles most streets inside city limits, including major corridors like Westheimer. Harris County is responsible for roads in unincorporated areas outside city limits. Sending your notice to the wrong entity, even on time, may not protect your claim.
+Yes. If another driver's negligence also contributed to your crash, you may have claims against both that driver and the governmental entity responsible for the road. Texas uses a modified comparative fault system, so your recovery is reduced by your share of fault, and you can only recover if you were less than 51% responsible. Keep in mind that different deadlines apply — the six-month TTCA notice for the government and the two-year statute of limitations under Texas Civil Practice & Remedies Code § 16.003 for private parties.
+
 ## Texas Distracted Driving Laws and Your Injury Claim: What Houston Victims Need to Know About Negligence Per Se
 Source: https://nalawtx.com/blog/texas-distracted-driving-laws-your-injury-claim
 
 Nearly one in six Texas crashes in 2023 involved a distracted driver. If that driver broke Texas's cell phone law, it may already be doing much of the legal heavy lifting in your injury case.
 By Vu Nguyen, Founder & Managing Partner · Updated September 28, 2026
+If a driver broke Texas's hands-free cell phone law at the time of your crash, that violation can count as automatic proof of negligence under a legal doctrine called negligence per se. This shifts your case's focus to proving your injuries and damages rather than arguing the driver was careless. You generally have two years from the crash date to file a lawsuit in Texas.
+- Texas Transportation Code § 545.4251 bans reading, writing, or sending electronic messages while driving statewide.
+- A statutory violation can trigger negligence per se, treating duty and breach as automatically established in your claim.
+- Cell phone records are time-sensitive — an attorney can send preservation letters before carriers purge the data.
+- Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the crash to file suit.
 Picture the intersection of I-10 and Beltway 8 on a Tuesday afternoon. Traffic slows, then stops. A driver three cars back doesn't notice because they're reading a text. The crash happens in under two seconds. You're the one with whiplash, a totaled car, and a stack of medical bills.
 Now the other driver's insurance company is calling. They're friendly. They're asking questions. And they haven't mentioned, even once, that their driver may have violated Texas law at the moment of impact.
 That law matters to your claim. Here's why, and what you should do about it.
@@ -2449,11 +2630,22 @@ Two years sounds like a long time. It isn't, once you factor in medical treatmen
 Contacting an attorney sooner gives your team time to do the work properly.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Negligence per se means that when a driver breaks a safety statute like Texas Transportation Code § 545.4251, Texas courts can treat that violation as automatic proof that the driver was negligent. You no longer have to argue they were behaving carelessly — the legislature already decided texting while driving was careless when it passed the law. Your case then focuses on proving causation and the damages you suffered.
+No. Texas Transportation Code § 545.4251 specifically targets reading, writing, and sending electronic messages while driving. Distractions like eating, applying makeup, or talking to a passenger are not covered by the same statute. Those behaviors can still lead to full liability, but your claim would proceed under traditional negligence rather than negligence per se.
+Cell phone carriers log call records, text timestamps, and app usage, but they don't keep detailed records indefinitely. Accessing them requires a subpoena or a formal preservation demand sent before a lawsuit is filed. Getting an attorney involved early — ideally within days of the crash — gives your legal team time to request preservation before that evidence is overwritten or purged.
+Yes. Insurance adjusters often call within the first 24 to 48 hours and ask open-ended questions hoping to get a recorded statement before you speak with an attorney. Anything you say can be used to reduce your claim, for example stating you didn't see the other driver's phone before records show they were texting. You are not legally required to give a recorded statement to the other driver's insurance company.
+
 ## Texas Dog Bite Law: Why the 'One Free Bite' Rule Doesn't Always Protect the Owner
 Source: https://nalawtx.com/blog/texas-dog-bite-law-houston-what-victims-can-recover
 
 Texas is a one-bite state, but that label is misleading. Dog owners can be held liable even when their pet has never attacked before. Here's what Houston victims actually need to know.
 By Vu Nguyen, Founder & Managing Partner · Updated November 21, 2026
+Texas is a one-bite state, but dog owners can still be held liable even if their pet has never attacked before. Victims can pursue claims through negligence, local leash law violations, or landlord liability — paths that don't require proving the dog's dangerous history. You have two years from the date of the attack to file a claim.
+- The 'one free bite' rule isn't a complete shield — growling, lunging, or snapping can also prove an owner knew their dog was dangerous.
+- Violating a Houston or Harris County leash ordinance can automatically establish the owner's breach of duty through negligence per se.
+- Landlords can share liability if they knew a tenant kept a dangerous dog and failed to act.
+- Texas Civil Practice & Remedies Code § 16.003 gives you two years from the attack date to file — evidence disappears fast, so act early.
 Texas ranks second in the country for dog attacks. Houston consistently lands among the most dangerous cities for postal workers, joggers, and kids in their own neighborhoods. If a dog bit you, or someone you love, the first thing you'll probably hear from the owner is some version of "he's never done that before."
 That defense has a name. It's called the one-bite rule. And while it's real Texas law, it's nowhere near the complete shield that dog owners think it is. Victims have multiple paths to compensation, and a few of them don't require proving anything about the dog's history at all.
 
@@ -2522,11 +2714,22 @@ If the owner has no insurance, or if the policy limits are too low for the sever
 Our practice areas page covers the full range of personal injury claims we handle, including dog bites and premises liability. If you want to understand your specific options, a free case review is the fastest way to get a real answer.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Not necessarily. Texas courts have accepted evidence like growling at strangers, lunging on a leash, or snapping without contact as proof that an owner knew their dog was dangerous. A prior bite is one way to show that knowledge, but it's not the only way.
+If a dog owner violates a local ordinance — such as a Houston or Harris County leash law — and someone is hurt as a result, the victim may have a negligence per se claim. The violation of the law itself establishes the owner's breach of duty, so you don't have to separately argue what 'reasonable care' required.
+Texas courts have recognized landlord liability in dog bite cases where the landlord had actual knowledge of the dog's dangerous nature and had the ability to require the tenant to remove the animal. If the tenant has no meaningful assets or insurance, it's worth investigating whether the property owner knew about the dog's behavior before the attack.
+Texas personal injury claims, including dog bites, are governed by a two-year statute of limitations under Texas Civil Practice & Remedies Code § 16.003, starting from the date of the attack. Cases involving minors typically have a different timeline, with the clock starting when the child turns 18, though exceptions exist. An attorney can clarify how the deadline applies to your situation.
+
 ## What the Texas Supreme Court's 2025 Dram Shop Ruling Means If You Were Hit by a Drunk Driver in Houston
 Source: https://nalawtx.com/blog/texas-dram-shop-law-in-houston-after-2025-supreme-court
 
 In April 2025, the Texas Supreme Court made it harder to hold bars and restaurants liable when their customers cause DWI crashes. Here's exactly what changed, and what evidence now makes or breaks a dram shop claim in Houston.
 By Vu Nguyen, Founder & Managing Partner · Updated November 21, 2026
+The Texas Supreme Court's April 2025 ruling in Raoger v. Myers means a post-crash BAC reading alone is no longer enough to support a dram shop claim against a bar or restaurant. You now need direct, contemporaneous evidence — such as surveillance footage, server testimony, or witness accounts — showing the driver was visibly intoxicated when last served.
+- Post-crash BAC readings alone no longer prove 'obvious intoxication' at the time of service after Raoger v. Myers.
+- Surveillance footage is often critical, but bars can overwrite it within 30 to 72 hours — act fast.
+- Your injury claim against the drunk driver is completely separate and unaffected by the Raoger ruling.
+- Texas's two-year statute of limitations applies, but the most valuable evidence disappears within days.
 You're sitting at a red light on Westheimer. A driver runs a stop sign and T-bones your car. Police arrive. The driver fails a field sobriety test. blood alcohol content of 0.17, more than twice the legal limit. Later you find out he'd been drinking for three hours at a bar three blocks away before he got behind the wheel.
 You have a clear injury claim against the drunk driver. But you may also have a claim against the bar that kept serving him. That second claim, against the alcohol provider, is what Texas law calls a dram shop claim. And as of April 2025, winning one just got harder.
 
@@ -2590,11 +2793,22 @@ If the drunk driver had liability insurance, that insurer's adjuster will contac
 Our attorneys handle car accident claims across Houston and Harris County, including DWI crash cases where over-service by a bar or restaurant may be part of the picture. If you have questions about your situation, a free case review is a good place to start. No commitment, no pressure.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+In Raoger v. Myers, the Texas Supreme Court ruled that a post-crash blood alcohol content reading alone is not sufficient direct evidence that someone was obviously intoxicated at the time a bar served them. Plaintiffs must now support their claim with contemporaneous observation evidence, such as eyewitness accounts, surveillance video, or drink receipts from the bar itself.
+Yes. The Raoger ruling did not eliminate dram shop claims under Texas Alcoholic Beverage Code § 2.02 — it raised the evidentiary bar. You still have a viable claim if you can show the bar served someone who was obviously intoxicated at the time of service and that intoxication directly caused your injuries. The key is gathering direct, observable evidence quickly.
+Courts are now looking for evidence of what bar staff could have observed at the moment of service — things like server or bartender testimony, surveillance footage showing the customer's condition, receipts or drink logs documenting heavy service over a short period, and accounts from other patrons who witnessed the driver's behavior before they left. A high BAC number after the crash must be supported by this kind of direct observation evidence.
+Under Texas Civil Practice & Remedies Code § 16.003, the statute of limitations for personal injury claims is generally two years from the date of injury, and this applies to both the claim against the drunk driver and the dram shop claim against the alcohol provider. However, the most critical evidence — surveillance footage, server recollections, and bar records — can disappear within days, so contacting an attorney quickly matters far more than the two-year deadline suggests.
+
 ## Your Pre-Existing Condition Doesn't Kill Your Claim. Texas Law Says So
 Source: https://nalawtx.com/blog/texas-eggshell-plaintiff-rule-pre-existing-conditions
 
 Insurance adjusters use your prior back problems, old injuries, and degenerative conditions against you. The Texas eggshell plaintiff rule is the legal doctrine that stops them. Most injured Houstonians have never heard of it.
 By Vu Nguyen, Founder & Managing Partner · Updated September 28, 2026
+A pre-existing condition does not eliminate your right to recover damages in Texas. Under the eggshell plaintiff rule, an at-fault party must take you as they find you, meaning they are fully responsible for how their negligence worsened your condition, even if you were already vulnerable before the crash.
+- The eggshell plaintiff rule means defendants are responsible for the full harm caused to you, not to a hypothetical healthy person.
+- You can recover for aggravation of a pre-existing condition — the difference between your health before and after the crash.
+- Having a pre-existing condition is not negligence on your part and does not reduce your recovery under Texas comparative fault rules.
+- Texas Civil Practice & Remedies Code § 16.003 gives you generally two years from the accident date to file a lawsuit.
 You had a bad back before the crash. Maybe you'd been treated for degenerative disc disease, a herniated disc from years ago, or an old football injury from high school. Then someone rear-ended you on the I-45 Gulf Freeway, and now your back is significantly worse. You can barely get out of bed, you've missed work, and the pain is affecting every part of your life.
 The insurance adjuster calls. They've already pulled your medical records. And they tell you something that sounds very official and very final: "Your injuries are pre-existing. We're not responsible for a condition you already had."
 Here's what they're not telling you: that's not how Texas law works.
@@ -2665,11 +2879,22 @@ If an adjuster has told you that your pre-existing condition makes your case wor
 Now you do.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Yes. Under the Texas eggshell plaintiff rule, an at-fault driver is responsible for the harm their negligence caused you specifically, even if you had a prior back condition. You are entitled to recover for the aggravation — the worsening of your condition caused by the crash — not for the pre-existing condition itself.
+Aggravation refers to how a crash made an existing condition significantly worse. Texas law separates your pre-existing condition, which the defendant is not responsible for, from the worsening caused by the accident, which the defendant is fully responsible for. Your medical records before the crash establish your baseline, and everything worse than that baseline after the crash is the defendant's responsibility.
+The eggshell plaintiff rule is a legal doctrine requiring a negligent defendant to take their victim as they find them. If you were more vulnerable to injury because of a prior condition, the at-fault party still owes you full compensation for the harm their negligence caused. Texas courts apply this principle consistently, and juries are instructed on it through Texas Pattern Jury Charge 81.3.
+The deadline is the same regardless of your prior medical history. Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of the accident to file a personal injury lawsuit. Cases involving pre-existing conditions often require additional medical expert work, so starting the process early is important.
+
 ## Texas Insurance Bad Faith: When Your Own Insurer Breaks the Law
 Source: https://nalawtx.com/blog/texas-insurance-bad-faith-what-houston-claimants-can-recover
 
 Texas gives injured claimants two separate legal pathways to hold insurers accountable when they lowball, delay, or deny valid claims. Here's what those pathways look like, and what you can recover beyond your underlying claim.
 By Vu Nguyen, Founder & Managing Partner · Updated October 5, 2026
+Texas law requires insurers to handle your claim honestly and on time. When they lowball, delay, or deny a valid claim without reasonable basis, you can sue them separately from your underlying injury claim. A successful bad faith case can recover actual damages, attorney's fees, penalty interest, and in serious cases, additional damages multiplied up to three times your actual losses.
+- Your insurer must acknowledge your claim within 15 days under Texas Insurance Code § 542.055.
+- A bad faith claim has a two-year deadline that runs from the insurer's wrongful act, not your injury date.
+- Winning a bad faith case can include 18% per-year penalty interest and attorney's fees paid by the insurer.
+- The Stowers doctrine can hold a liability insurer responsible for a judgment exceeding policy limits if they refused a reasonable settlement.
 You paid your premiums for years. You followed the rules. Then you got hurt. maybe on I-610 during rush hour, maybe in a parking lot off Westheimer. and filed a claim with the insurance company you trusted to protect you.
 And then the insurer started playing games.
 Maybe the adjuster went silent for weeks. Maybe they offered you a fraction of what your medical bills alone cost. Maybe they denied your claim with a vague letter and no real explanation. You're sitting there hurt, confused, and wondering if any of this is even legal.
@@ -2763,11 +2988,22 @@ If an adjuster has been giving you the runaround, delaying your claim, offering 
 A free case review costs you nothing and tells you where you stand.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Bad faith is when an insurer knows or should know a claim is valid but denies or delays it without any reasonable basis. Texas Insurance Code Chapter 541 also lists specific prohibited acts, such as misrepresenting your policy, failing to investigate properly, or offering an unreasonably low settlement. You do not have to prove malicious intent to bring a statutory claim.
+Under Texas Insurance Code § 541.162, you generally have two years from the date the insurer committed the bad act to file a bad faith claim. That clock typically starts from the denial or the specific wrongful conduct, not necessarily when your underlying injury case ends. If you are approaching one year from a denial, speak with an attorney soon.
+You may recover actual damages caused by the bad faith conduct itself, attorney's fees, and an 18% per-year penalty interest under the Texas Prompt Payment of Claims Act. If the insurer's violation was knowing, Texas Insurance Code § 541.152 allows a court to award up to three times your actual damages. The DTPA provides a similar multiplier for knowing or intentional violations.
+Third-party bad faith claims are more complex because you do not have a direct contract with the at-fault driver's insurer, but they are not impossible. If the insurer committed a prohibited act under Chapter 541, or if the at-fault driver assigns their rights to you, you may still have a path forward. The Stowers doctrine also allows a liability insurer to be held responsible for a judgment exceeding policy limits if they refused a reasonable settlement offer.
+
 ## The 2025 Texas Supreme Court Ruling That Shifted the Ground Under Workplace Injury Lawsuits
 Source: https://nalawtx.com/blog/texas-nonsubscriber-employer-lawsuit-2025-the-ruling-that
 
 If your employer opted out of workers' comp and you got hurt on the job, a landmark April 2025 ruling means the company can now point fingers at other parties and potentially reduce what it owes you. Here's exactly what changed and what it means for your case.
 By Vu Nguyen, Founder & Managing Partner · Updated October 26, 2026
+A April 25, 2025 Texas Supreme Court ruling in In re East Texas Medical Center Athens lets nonsubscriber employers — those that opted out of workers' comp — point to third parties like contractors or equipment makers to reduce their share of fault. Your employer still cannot blame you or a coworker, but it now has a new tool to lower what it owes you.
+- Nonsubscribing employers can now designate 'responsible third parties' under Chapter 33 to shift some fault away from themselves.
+- Your employer still cannot use your own negligence or a coworker's negligence as a defense under Texas Labor Code § 406.033.
+- If your employer points to a third party, your attorney may be able to pursue that party too, potentially increasing total recovery.
+- Texas Civil Practice & Remedies Code § 16.003 gives you two years from your injury date to file — that deadline did not change.
 Texas is the only state in the country that lets employers skip workers' compensation insurance entirely. Employers that do this are called nonsubscribers. When you work for one and get injured on the job, you can't file a workers' comp claim. But you can sue the employer directly in civil court. Historically, that lawsuit came with a major advantage for injured workers: the employer couldn't use your own negligence against you the same way it could in an ordinary injury case.
 On April 25, 2025, the Texas Supreme Court issued its opinion in In re East Texas Medical Center Athens (No. 23-1039). The ruling changed one critical piece of how those nonsubscriber lawsuits work, and not in workers' favor. If you've been hurt on the job in Texas and your employer opted out of workers' comp, you need to understand what this decision means before you talk to an adjuster, sign anything, or assume your case looks the same as it would have a year ago.
 
@@ -2827,11 +3063,22 @@ What changed is that employers now have a new tool to distribute fault, and well
 Texas workers deserve to know their rights. This ruling complicates the picture. It doesn't erase it.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+On April 25, 2025, the Texas Supreme Court ruled that nonsubscribing employers — those that opted out of workers' compensation — can designate responsible third parties under Texas Civil Practice & Remedies Code Chapter 33. This allows them to ask a jury to assign some fault to outside parties like contractors or equipment makers. If the jury agrees, the employer's share of what it owes you can shrink by that percentage.
+No. Texas Labor Code § 406.033 still prohibits a nonsubscribing employer from using your own negligence or a coworker's negligence as a defense. Those core protections were not changed by the 2025 ruling. What changed is that your employer can now point to unrelated third parties, such as an equipment manufacturer or a subcontractor, to reduce its share of fault.
+The ruling gives defense attorneys a new argument to bring to mediation: that their client's proportionate share of fault is reduced because a third party also bears responsibility. This can be used to justify a lower settlement offer. However, the same third-party designation can open the door for your attorney to pursue additional defendants, potentially increasing the total pool of money available to you.
+Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of your injury to file a personal injury claim. That clock starts the day you are hurt, not when you finish treatment or learn about the ruling. Because third-party designation strategy begins early, getting an attorney involved quickly is especially important to protect your options.
+
 ## Texas Personal Injury Deadlines: The Clock Is Already Running
 Source: https://nalawtx.com/blog/texas-personal-injury-deadlines-the-clock-is-already-running
 
 Texas law gives most injury victims two years to file a lawsuit — but that window can shrink fast, and missing it usually ends your case forever. Here's what every Texan needs to know about these deadlines before it's too late.
 By Vu Nguyen, Founder & Managing Partner · Updated May 13, 2026
+Texas law gives most injury victims two years from the date of injury to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003. If a government entity is involved, you may need to give written notice within six months or even 90 days. Missing the deadline almost always ends your case permanently, no matter how strong your evidence is.
+- Most Texas personal injury claims must be filed within two years of the injury date.
+- Claims against government entities require formal written notice within six months — sometimes just 90 days.
+- Negotiating with an insurer does NOT pause the two-year statute of limitations.
+- For injured minors, the clock is generally paused until their 18th birthday, but evidence can still disappear.
 You were hurt. Maybe it happened last week on I-45 near the South Loop. Maybe it was six months ago at a job site in Harris County. You've been focused on getting better, dealing with doctors, missing work, trying to hold things together. A lawsuit felt like a distant problem.
 Here's the hard truth: while you were healing, a legal clock was ticking. In Texas, that clock has a hard stop. Once time runs out, it doesn't matter how serious your injuries are, how clearly the other party was at fault, or how strong your evidence is. The courthouse door closes.
 This post explains the Texas statute of limitations for personal injury — what the deadline is, when it starts, and the situations where it runs differently than you'd expect.
@@ -2926,11 +3173,22 @@ Texas personal injury law gives most people two years to file a lawsuit. That cl
 If you were recently hurt — in Houston, Harris County, or anywhere in Texas — find out where you stand before you lose the option. Call us and get a straight answer about your specific situation and your actual deadline.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+For most personal injury cases in Texas, you have two years from the date of your injury to file a lawsuit, as established by Texas Civil Practice & Remedies Code § 16.003. This covers common claims like car accidents, truck accidents, slip-and-fall injuries, dog bites, and motorcycle crashes. Missing that deadline almost always ends your case permanently.
+If a government entity like the City of Houston, Harris County, TxDOT, or a public school district was involved in your injury, you typically must give formal written notice within six months of the incident under the Texas Tort Claims Act. Some municipalities require notice even sooner — within 90 days. Missing this notice window can end your claim before the two-year mark ever arrives.
+No. An insurance claim and a lawsuit are two completely separate things, and negotiating with an adjuster does not pause the statute of limitations. Some insurance adjusters may string out negotiations past the two-year mark and then deny the claim, knowing you've lost the ability to sue. If the two-year deadline is approaching and you haven't settled, you may need to file suit to protect your rights.
+If the injured person is under 18, Texas law tolls — pauses — the two-year statute of limitations until their 18th birthday. A child injured at age 10 would generally have until age 20 to file. However, evidence like surveillance footage and witness memories can disappear long before then, so waiting is rarely a good strategy even though the law permits it.
+
 ## What Every Houston Driver Must Know About Uninsured and Underinsured Motorist Coverage in Texas
 Source: https://nalawtx.com/blog/texas-uninsured-motorist-coverage-what-houston-drivers-need
 
 Roughly 1 in 7 Texas drivers carries no insurance at all. This post explains what UM/UIM coverage is, why so many Houston drivers accidentally waived it, and what your options are when an uninsured driver hits you.
 By Vu Nguyen, Founder & Managing Partner · Updated May 18, 2026
+Uninsured/underinsured motorist (UM/UIM) coverage pays your medical bills, lost wages, and other damages when the at-fault driver has no insurance or too little to cover your losses. Texas law requires insurers to offer it, but you must accept it in writing — many Houston drivers unknowingly signed it away. Check your declarations page now to see if you have it.
+- Roughly 1 in 7 Texas drivers carries no insurance, making UM/UIM coverage especially important in Houston.
+- You must sign a written rejection to waive UM/UIM — many drivers do this accidentally during signup.
+- UM/UIM can cover medical bills, lost wages, pain and suffering, and future medical costs — not just ER visits.
+- Texas's two-year filing deadline under § 16.003 applies to UM/UIM claims; missing it ends your recovery.
 Picture this: you're stopped at the light at I-10 and Bunker Hill when a driver rear-ends you at highway speed and takes off. Or they stop, hand you an insurance card, and you find out three days later the policy lapsed six months ago. Your car is totaled. Your neck hurts. And the person who did this to you has nothing.
 This isn't a hypothetical. It plays out in Harris County courts and hospital emergency rooms constantly. Texas has one of the highest uninsured driver rates in the country. Roughly 14% of drivers on the road have no coverage at all. In a metro area as large as Houston, that means hundreds of thousands of uninsured vehicles sharing the freeways with you every single day.
 The insurance product designed to protect you in exactly this situation is called uninsured/underinsured motorist coverage, UM/UIM for short. Most drivers have no idea how it works, and many have quietly signed it away without realizing it. Here's what you need to know.
@@ -2997,11 +3255,22 @@ At minimum, match your UM/UIM limits to your liability limits. If you carry $100
 Given what Houston roads look like, the uninsured driver rate, the crash volume, the hit-and-run problem, UM/UIM coverage is one of the few insurance products that actually earns its cost on a regular basis. Talk to your insurance agent about your current limits and get the specifics in writing.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+If you have UM coverage on your own policy, you can file a claim with your own insurer to cover medical bills, lost wages, and other damages. Without UM coverage, your main option is pursuing a civil judgment against the at-fault driver, which costs time and money and often yields nothing if that person has no assets.
+Yes. Under Texas law, a hit-and-run driver qualifies as an 'uninsured motorist,' so your UM policy can respond even if you never identify who hit you. However, most Texas UM policies require that the hit-and-run vehicle made physical contact with your car. Getting a police report immediately after the crash is essential, as insurers can push back without one.
+Your own insurer has a financial interest in paying as little as possible, so disputes over injury severity or medical treatment are common. Texas Insurance Code § 542 requires insurers to investigate in good faith and pay valid claims within specific timeframes, with penalty interest and attorney's fees possible for violations. Knowing these protections exist — and invoking them — matters significantly to your outcome.
+Attorneys generally recommend purchasing UM/UIM limits that match or exceed your liability limits — for example, if you carry $100,000 per person in liability, carry at least $100,000 in UM/UIM. Texas allows you to purchase UM/UIM limits up to the amount of your liability coverage. The premium difference is often modest relative to the protection it provides, especially given Houston's high uninsured driver rate and crash volume.
+
 ## Texas Wrongful Death Claims: Who Can Sue, What You Can Recover, and the Deadline You Cannot Miss
 Source: https://nalawtx.com/blog/texas-wrongful-death-claims-who-can-sue-and-when
 
 If someone you love was killed by another person's negligence, Texas law gives your family the right to seek compensation. But that right has strict limits on who can file and how long you have to act.
 By Vu Nguyen, Founder & Managing Partner · Updated November 21, 2026
+In Texas, the surviving spouse, children, and parents of someone killed by another's negligence can file a wrongful death claim under Texas Civil Practice & Remedies Code § 71.002. You have two years from the date of death to file under Texas Civil Practice & Remedies Code § 16.003. Missing that deadline almost always means losing your right to sue.
+- Only a surviving spouse, children, or parents have legal standing to file a Texas wrongful death claim.
+- The two-year filing deadline is strict — courts routinely dismiss cases filed even one day late.
+- If a government entity is involved, you may need to file a formal notice within six months.
+- Texas's modified comparative fault rule reduces your recovery if your loved one was partly at fault.
 Losing a family member to a preventable accident is devastating. Then come the bills, the calls from insurance adjusters, the funeral arrangements. Somewhere in the middle of all that grief, you start wondering whether your family has any legal recourse.
 Texas wrongful death law exists for exactly this situation. It holds the people responsible for your loved one's death financially accountable. But it only works if you file the right claim, with the right people, before the clock runs out. This post walks you through how that works in plain language.
 
@@ -3082,6 +3351,12 @@ Talk to a Texas wrongful death lawyer before you sign anything. Releases, settle
 Don't wait to see if the insurance company will offer something fair. They may make an early offer. Early offers are almost always low, sometimes dramatically so. They know your family is grieving and may not know the full value of what you've lost. An attorney can evaluate whether any offer is reasonable.
 Our attorneys handle commercial truck accident and car accident wrongful death cases across Harris County, Fort Bend County, Montgomery County, and the surrounding Houston area. If you have questions about whether your family has a claim, a free case review costs you nothing and tells you where you stand.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
+
+### Common questions
+Under Texas Civil Practice & Remedies Code § 71.004, only the surviving spouse, biological or adopted children, and biological or adoptive parents can file a wrongful death claim. Siblings, grandparents, and other relatives do not have standing, no matter how close the relationship was. If none of the eligible family members files within three months of the death, the estate's executor or administrator may file on the family's behalf.
+Texas law gives you two years from the date of death to file a wrongful death lawsuit under Texas Civil Practice & Remedies Code § 16.003. Missing this deadline almost certainly means losing your right to sue, regardless of how strong your case is. If a government entity like TxDOT is involved, the deadline can be even shorter, requiring a formal notice of claim typically within six months.
+Your family may seek compensation for loss of financial support, loss of companionship and society, loss of parental care and guidance, mental anguish, loss of household services, medical expenses incurred before death, and funeral and burial expenses. These are damages for what your family personally lost. A separate survival action under Texas Civil Practice & Remedies Code § 71.021 can also recover for the deceased person's own pain, suffering, and lost wages before death.
+No. A civil wrongful death claim is completely separate from any criminal case. You do not need a criminal conviction to win a civil case because the standard of proof is lower — 'preponderance of the evidence' rather than 'beyond a reasonable doubt.' A criminal acquittal does not prevent your family from pursuing a civil wrongful death claim.
 
 ## Texas's 51% Fault Rule: How It Can Reduce — or Eliminate — Your Recovery
 Source: https://nalawtx.com/blog/texass-51-fault-rule-how-it-can-reduce-or-eliminate-your
@@ -3177,6 +3452,11 @@ Source: https://nalawtx.com/blog/texass-new-2026-av-law-driverless-car-accident-
 
 A new Texas law took effect May 28, 2026, putting the TxDMV in charge of authorizing driverless vehicles statewide and reshaping who you can hold responsible when one of those vehicles causes a crash.
 By Vu Nguyen, Founder & Managing Partner · Updated November 21, 2026
+A new Texas law effective May 28, 2026, puts the TxDMV in charge of authorizing driverless vehicles and makes the company operating the autonomous vehicle legally responsible in the role a driver would otherwise occupy. Depending on what caused the crash, the AV operator, vehicle manufacturer, or software developer may all be liable. Acting quickly to preserve vehicle data is critical.
+- The 2026 Texas law makes the TxDMV-authorized AV operator legally responsible in place of a human driver.
+- Autonomous vehicles record massive amounts of data — a litigation hold letter must be sent fast, sometimes within days.
+- Multiple parties — operator, manufacturer, software developer — can be liable depending on what caused the crash.
+- Texas's personal injury statute of limitations is generally two years under Texas Civil Practice & Remedies Code § 16.003.
 Imagine you're stopped at the light on Westheimer at Beltway 8. A delivery van with no driver behind the wheel rolls through the intersection and T-bones your car. You're hurt. The van belongs to a tech company. There's no human driver to point to. Who do you call? Who pays your medical bills?
 That scenario is no longer hypothetical in Houston. Texas leads the nation in commercial autonomous vehicle miles traveled, and driverless vehicles are already running on Houston-area roads: freight corridors along I-10, package deliveries in the Heights, passenger shuttles near the Texas Medical Center. With the new 2026 AV law now in effect, the rules around liability for these crashes just changed. Here's what you need to know if you're the one who got hurt.
 
@@ -3241,11 +3521,22 @@ If you've been hurt by an autonomous or semi-autonomous vehicle anywhere in the 
 Learn more about how our firm approaches complex injury cases across all practice areas, or read our FAQs for answers to common questions about Texas personal injury claims.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Under the 2026 Texas AV law, the company that holds the TxDMV authorization to operate the driverless vehicle steps into the legal role a driver would normally occupy. Depending on what caused the crash, the vehicle manufacturer or software developer may also be liable. There is rarely one single defendant in these cases.
+Autonomous vehicles continuously record sensor readings, speed, steering inputs, system alerts, and camera footage. That data is held by the company whose vehicle hurt you, so an attorney needs to send a litigation hold letter quickly — sometimes within days — before routine data deletion cycles wipe the records.
+No. The 2026 law focuses on fully driverless vehicles operating without any human driver required. Semi-autonomous systems like Tesla Autopilot still require human supervision, so the human driver retains legal responsibilities. However, if the system's behavior contributed to the crash, the manufacturer's product liability exposure may still apply alongside the driver's negligence.
+Texas's statute of limitations for personal injury claims is generally two years from the date of injury under Texas Civil Practice & Remedies Code § 16.003. However, the window to preserve critical vehicle data is far shorter, making it important to contact an attorney as quickly as possible after the crash.
+
 ## The First 48 Hours After a Texas Car Wreck — What You Do Now Matters Later
 Source: https://nalawtx.com/blog/the-first-48-hours-after-a-texas-car-wreck-what-you-do-now
 
 The steps you take in the two days after a crash can protect your health, preserve your legal rights, and keep the insurance company from using your own words against you. Here's a clear, honest rundown of what to do — and what to avoid.
 By Vu Nguyen, Founder & Managing Partner · Updated May 12, 2026
+The steps you take in the first 48 hours after a Texas car wreck can protect your health and preserve your legal rights. Document the scene thoroughly, get medical attention even if you feel fine, and be careful what you say to insurance adjusters before you fully understand your situation.
+- Get a police report at the scene — it's an official record that's hard to dispute later.
+- See a doctor the same day, even if you feel okay; some injuries take 24–72 hours to appear.
+- You are not required to give a recorded statement to the other driver's insurance company.
+- Texas law gives most crash victims two years to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003.
 You just got hit. Your hands are shaking. The airbags may have gone off. Strangers are slowing down to look. Your first instinct is probably to figure out if everyone's okay — and then, a few minutes later, to panic about what happens next.
 That moment of confusion is exactly when mistakes get made. Not because you're careless — because nobody tells you what's actually important until it's too late. This post walks you through it, step by step, from the scene of the crash through the next 48 hours.
 
@@ -3309,11 +3600,22 @@ The days after a crash are hard. You're in pain, your car may not be drivable, y
 Our firm handles car accident cases across Houston and the surrounding area — Harris County, Fort Bend County, Montgomery County, Galveston County. If you have questions about your situation, the free case review is a good place to start. No pressure, no commitment — just an honest conversation about where you stand.
 This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
+### Common questions
+Call 911 and make sure an officer files a report before you leave the scene. Take photos of every vehicle, skid marks, debris, and your injuries. Collect the other driver's insurance and license information, and get contact details from any witnesses. Avoid apologizing or speculating about fault, as those statements can be used against you later.
+You are not required to give a recorded statement to the other driver's insurance company, even if the adjuster implies otherwise. With your own insurer, your policy may include a cooperation clause, but you still have the right to be represented by an attorney before giving any recorded statement. If you have hired an attorney, that attorney handles insurance communication for you.
+Texas uses a modified comparative fault system under Texas Civil Practice & Remedies Code § 33.001. If you are partly at fault, your recovery is reduced by your percentage of fault. If you are found to be 51% or more at fault, you cannot recover anything, which is why thorough early documentation of the crash matters.
+Most car accident victims in Texas have two years from the date of the crash to file a personal injury lawsuit, as set out in Texas Civil Practice & Remedies Code § 16.003. While two years may sound like plenty of time, building a case requires investigation, gathering records, and negotiation, all of which take months. Starting the conversation with an attorney early preserves your options.
+
 ## The insurance adjuster recorded statement trap.
 Source: https://nalawtx.com/blog/what-insurance-adjuster-recorded-statement-trap
 
 Within hours of a Houston car crash, the at-fault driver's insurance company calls. The adjuster is friendly, professional, sympathetic. They apologize for the crash. They say they just want to "get the facts" so they can "move things along." They ask if it's okay to record the conversation. Here's what's actually happening.
 By Vu Nguyen, Founder & Managing Partner · Updated March 2, 2026
+You are not legally required to give a recorded statement to the at-fault driver's insurance company. Adjusters call within hours of a crash because that is when you are most likely to say something that can be used against your claim later. Politely decline, ask for requests in writing, and contact an attorney.
+- You have no legal obligation to give a recorded statement to the other driver's insurer.
+- Insurance companies call within 72 hours because you may not yet know the full extent of your injuries.
+- Even casual phrases like 'I'm pretty much okay' can be used to dispute your injury claim later.
+- Once an attorney is involved, insurers must stop contacting you directly and go through counsel.
 
 ### Why they call so fast
 Insurance companies call early and call often because the first 72 hours after a crash are when an injured person is most likely to say something they shouldn't. You're medicated. You're disoriented. You're in pain. You don't yet know the full extent of your injuries — concussions and soft-tissue damage often don't present symptoms for 1–3 days.
@@ -3353,3 +3655,9 @@ No fee unless we win. English · Español · Tiếng Việt.
 - All posts →
 - Long-form legal guides
 - Houston's worst intersections
+
+### Common questions
+No. There is no statute, regulation, or insurance rule that requires you to give a recorded statement to the at-fault driver's insurer. The adjuster may imply it is required or say they cannot process your claim without one, but that is not true. You can simply decline and ask that any requests be made in writing through your attorney.
+You can say: 'Thank you for calling. I'm not going to give a recorded statement at this time. If you need information from me, please put your request in writing and I'll respond through my attorney.' You do not need to argue or explain further. If the adjuster pushes back, repeat your line and end the call.
+Insurance companies contact injured people within the first 72 hours because that window is when you are most likely to be medicated, disoriented, or unaware of the full extent of your injuries. Symptoms from concussions and soft-tissue damage often do not appear for one to three days. The goal is to lock you into a statement before you understand how serious your injuries are.
+Giving an early recorded statement does not ruin your case. An attorney can work around an unhelpful statement using subsequent medical records, witness testimony, dashcam footage, and other evidence. The most important step is to get an attorney involved now, before the adjuster follows up with a quick settlement offer or other pressure tactics.
