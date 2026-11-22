@@ -1,0 +1,48 @@
+name: Render Post Image
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "File name in .github/post-images without .html (for example: first-48-hours)"
+        required: true
+        type: string
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install renderer and fonts
+        run: |
+          npm install --no-save playwright @fontsource/fraunces @fontsource/manrope
+          npx playwright install --with-deps chromium
+
+      - name: Render image
+        env:
+          NAME: ${{ inputs.name }}
+        run: node .github/scripts/render_post_image.js "$NAME"
+
+      - name: Commit
+        env:
+          NAME: ${{ inputs.name }}
+        run: |
+          git config user.name "blog-agent[bot]"
+          git config user.email "blog-agent@nalawtx.com"
+          git add assets/posts
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Render post image: $NAME"
+          git push
