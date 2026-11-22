@@ -1291,13 +1291,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/es/locations/index</loc>
+    <loc>https://nalawtx.com/es/locations/</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://nalawtx.com/vi/locations/index</loc>
+    <loc>https://nalawtx.com/vi/locations/</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
