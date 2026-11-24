@@ -1856,6 +1856,97 @@ Not necessarily. The majority of Houston's 119 pedestrian deaths in 2024 happene
 Get medical attention right away, even if you feel fine — adrenaline can mask injuries and gaps in treatment are a top argument insurers use to reduce claims. Document everything at the scene, avoid giving a recorded statement to the at-fault driver's insurer, and do not sign anything in the first days or weeks.
 Texas follows a 51% comparative-fault rule, meaning you can recover damages as long as you are not more than 50% at fault. Texas law generally favors injured pedestrians and cyclists in crosswalks, but insurance companies will aggressively try to push fault onto you to reduce or eliminate what they owe.
 
+## Hurt by Debris on a Houston Highway? How Texas's Tightened Unsecured Load Laws Help Injury Victims Sue
+Source: https://nalawtx.com/blog/hurt-by-debris-on-a-houston-highway-texas-unsecured-load
+
+A mattress flies off a pickup on I-10. A chunk of concrete bounces off a flatbed on the Beltway. These aren't freak accidents. Texas law now puts real teeth behind your right to sue the people responsible.
+By Vu Nguyen, Founder & Managing Partner · Updated November 24, 2026
+It happens fast. You're driving on I-610 or the Southwest Freeway, traffic is moving, and suddenly something falls off the vehicle in front of you. A wooden pallet. A loose length of pipe. A piece of construction equipment. You have maybe half a second to react.
+These are road debris accidents. In Texas, they happen far more often than most people realize. Over 1,200 crashes per year in Texas involve unsecured loads. Many involve injuries. Some involve fatalities. And almost every one of them was preventable.
+If you were hurt by debris that fell from another vehicle, you have legal options. Texas law has always allowed injury victims to pursue the driver or company responsible. But in 2025, the Texas Legislature significantly strengthened those rules, which matters a great deal for your civil claim.
+
+### What the Law Actually Says, and What Changed in 2025
+The core statute is Texas Transportation Code § 725.003. It prohibits operating a vehicle on a public road with an unsecured load that could fall off and injure someone or damage property. That baseline rule has been on the books for years.
+What changed in 2025 is the criminal penalty structure. The 2025 Legislature raised the offense from a misdemeanor to a Class A misdemeanor. When the unsecured load causes bodily injury, the offense escalates to a state jail felony. When someone dies, the charge can rise further.
+You might be wondering: why do criminal penalties matter to my civil injury claim? The answer is a legal concept called negligence per se. Basically, when someone breaks a safety statute and that violation causes your injury, the law treats the violation itself as evidence of negligence. You don't have to prove they were careless in some general sense. You point to the statute, show they broke it, and show that's what hurt you.
+The 2025 upgrade to § 725.003 strengthens your civil case in a concrete way: a violation that now constitutes a felony carries much more weight as evidence of serious negligence than the old misdemeanor classification did.
+Texas courts in Harris County and throughout the state have recognized negligence per se claims in debris cases for years. The stiffer criminal classification reinforces what any competent plaintiff's attorney will argue: this wasn't an accident. It was a failure to follow a law that exists specifically to protect drivers like you.
+
+### Who Can Be Held Liable. It's Often More Than One Party
+The driver of the vehicle that dropped the debris is the most obvious defendant. But depending on the facts, there may be others.
+
+#### The Driver
+If an individual driver tied down a mattress with a bungee cord and it flew off on US-290, that driver is personally liable. They had an obligation under Texas law to secure their load before driving on a public road. Full stop.
+
+#### The Driver's Employer or Motor Carrier
+When the vehicle belongs to a business. a construction company, a landscaping crew, a moving company, a freight carrier. the employer can be held liable under a doctrine called respondeat superior (Latin for "let the master answer"). If the driver was working when the incident happened, the employer is on the hook for the driver's negligence.
+Companies that operate commercial trucks or fleets also have independent duties to train their drivers on load securement. If a company routinely skips load inspection or doesn't train crews on proper tie-down procedures, that's a separate basis for liability: negligent supervision or negligent entrustment.
+
+#### Third-Party Loaders
+In commercial freight situations, the entity that loaded the cargo isn't always the driver or the carrier. Sometimes a shipper, warehouse crew, or independent contractor loaded the truck. If the load was improperly secured from the start, that loading party may share liability.
+
+#### The Vehicle or Equipment Manufacturer
+Less common, but worth investigating: if a cargo strap, latch, or securing mechanism failed because it was defective, the manufacturer of that equipment could be a defendant under a products liability theory.
+When a commercial truck is involved, your attorney should also look at federal regulations. The Federal Motor Carrier Safety Administration (FMCSA) publishes detailed cargo securement rules. 49 CFR Part 393. that govern how loads must be tied down, what equipment must be used, and how loads must be inspected. A violation of those federal rules strengthens a negligence per se argument and opens the door to additional scrutiny of the carrier's safety record.
+
+### The Specific Challenges of Debris Cases
+Debris accidents are different from typical rear-end or intersection crashes. The challenges are real, and you should understand them going in.
+
+#### Identifying the Vehicle
+The hardest part of many debris cases is figuring out who the vehicle belonged to. If you swerved to avoid a flying tire tread on I-45 near the South Loop and the truck kept going, you may not have a plate number. You may not even have a good description.
+This is where witness statements, dashcam footage, and traffic camera records become critical. TxDOT operates cameras across much of the Houston metro freeway system. Private businesses along major corridors. gas stations, warehouses, truck stops near Beltway 8. often have exterior cameras that capture highway traffic. An attorney can send preservation letters demanding that footage be saved before it's overwritten, often within 30 to 72 hours of the crash.
+
+#### The Debris Is Usually Gone
+By the time anyone investigates, the debris is often scattered or removed. TxDOT highway crews clear debris quickly. That's why documenting the scene right after the crash matters so much. Photograph whatever is still there. fragments, skid marks, your vehicle's damage. before you do anything else.
+
+#### The Driver May Deny It
+If you do identify the vehicle, don't be surprised if the driver claims they had no idea anything fell off. Under Texas law, that doesn't necessarily let them off the hook. The question is whether a reasonable person should have known the load wasn't properly secured, and whether they took reasonable steps to check before driving.
+
+### What Damages You Can Recover
+Texas law allows injury victims to pursue economic damages (things with a clear dollar value) and non-economic damages (harm that's real but harder to quantify).
+Economic damages in a debris crash typically include:
+- Medical bills. emergency room, surgery, follow-up care, physical therapy
+- Future medical costs if your injury requires ongoing treatment
+- Lost wages from time you couldn't work
+- Diminished earning capacity if you can't return to your previous job
+- Vehicle repair or replacement
+Non-economic damages include pain and suffering, emotional distress, and loss of enjoyment of life. In Texas personal injury cases not involving medical malpractice, there is no statutory cap on non-economic damages.
+In cases involving particularly reckless conduct. a driver who knowingly ignored a visibly unsecured load, or a company with a documented history of safety violations. exemplary damages (what most people call punitive damages) may be available. Under Texas Civil Practice & Remedies Code § 41.003, exemplary damages require proof of fraud, malice, or gross negligence. That's a high bar, but worth evaluating when the facts support it.
+
+### Texas's Fault Rules and How They Apply Here
+Texas uses a system called modified comparative fault. If you're found partially responsible for the crash, your recovery is reduced by your share of the blame. If you're found more than 50% at fault, you recover nothing.
+In debris cases, defendants sometimes argue that you were following too closely, driving too fast, or failed to avoid the debris in time. These arguments can be aggressive and frustrating to hear after you've been hurt by someone else's negligence. But they're standard insurance defense tactics, and they're manageable with the right evidence and legal strategy.
+Our post on Texas's 51% fault rule explains how this works in practice and what it means for your ability to recover.
+
+### What to Do Right After a Debris Crash on a Houston Road
+The steps you take in the first hours matter more than most people realize. Here's what to focus on.
+Call 911. You want a police report. Even if your injuries seem minor, get law enforcement on the scene. The report documents the crash, identifies any witnesses, and may include the responding officer's observations about the debris.
+Document everything immediately. Photograph the debris or any fragments still at the scene. Photograph damage to your vehicle from multiple angles. Photograph road markings, skid marks, your position on the road. If another vehicle is present, get photos of its license plate, the load or remaining load, and any tie-downs or securing equipment.
+Get witness information. Other drivers who saw the debris fall are valuable. Names and phone numbers, before they drive away.
+Seek medical attention that day. Even if you walked away from the crash feeling okay, get evaluated. Concussions, spinal injuries, and soft-tissue damage don't always present immediate symptoms. A gap between the crash and your first medical visit is something insurance adjusters will use against you.
+Say as little as possible to insurance companies. The at-fault driver's insurer will call. They are not on your side. Before you give any statement. especially a recorded one. read our post on the recorded statement trap. That call is designed to gather information that reduces what they pay you.
+Contact an attorney quickly. Evidence in debris cases disappears fast. Camera footage gets overwritten, debris gets cleared, witnesses forget details. The sooner an attorney is involved, the more evidence can be preserved.
+Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of the crash to file a personal injury lawsuit. That sounds like a long time. It isn't. not when you factor in evidence preservation, investigating multiple defendants, and dealing with insurance companies who have their own clock running.
+
+### When the At-Fault Driver Has No Insurance. or Flees
+Debris crashes have a painful wrinkle that most other accident cases don't: the responsible vehicle may never be identified. If a truck sheds cargo on the North Loop and keeps going, you may be left without a known defendant.
+This is exactly when uninsured motorist (UM) coverage becomes important. Texas requires insurers to offer UM coverage, though drivers can reject it in writing. If you have it, your own policy may cover your injuries even when the at-fault driver is unknown or uninsured.
+Our full guide to Texas uninsured motorist coverage explains how those claims work and when they apply to hit-and-run or unidentified vehicle situations.
+
+### Commercial Truck Debris: A Separate Category of Risk
+When an 18-wheeler or commercial truck is involved, the case takes on a different scale. both in terms of potential harm and in terms of how claims are handled.
+Commercial carriers carry substantial liability insurance, often $750,000 or more under federal minimum requirements, with many carriers holding multi-million-dollar policies. They also have dedicated claims teams and defense attorneys who get to work immediately after a reported incident. That's not meant to intimidate you. It's meant to explain why having your own legal representation quickly is essential.
+Federal FMCSA rules impose specific cargo securement standards that go beyond what Texas Transportation Code § 725.003 requires. Those rules cover the number and placement of tie-downs, the working load limit of securing equipment, and the driver's duty to inspect the load within the first 50 miles and after every break. A violation of those rules is powerful evidence of negligence in a civil case.
+If a commercial truck was involved in your crash, an attorney experienced in Texas truck accident claims will know to request the carrier's driver qualification files, the truck's inspection records, maintenance logs, and the driver's hours-of-service data. All of that can reveal whether the carrier had a pattern of cutting corners on safety.
+
+### What the Insurance Company Will Try to Argue
+Expect the at-fault party's insurer to push several angles.
+They may argue the debris was a sudden, unforeseeable event. essentially claiming it was an act of nature rather than negligence. Texas law doesn't support this when a driver had a duty to secure the load and didn't. The 2025 strengthening of § 725.003 makes this argument even harder to sustain.
+They may argue comparative fault. that you should have reacted differently. This is a pressure tactic. The fact that you couldn't avoid debris traveling toward you at highway speed doesn't make you comparably at fault.
+They may move quickly to offer a low settlement before you understand the full extent of your injuries. A quick settlement closes your case permanently. If you later discover a more serious injury. a herniated disc that becomes symptomatic weeks after the crash, for example. you have no further recourse once you've signed a release.
+None of these tactics should surprise you. And none of them should pressure you into settling before you're ready.
+This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
+
 ## Hurt in a Houston Construction Zone? Here's Who Can Be Held Liable Under Texas Law
 Source: https://nalawtx.com/blog/hurt-in-a-houston-construction-zone-who-can-be-liable
 
