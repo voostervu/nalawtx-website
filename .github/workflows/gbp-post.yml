@@ -1,0 +1,62 @@
+name: Google Business Profile Post
+
+# Posts the newest blog article to the firm's Google Business Profile.
+# Runs Tuesday mid-morning Houston time, after Monday's blog post has published.
+on:
+  schedule:
+    - cron: "17 16 * * 2"   # Tuesday 10:17 am CST (11:17 am during daylight time)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Preview only (do not post)"
+        type: boolean
+        default: true
+      slug:
+        description: "Post a specific article (blog slug); leave blank for the newest"
+        required: false
+        default: ""
+
+concurrency:
+  group: gbp-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Post to Google Business Profile
+        id: gbp
+        env:
+          GBP_CLIENT_ID: ${{ secrets.GBP_CLIENT_ID }}
+          GBP_CLIENT_SECRET: ${{ secrets.GBP_CLIENT_SECRET }}
+          GBP_REFRESH_TOKEN: ${{ secrets.GBP_REFRESH_TOKEN }}
+          GBP_ACCOUNT_ID: ${{ secrets.GBP_ACCOUNT_ID }}
+          GBP_LOCATION_ID: ${{ secrets.GBP_LOCATION_ID }}
+          GBP_IMAGE_URL: ${{ vars.GBP_IMAGE_URL }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+        run: |
+          if [ -n "${{ inputs.slug }}" ]; then
+            python .github/scripts/gbp_post.py --slug "${{ inputs.slug }}"
+          else
+            python .github/scripts/gbp_post.py
+          fi
+
+      - name: Record what was posted
+        if: steps.gbp.outputs.posted != ''
+        run: |
+          git config user.name "gbp-agent[bot]"
+          git config user.email "blog-agent@nalawtx.com"
+          git add .github/gbp_posted.json
+          git commit -m "gbp: posted ${{ steps.gbp.outputs.posted }}"
+          git push
