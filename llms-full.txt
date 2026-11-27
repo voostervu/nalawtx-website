@@ -544,6 +544,9 @@ Quick answer: If another driver caused your Houston car accident, Texas law allo
 - Rental car during repairs
 - Exemplary damages in drunk-driving cases
 
+### Watch: What's my car accident case worth?
+Vu Nguyen walks through the damages Texas law allows, what makes a case strong or weak, the 2-year deadline, and how long a claim usually takes.
+
 #### One firm. One promise. No fee unless we win.
 - ✓ 24/7 real-person intake
 - ✓ English · Spanish · Vietnamese
@@ -1352,6 +1355,75 @@ Negligence per se means that when a defendant violates a safety regulation desig
 Yes. Carriers are federally required to audit driver logs, monitor hours compliance, and refuse to dispatch an over-hours driver. When a company pressures drivers to push past legal limits, it can bear liability alongside the driver. Federal law also requires carriers to carry minimum liability insurance of $750,000 for most freight and $1,000,000 or more for hazardous materials.
 Under Texas Civil Practice & Remedies Code § 16.003, you generally have two years from the date of your injury to file a personal injury lawsuit. However, critical evidence like ELD data disappears after six months, and dashcam footage can be overwritten within weeks. Waiting until the legal deadline can mean losing your strongest evidence long before you file.
 
+## Hit by an Amazon, FedEx, or UPS Truck in Texas? Who Actually Pays
+Source: https://nalawtx.com/blog/hit-by-amazon-fedex-ups-delivery-truck-in-texas-who-pays
+
+The logo on the side of the van is not always the company that pays your claim. Who is responsible depends on which delivery network the driver works in, and each one is set up differently.
+By Vu Nguyen, Founder & Managing Partner · Published November 26, 2026
+If a delivery van hits you in Texas, the company whose logo is on the van may or may not be legally responsible. Amazon, FedEx Ground, and Amazon Flex use contractor networks; UPS and FedEx Express mostly use their own employees; and U.S. Postal Service crashes follow federal rules. Identifying the right company, and every insurance policy that applies, is the first and most important step in your claim.
+- Most Amazon-branded vans are driven by employees of separate Delivery Service Partner companies.
+- Amazon Flex coverage applies only while the driver is actively on a delivery block.
+- FedEx Ground uses independent contractor companies; FedEx Express and UPS mostly use employees.
+- A USPS crash requires a federal administrative claim within two years before you can sue.
+Delivery vans are everywhere in Texas neighborhoods now. They stop suddenly, double-park, back out of driveways, and run tight routes against the clock. When one of them hits you, most people assume the claim is simple: Amazon (or FedEx, or UPS) is a huge company, so Amazon pays.
+It is rarely that simple. These companies have built their delivery networks in very different ways, and those choices decide who you can hold responsible and how much insurance is actually available. Here is how each one works, in plain language.
+
+### Why the logo on the van doesn't settle the question
+Texas law generally makes an employer responsible for the negligence of its employees while they are doing their jobs. That rule is called respondeat superior, or vicarious liability. But it usually does not apply to independent contractors, because the hiring company does not control how the contractor does the work.
+That distinction is the whole game in delivery truck cases. If the driver is the big company's employee, the big company is typically responsible. If the driver works for a separate contractor company, the big company will argue it is not responsible at all, and you may be left with a small company and a much smaller insurance policy unless your lawyer can show more.
+The first question in every delivery truck case is not "how bad was the crash?" It's "who did this driver really work for, and who controlled the work?"
+
+### Amazon: three different setups
+
+#### 1. Amazon Delivery Service Partners (the blue Amazon vans)
+Most of the Amazon-branded vans you see are operated by Delivery Service Partners (DSPs). These are separate small businesses that contract with Amazon and employ the drivers directly. The driver's paycheck comes from the DSP, not from Amazon.
+After a crash, Amazon typically takes the position that the DSP, not Amazon, is responsible for its drivers. But that is not the end of the analysis. Courts look at who had the right to control the work. Evidence that Amazon set the routes, the number of stops, the delivery pace, the training, the monitoring, and the discipline can support a claim that reaches Amazon itself. Amazon's own policies, such as unrealistic delivery quotas that push drivers to rush, can also support a direct negligence claim.
+Your attorney should also get the DSP's full insurance policy, not just a summary page, to see whether Amazon is listed as an additional insured, and review any contract terms that shift responsibility between the two companies.
+
+#### 2. Amazon Flex (personal cars, often no logo at all)
+Amazon Flex drivers are independent contractors who deliver in their own cars. According to Amazon, it provides commercial auto insurance, including liability coverage, to Flex delivery partners in Texas, but only while they are actively delivering during a scheduled delivery block.
+That timing detail matters. If the Flex driver was between blocks, running a personal errand, or already finished for the day, Amazon's coverage may not apply, and the driver's personal auto policy (which may exclude delivery work) becomes the main source. Screenshots of the delivery app, the time of the crash, and the driver's own statements at the scene can make or break this issue.
+
+#### 3. Amazon's own tractor-trailers
+Larger Amazon trailers moving freight between warehouses on highways like I-10 and I-45 may be run by Amazon's own trucking operations or by outside freight carriers. These are commercial motor vehicles subject to federal trucking rules, and they typically carry much larger insurance policies. The same questions apply: who owned the truck, who employed the driver, and who controlled the trip.
+
+### FedEx: Express vs. Ground makes a big difference
+FedEx runs two very different delivery systems.
+- FedEx Express drivers are generally FedEx employees. If an Express driver causes a crash while on the job, FedEx is typically responsible under respondeat superior.
+- FedEx Ground (including Home Delivery) uses independent service providers : separate companies that own or lease the trucks and employ their own drivers. FedEx Ground often argues that the contractor, not FedEx, is responsible for those drivers.
+In a FedEx Ground case, your attorney will want the contractor agreement, the contractor's insurance policies, and evidence of how much FedEx controlled the routes, schedules, equipment, and driver standards. Many FedEx Ground trucks are over 10,000 pounds, which can also bring federal motor carrier safety rules and higher insurance requirements into play.
+
+### UPS: usually the simplest of the three
+UPS package car drivers (the brown trucks) are generally UPS employees. That usually makes the liability question more straightforward: if the driver was negligent while making deliveries, UPS is typically responsible. UPS has its own claims operation and insurance program, and like every large company, it will investigate quickly and look for ways to shift blame to you.
+
+### USPS: federal rules and a special deadline
+If a U.S. Postal Service vehicle hits you, the rules change completely. Claims against USPS fall under the Federal Tort Claims Act. Before you can file a lawsuit, you must submit a written administrative claim to USPS, usually on Standard Form 95, that states a specific dollar amount, within two years of the crash. You generally cannot sue until USPS denies the claim or six months pass without a decision. Federal cases are tried to a judge, not a jury.
+Some mail in Texas is also delivered by private contractors under USPS contracts, and those cases may follow the normal Texas rules instead. Identifying who actually owned and operated the vehicle comes first.
+A USPS claim with the wrong dollar amount, or filed after two years, can be fatal to your case. This is one of the few situations where the paperwork itself can decide the outcome.
+
+### How much insurance is really available?
+Texas only requires drivers to carry $30,000 per person and $60,000 per crash in bodily injury liability coverage ( Texas Transportation Code § 601.072 ). For a serious injury, that does not go far.
+Delivery companies and their contractors usually carry more than the state minimum, and interstate for-hire carriers operating vehicles over 10,000 pounds must meet federal minimum insurance levels. But many delivery vans fall under that weight line, and small contractor companies may carry only what their contract requires. That is why finding every policy matters: the contractor's policy, any policy that names the larger company as an insured, umbrella or excess policies, and your own uninsured/underinsured motorist coverage.
+
+### What to do after a delivery truck hits you
+Photograph the vehicle from every side. Capture the company name, any DSP or contractor name on the door, the license plate, and any USDOT number. Contractor names are often small and easy to miss.
+Get the driver's information and ask who they work for. Write down exactly what they say. "I drive for Amazon" can mean a DSP employee, a Flex contractor, or a freight carrier.
+Call 911 and get a police report. The report will usually identify the vehicle owner and insurer, which is often the fastest way to identify the right company.
+Get medical care right away and keep every record and bill. Gaps in treatment are one of the first things a corporate insurer will use against you.
+Don't give a recorded statement to the delivery company or its insurer before you talk to a lawyer. You are not required to, and their adjusters are trained to look for anything that shifts fault to you.
+Act quickly on evidence. Delivery vehicles often have telematics, GPS, and cameras, and companies track every stop. That data can show speed, braking, and whether the driver was rushing. It may not be kept forever, so your attorney should send a preservation letter early.
+
+### Fault still matters
+Texas uses a modified comparative fault rule ( Texas Civil Practice & Remedies Code § 33.001 ). If you are found partly at fault, your recovery is reduced by your percentage. If you are found more than 50% at fault, you recover nothing. Delivery companies know this, and they will argue you were speeding, distracted, or should have seen the van stopped in the road.
+Our attorneys handle truck accident and car accident cases across Texas, including crashes involving delivery vans and commercial fleets. If a delivery vehicle hit you, a free case review will tell you who is likely responsible and what coverage may be available.
+This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
+
+### Common questions
+Often you can bring a claim that reaches Amazon, but it depends on who was driving. Most Amazon-branded vans are operated by Delivery Service Partners (DSPs), separate companies that employ the drivers. Amazon usually argues it is not responsible for the DSP's drivers. Your attorney can still pursue Amazon where evidence shows Amazon controlled the driver's routes, pace, training, or discipline, or where Amazon's own policies contributed to the crash. The DSP's insurance and any policy that lists Amazon as an additional insured should also be examined.
+Amazon says it provides commercial auto insurance, including liability coverage, to Flex delivery partners in Texas, but only while they are actively delivering during a scheduled delivery block. If the driver was between blocks or had finished deliveries, that coverage may not apply and the driver's personal policy becomes the main source. That is why the exact time of the crash matters.
+It depends on which FedEx company was involved. FedEx Express drivers are generally FedEx employees, so FedEx is typically responsible for their on-the-job negligence. FedEx Ground packages are delivered by independent service providers, separate companies that employ their own drivers. FedEx Ground often argues those contractors, not FedEx, are responsible, so the contracts, the contractor's insurance, and FedEx's level of control all become important.
+For most delivery truck crashes, Texas gives you two years from the date of the crash to file a lawsuit under Texas Civil Practice & Remedies Code § 16.003. If a U.S. Postal Service vehicle hit you, the claim falls under the Federal Tort Claims Act, and you must first file a written administrative claim (usually Standard Form 95) with USPS within two years. Missing either deadline can end your claim.
+
 ## Houston Bicycle Accident Claims: What Texas Law Actually Does for Cyclists
 Source: https://nalawtx.com/blog/houston-bicycle-accident-claims-what-texas-law-actually
 
@@ -1855,6 +1927,80 @@ Houston recorded 301 traffic fatalities in 2024, the most in the city's history.
 Not necessarily. The majority of Houston's 119 pedestrian deaths in 2024 happened during daylight hours. Wide corridors with limited crosswalk infrastructure are dangerous regardless of time of day, especially on major arterials posted at 45 mph or higher.
 Get medical attention right away, even if you feel fine — adrenaline can mask injuries and gaps in treatment are a top argument insurers use to reduce claims. Document everything at the scene, avoid giving a recorded statement to the at-fault driver's insurer, and do not sign anything in the first days or weeks.
 Texas follows a 51% comparative-fault rule, meaning you can recover damages as long as you are not more than 50% at fault. Texas law generally favors injured pedestrians and cyclists in crosswalks, but insurance companies will aggressively try to push fault onto you to reduce or eliminate what they owe.
+
+## The 2026 FMCSA Overhaul: How New Federal Rules Strengthen Your Texas Truck Accident Claim
+Source: https://nalawtx.com/blog/how-2026-fmcsa-rule-changes-help-texas-truck-accident-claims
+
+Federal regulators overhauled how truck driver medical records are stored and how carrier safety is scored. Both changes create a cleaner, harder-to-manipulate paper trail that benefits injured victims in Texas litigation.
+By Vu Nguyen, Founder & Managing Partner · Updated November 27, 2026
+Picture this: a loaded 18-wheeler runs a red light on the North Loop near the 610/I-10 interchange and T-bones your car. You survive, but just barely. The trucking company's lawyers show up fast. They start talking about how the driver had a clean record, how the carrier was operating safely, how this was just a terrible accident.
+What they don't want you to know is that federal regulators spent 2025 and 2026 rebuilding the systems that track exactly those things: driver fitness, carrier safety scores, broker accountability. The changes create a documentary record that's more centralized, more uniform, and much harder to discredit on the stand than the patchwork of paper files that existed before. If you were hurt in a Texas truck accident, that matters.
+
+### Why Federal Rules Matter in a Texas Courtroom
+The Federal Motor Carrier Safety Administration (FMCSA) is the federal agency that sets safety rules for commercial trucking nationwide. When an 18-wheeler or large commercial truck operates on Texas roads, it's subject to both Texas state law and federal FMCSA regulations.
+That overlap is a gift to injury lawyers. When a trucking company violates an FMCSA regulation and that violation contributes to a crash, Texas courts treat it as evidence of negligence. Under Texas law, violating a safety statute or regulation can support what's called negligence per se. That means the violation itself establishes the breach of duty, rather than requiring you to prove through separate expert testimony that the conduct was unreasonable.
+The 2026 FMCSA rule changes don't create new violations out of thin air. What they do is make existing violations much easier to prove, and much harder for carriers to explain away.
+
+### Electronic Medical Certifications: The Paper Chase Is Over
+Before 2025, commercial truck drivers had to carry a physical medical examiner's certificate (a paper card issued after a physical exam) and also self-certify their medical status with their state's motor vehicle department. The two systems were separate. Carriers kept their own copies. State DMV databases weren't always current. Physical cards got lost, altered, or simply never matched the state records.
+Starting in 2025 and fully implemented through 2026, FMCSA moved to a fully electronic medical certification system tied directly to the Commercial Driver's License (CDL) database. Here's what that means in plain terms:
+- A certified medical examiner now submits the driver's medical exam results directly to FMCSA's National Registry, electronically, with a timestamp.
+- That record links automatically to the driver's CDL record at the state level, including Texas DPS.
+- Gaps, lapses, or expired certifications are visible in real time to carriers, state regulators, and enforcement officers.
+- The chain of custody for a driver's medical fitness history is documented and date-stamped at every step. It's not dependent on what paperwork a carrier decided to keep.
+Why does this matter if you were hurt? Because medical fitness isn't just a background detail. Drivers with certain cardiovascular conditions, sleep apnea, vision problems, or seizure histories are disqualified from holding a commercial license under federal rules. If a driver was operating with an expired or fraudulent medical certification and your attorney can pull the electronic record showing that lapse, the carrier's claim that it ran a "safe operation" collapses.
+The old paper system gave carriers room to claim they checked everything and it looked fine. The new electronic system gives your attorney a timestamped federal database record showing exactly when a certification expired, and whether the carrier kept that driver on the road anyway.
+Defense attorneys used to challenge medical certification evidence by arguing the paper documents were misread, mislabeled, or incomplete. That argument gets much harder when the record lives in a federal database that neither the carrier nor its lawyers control.
+
+### The Rebuilt Safety Measurement System: Carrier Scores You Can Actually Use
+FMCSA's Safety Measurement System (SMS) is the scoring tool that grades commercial carriers on seven categories of behavior: unsafe driving, hours-of-service compliance, driver fitness, controlled substances and alcohol, vehicle maintenance, hazardous materials compliance, and crash history. Each carrier gets scores in each category based on roadside inspection results and crash data.
+The old SMS had a known problem. Carriers, advocacy groups, and even federal oversight bodies pointed out that the scoring methodology was inconsistent and that carriers had found ways to game the data inputs. A carrier with a genuinely dangerous safety culture could look acceptable on paper.
+The 2026 SMS overhaul addressed this. The specific changes include more consistent weighting of recent violations, better integration of crash causation data, and tighter controls on how inspection records feed into scores. The result is a carrier's SMS profile that reflects actual behavior more accurately than the old system did.
+For a Texas truck accident claim, here's the practical value: your attorney can pull the carrier's SMS scores from before the crash. If those scores showed elevated percentile rankings in unsafe driving or hours-of-service violations, meaning the carrier was already flagged as a risk, that's evidence the carrier knew or should have known it had a safety problem. Texas law recognizes a theory called negligent entrustment and negligent retention, which means a company can be held liable for keeping a dangerous driver on the road when they had reason to know the risk.
+A carrier's pre-crash SMS history, now more reliably documented under the 2026 standards, helps establish exactly that.
+
+### Broker Liability: A New Front in Truck Accident Cases
+Here's a piece of the 2026 changes that doesn't get enough attention: expanded federal rules on freight broker liability.
+Many trucking operations in Texas don't work the way you might imagine. The company whose name is on the truck door sometimes contracts with an independent carrier through a broker, a middleman who arranges cargo transportation between shippers and carriers. Historically, brokers argued they were just arranging contracts and had no liability when the carrier they hired caused a crash.
+The 2026 rules tighten the standards brokers must meet when vetting the carriers they hire. Brokers are now required to verify carrier safety scores and insurance before placing loads. The rule creates a documented vetting obligation. That means when a broker hired a carrier with a poor SMS profile and that carrier's truck hit you on I-45 south of downtown Houston, the broker's vetting records (or lack thereof) become discoverable evidence in your case.
+This matters because brokers often have deeper pockets than the individual carrier. And under Texas law, if a party had a duty and failed to meet it, they can be held accountable for the resulting harm. The 2026 broker rules clarify that the duty existed, and left a paper trail showing whether it was honored.
+
+### How Your Attorney Uses These Records
+Federal trucking records don't walk through the courthouse door on their own. Getting them into your case requires knowing what exists, where it lives, and how to request it before it disappears.
+Some of this happens automatically under the new electronic systems. FMCSA database records are timestamped and preserved in ways that physical paper wasn't. But other records still require prompt action. Electronic logging device (ELD) data, dashboard camera footage, and carrier maintenance files aren't preserved indefinitely. Under Texas law, an attorney can send a spoliation letter (a formal notice that evidence must be preserved) to the carrier within days of a crash. If the carrier destroys records after receiving that letter, Texas courts can instruct a jury to infer that the destroyed evidence was harmful to the carrier's case.
+The timeline matters enormously. If you were hurt on I-10 near Katy or on US-59 heading into downtown, the carrier's lawyers are already working the file. The sooner your attorney sends a preservation demand, the better your chances of capturing data before the retention window closes.
+Our post on FMCSA hours-of-service violations and your Texas truck accident claim covers logbook evidence in detail. The 2026 medical certification and SMS changes build on that same framework of federal documentation working in your favor.
+
+### What the Carrier's Lawyer Will Argue. and How the New Rules Help Counter It
+Trucking defense lawyers are good at their jobs. They've had decades to develop arguments that minimize carrier and driver accountability. Here are the most common ones, and how the 2026 changes affect each.
+
+#### "The driver's medical record was current and clean."
+Under the old paper system, verifying this claim required tracking down physical documents across multiple storage systems. Under the new electronic system, your attorney can pull the driver's certification history directly from the federal database. If the examiner who signed off wasn't properly listed on FMCSA's National Registry of Certified Medical Examiners, or if the certification had a gap before the crash, the electronic record shows it without ambiguity.
+
+#### "Our carrier has a solid safety record."
+Under the old SMS, this was hard to challenge because the scoring methodology was inconsistent and somewhat gameable. Under the rebuilt 2026 SMS, scores reflect actual inspection results and crash data more reliably. If the carrier's scores in unsafe driving or vehicle maintenance were in elevated percentile ranges before your crash, those scores are now more credible and more defensible as evidence of a known safety problem.
+
+#### "We hired a reputable carrier through standard channels."
+Post-2026, brokers have documented vetting obligations. If the broker who placed the load didn't verify the carrier's safety scores or insurance, that failure is now a documented gap, not just an inference your attorney has to argue from circumstantial evidence.
+
+### Texas-Specific Context: Why This Hits Differently Here
+Texas moves more freight by truck than almost any other state. The I-10 corridor through Houston is one of the busiest commercial freight routes in North America. The Port of Houston generates constant heavy-truck traffic on Beltway 8 and Highway 225. Trucking is embedded in the Texas economy in ways that make truck accident cases both common and consequential.
+Harris County sees a disproportionate share of serious commercial truck crashes. The Harris County District Courts handle complex trucking litigation regularly, and juries here understand that these roads carry enormous risk. That context cuts both ways: jurors know the economic importance of the industry, but they also know what a fully loaded 18-wheeler does to a passenger car at highway speed.
+The 2026 federal changes don't create new causes of action under Texas law. What they do is make the evidence underlying existing claims (negligence, negligence per se, negligent entrustment) cleaner, more centralized, and less dependent on paper documents that a carrier's internal team controlled. For litigation in Harris County or in federal court in the Southern District of Texas, that's a meaningful shift.
+
+### The Modified Comparative Fault Wrinkle
+One thing worth understanding before you think about any truck accident claim: Texas follows a rule called modified comparative fault. Basically, Texas reduces what you can recover by your percentage of blame for the crash, and cuts off your recovery entirely if you're found more than 51% at fault. See Texas's 51% fault rule explained here.
+Trucking companies and their insurers know this. One of their standard moves is to build a file on you, your driving record, any traffic citations near the crash, witness statements that cast doubt on your behavior, to push your fault percentage up. The cleaner and more documented your attorney can make the carrier's safety failures (using the new FMCSA records), the harder it is for the defense to shift blame onto you.
+Federal regulatory violations documented in a centralized database are harder to minimize than paper files that only the carrier controlled. That's the core advantage the 2026 changes create.
+
+### What to Do If You Were Hit by a Commercial Truck in Texas
+The steps immediately after a truck accident are the same as after any serious collision, but the stakes on each one are higher because commercial litigation moves faster and more aggressively.
+Get medical attention immediately, even if you think you're fine. Soft-tissue injuries from large-vehicle crashes often don't fully present for 24 to 48 hours. Ben Taub Hospital and Memorial Hermann, both Level I trauma centers in Houston, see serious truck accident injuries regularly. Your medical records from that treatment become part of your damages case.
+Call the police. A crash report from the Texas Department of Public Safety (TxDPS) is your foundation. If the truck was a commercial vehicle, the officer should note the carrier's DOT number, which your attorney needs to pull federal records.
+Contact an attorney before you talk to anyone's insurance company. The carrier's insurer will call quickly. They're not calling to help you. They're calling to get a statement they can use to minimize your claim. You have no obligation to give them one.
+An attorney can immediately send a preservation demand for the carrier's ELD data, the driver's electronic medical certification records, the carrier's SMS history as of the crash date, and any broker vetting records. Under the 2026 framework, more of this data lives in federal databases rather than in the carrier's filing cabinet, but it still needs to be formally requested and preserved for litigation.
+If you're dealing with injuries from a truck accident anywhere in Texas, our truck accident practice page explains how we approach these cases and what a free case review involves.
+This article provides general information about Texas law, not legal advice for your specific situation. Every case is different. If you've been injured in Houston or anywhere in Texas, talk with a licensed attorney about the facts of yours. Free case review here, or call (713) 842-9442.
 
 ## Hurt in a Houston Construction Zone? Here's Who Can Be Held Liable Under Texas Law
 Source: https://nalawtx.com/blog/hurt-in-a-houston-construction-zone-who-can-be-liable
